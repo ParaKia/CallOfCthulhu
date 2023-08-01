@@ -460,7 +460,6 @@ function Remove(index) {
 
 function RemoveCarryon(index) {
     var Storage_i = 0;
-
     // 获取 "characters" 键名的值
     const charactersData = localStorage.getItem('characters');
 
