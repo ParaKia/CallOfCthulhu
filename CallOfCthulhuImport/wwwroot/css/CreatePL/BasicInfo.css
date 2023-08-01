@@ -1,0 +1,87 @@
+﻿/* 目录样式 */
+/*.sidebar {
+    position: fixed;
+    top: 150px;
+    left: 100px;
+    width: 200px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    opacity: 0;
+    top: -50px;*/ /* 初始位置上移 50px */
+    /*transition: transform 1s, opacity 1s;*/ /* 添加过渡效果 */
+/*}*/
+
+    /* 目录链接样式 */
+    /*.sidebar a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+    }*/
+
+/* 页面内容样式 */
+.content {
+    padding: 10px;
+}
+
+/* 目标区域样式 */
+.target {
+    margin-bottom: 200px; /* 为了更好地展示滚动效果，增加一些空白 */
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.btn-weapon {
+    position: relative;
+    float: right;
+    margin-bottom: 6px;
+}
+
+.columns-container {
+    display: flex;
+}
+
+.column {
+    padding: 10px;
+    margin: 5px;
+}
+
+.vertical-line {
+    position: relative;
+    width: 1px;
+    height: 100px; /* 设置竖线的高度 */
+    background-color: black; /* 设置竖线的颜色 */
+    margin-left: 4px;
+}
+
+    .vertical-line::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -1px;
+        width: 1px; /* 设置竖线的宽度 */
+        height: 100%; /* 设置竖线的高度 */
+        background-color: black; /* 设置竖线的颜色 */
+    }
+
+.flexli{
+    display:flex;
+}
+
+.spanheader {
+    width: 138px;
+    justify-content: center;
+}
+
+.reveal-content {
+    opacity: 0;
+    position: relative;
+    top: -50px; /* 初始位置上移 50px */
+    transition: transform 0.8s, opacity 0.8s; /* 添加过渡效果 */
+}
+
+#section3 {
+    overflow: hidden;
+    max-height: 70px;
+    transition: max-height 0.8s ease-out;
+}

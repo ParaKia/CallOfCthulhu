@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/lib/bootstrap-table-1.15.3/bootstrap-table.js"></script>
+<script src="~/lib/layer/layer.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="~/lib/bootstrap-table-1.15.3/bootstrap-table.css" />
+<link rel="stylesheet" href="/css//MainPage/MainPageStyle.css" />
+<link rel="stylesheet" href="~/lib/layer/theme/default/layer.css" asp-append-version="true"/>
+
+<style>
+    .search{
+        margin-left:138px;
+    }
+    #buttons-toolbar{
+        margin-left:276px;
+    }
+    .fixed-table-toolbar{
+        display:flex;
+    }
+</style>
+
+<div style="height:fit-content">
+    <div id="buttons-toolbar">
+        <div style="display:flex;justify-content: center;align-items: center;">
+            <div style="font-size: 25px;" id="tooltips">点击对应行即可选中武器，按下回车也可以直接完成选择</div>
+        <button id="Finish" class="btn btn-primary" style="margin-left: 4px;" onclick="Finish()">完成</button>
+        </div>
+    </div>
+    <table class="table" id="Weapons"></table>
+</div>
+
+
+<script src="~/js/WeaponList.js" asp-append-version="true"></script>

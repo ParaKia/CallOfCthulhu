@@ -1,0 +1,25 @@
+﻿.PLs {
+    display: flex;
+    justify-content: center;
+}
+
+.KP {
+    display: inline-block;
+    margin-bottom:8px;
+}
+
+img {
+    border-radius: 5px;
+    width: 115px;
+    height: 115px;
+}
+
+.PL {
+    width: 210px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.Main{
+    text-align:center;
+}

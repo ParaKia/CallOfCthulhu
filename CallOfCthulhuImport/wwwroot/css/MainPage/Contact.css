@@ -1,0 +1,29 @@
+﻿.Video {
+    border-radius: 5px;
+    background: white;
+    text-align: center;
+    margin-right:10px;
+}
+
+.Img {
+    border-radius: 5px;
+    background: white;
+    text-align: center;
+}
+
+.img {
+    border-radius: 5px;
+}
+
+.vs {
+    width: 300px;
+    height: 150px;
+    display:flex;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 4px;
+}
