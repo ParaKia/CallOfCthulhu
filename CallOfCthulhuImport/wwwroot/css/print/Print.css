@@ -1,0 +1,11 @@
+﻿.rowinves {
+    width: 50%;
+    display:flex;
+}
+
+.rowstats {
+    width: 33.333%;
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}

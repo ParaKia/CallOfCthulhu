@@ -1,0 +1,95 @@
+﻿@{
+    Layout = "";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/echarts.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/lib/bootstrap-table-1.15.3/bootstrap-table.js"></script>
+<script src="~/lib/layer/layer.js"></script>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/lib/bootstrap-table-1.15.3/bootstrap-table.css" />
+<link rel="stylesheet" href="~/lib/layer/theme/default/layer.css" asp-append-version="true" />
+<link rel="stylesheet" href="/css//MainPage/MainPageStyle.css" />
+<link rel="stylesheet" href="/css/print/Print.css" />
+<link rel="icon" type="image/x-icon" href="/Cthulhu.ico">
+
+<div style="display:flex;">
+    <div style="width:330px;margin-left: 30px;margin-top: 40px;">
+        <div class="investigator" style="text-align:center;">调查员信息</div>
+        <div class="investigator" style="display:flex;">姓名<div id="Name" style="margin-left: 10px;"></div></div>
+        <div class="investigator" style="display:flex;">
+            <div class="rowinves">玩家<div id="Player" style="margin-left: 10px;"></div></div>
+            <div class="rowinves">时代<div id="Century" style="margin-left: 10px;"></div></div>
+        </div>
+        <div class="investigator" style="display:flex;">
+            <div class="rowinves">职业<div id="pref" style="margin-left: 10px;"></div></div>
+            <div class="rowinves">职业序号<div id="prefid" style="margin-left: 10px;"></div></div>
+        </div>
+        <div class="investigator" style="display:flex;">
+            <div class="rowinves">年龄<div id="Age" style="margin-left: 10px;"></div></div>
+            <div class="rowinves">性别<div id="Sex" style="margin-left: 10px;"></div></div>
+        </div>
+        <div class="investigator" style="display:flex;">
+            <div class="rowinves">住地<div id="Addr" style="margin-left: 10px;"></div></div>
+            <div class="rowinves">故乡<div id="Hometown" style="margin-left: 10px;"></div></div>
+        </div>
+
+    </div>
+
+    <div style="width:250px;margin-left: 10px;margin-top: 40px;">
+        <p class="investigator" style="text-align:center;">属性</p>
+        <div class="investigator" style="display:flex;">
+            <div class="rowstats">力量<div id="StrRange" style="margin-left: 10px;"></div></div>
+            <div class="rowstats">敏捷<div id="DexRange" style="margin-left: 10px;"></div></div>
+            <div class="rowstats">意志<div id="PowRange" style="margin-left: 10px;"></div></div>
+        </div>
+        <div class="investigator" style="display:flex;">
+            <div class="rowstats">体质<div id="ConRange" style="margin-left: 10px;"></div></div>
+            <div class="rowstats">外貌<div id="AppRange" style="margin-left: 10px;"></div></div>
+            <div class="rowstats">教育<div id="EduRange" style="margin-left: 10px;"></div></div>
+        </div>
+        <div class="investigator" style="display:flex;">
+            <div class="rowstats">体型<div id="SizeRange" style="margin-left: 10px;"></div></div>
+            <div class="rowstats">智力<div id="IntRange" style="margin-left: 10px;"></div></div>
+            <div class="rowstats">幸运<div id="Luck" style="margin-left: 10px;"></div></div>
+        </div>
+    </div>
+
+    <div style="display:flex;margin-top: 4px;">
+        <div id="PreviewradarChart" style="width: 340px; height: 230px;"></div>
+        <div id="PreviewradarChart2" style="width: 340px; height: 230px;"></div>
+    </div>
+</div>
+
+<div style="display:flex;justify-content: center;margin-bottom: 4px;position:relative;">
+                <div style="margin-right:1rem;display:flex;">
+                    <label>生命值：</label>
+                    <div id="PreviewLifePoint">0</div>
+                </div>
+                <div style="margin-right:1rem;display:flex;">
+                    <label>魔法值：</label>
+                    <div id="PreviewMagicPoint">0</div>
+                </div>
+                <div style="margin-right:1rem;display:flex;">
+                    <label>理智值：</label>
+                    <div id="PreviewSanPoint">0</div>
+                </div>
+                <div style="margin-right:1rem;display:flex;">
+                    <label>伤害加值：</label>
+                    <div id="PreviewDamagePoint">0</div>
+                </div>
+            </div>
+
+<div style="display:grid;">
+    <table id="PreviewWeapon" class="table table-hover"></table>
+    <table id="PreviewCarryon" class="table  table-hover"></table>
+</div>
+
+<div style="display:flex;">
+    <table id="PreviewSkill1" class="table table-hover"></table>
+    <table id="PreviewSkill2" class="table table-hover"></table>
+</div>
+
+
+<script src="/js/Print.js" asp-append-version="true"></script>

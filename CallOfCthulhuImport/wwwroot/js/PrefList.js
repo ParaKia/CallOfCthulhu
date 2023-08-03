@@ -68,7 +68,7 @@ $(function () {
         { SkillName: "估价", Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "考古学", Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         {
-            SkillName: "技艺①" + '<select class="form-select Art" selectedIndex="-1">' +
+            SkillName: "技艺①" + '<select id="Art0" class="form-select Art" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">美术</option>' +
                 '<option value="option2">摄影</option>' +
@@ -100,7 +100,7 @@ $(function () {
             , Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "技艺②" + '<select class="form-select Art" selectedIndex="-1">' +
+            SkillName: "技艺②" + '<select id="Art1" class="form-select Art" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">美术</option>' +
                 '<option value="option2">摄影</option>' +
@@ -132,7 +132,7 @@ $(function () {
             , Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "技艺③" + '<select class="form-select Art" selectedIndex="-1">' +
+            SkillName: "技艺③" + '<select id="Art2" class="form-select Art" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">美术</option>' +
                 '<option value="option2">摄影</option>' +
@@ -176,7 +176,7 @@ $(function () {
         { SkillName: "话术", Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "格斗：斗殴", Inception: "25", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         {
-            SkillName: "格斗①" + '<select class="form-select Fight" selectedIndex="-1">' +
+            SkillName: "格斗①" + '<select id="Fight0" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">鞭子</option>' +
                 '<option value="option2">电锯</option>' +
@@ -189,7 +189,7 @@ $(function () {
             , Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "格斗②" + '<select class="form-select Fight" selectedIndex="-1">' +
+            SkillName: "格斗②" + '<select id="Fight1" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">鞭子</option>' +
                 '<option value="option2">电锯</option>' +
@@ -202,7 +202,7 @@ $(function () {
             , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "格斗③" + '<select class="form-select Fight" selectedIndex="-1">' +
+            SkillName: "格斗③" + '<select id="Fight2" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">鞭子</option>' +
                 '<option value="option2">电锯</option>' +
@@ -216,7 +216,7 @@ $(function () {
         },
         { SkillName: "射击：手枪", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         {
-            SkillName: "射击①" + '<select class="form-select Shoot" selectedIndex="-1">' +
+            SkillName: "射击①" + '<select id="Shoot0" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">步枪/霰弹枪</option>' +
                 '<option value="option2">冲锋枪</option>' +
@@ -228,7 +228,7 @@ $(function () {
             , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "射击②" + '<select class="form-select Shoot" selectedIndex="-1">' +
+            SkillName: "射击②" + '<select id="Shoot1" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">步枪/霰弹枪</option>' +
                 '<option value="option2">冲锋枪</option>' +
@@ -240,7 +240,7 @@ $(function () {
             , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "射击③" + '<select class="form-select Shoot" selectedIndex="-1">' +
+            SkillName: "射击③" + '<select id="Shoot2" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">步枪/霰弹枪</option>' +
                 '<option value="option2">冲锋枪</option>' +
@@ -256,15 +256,15 @@ $(function () {
         { SkillName: "恐吓", Inception: "15", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "跳跃", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         {
-            SkillName: "外语①" + '<input type="text" class="form-control Language"/>'
+            SkillName: "外语①" + '<input id="Language0" type="text" class="form-control Language" onchange="changeSkill()"/>'
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "外语②" + '<input type="text" class="form-control Language"/>'
+            SkillName: "外语②" + '<input id="Language1" type="text" class="form-control Language" onchange="changeSkill()"/>'
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "外语③" + '<input type="text" class="form-control Language"/>'
+            SkillName: "外语③" + '<input id="Language2" type="text" class="form-control Language" onchange="changeSkill()"/>'
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         { SkillName: "母语", Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
@@ -283,7 +283,7 @@ $(function () {
         { SkillName: "操作重型机械", Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "说服", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         {
-            SkillName: "驾驶" + '<select class="form-select Shoot" selectedIndex="-1">' +
+            SkillName: "驾驶" + '<select id="Drive0" class="form-select Drive" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">飞行器</option>' +
                 '<option value="option2">船</option>' +
@@ -294,7 +294,7 @@ $(function () {
         { SkillName: "心理学", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "骑术", Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         {
-            SkillName: "科学①" + '<select class="form-select Tech" selectedIndex="-1">' +
+            SkillName: "科学①" + '<select id="Tech0" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">地质学</option>' +
                 '<option value="option2">化学</option>' +
@@ -313,7 +313,7 @@ $(function () {
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "科学②" + '<select class="form-select Tech" selectedIndex="-1">' +
+            SkillName: "科学②" + '<select id="Tech1" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">地质学</option>' +
                 '<option value="option2">化学</option>' +
@@ -332,7 +332,7 @@ $(function () {
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
-            SkillName: "科学③" + '<select class="form-select Tech" selectedIndex="-1">' +
+            SkillName: "科学③" + '<select id="Tech2" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
                 '<option value="option1">地质学</option>' +
                 '<option value="option2">化学</option>' +
@@ -353,7 +353,7 @@ $(function () {
         { SkillName: "妙手", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "侦查", Inception: "25", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "潜行", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
-        { SkillName: "生存:<input class='form-control' type='text' id='Survive'/>", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
+        { SkillName: "生存:<input class='form-control' type='text' id='Survive' onchange='changeSkill()'/>", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "游泳", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "投掷", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
         { SkillName: "追踪", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },

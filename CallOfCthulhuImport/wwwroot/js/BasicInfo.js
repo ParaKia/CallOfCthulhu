@@ -871,7 +871,7 @@ var rowsSkill = [
     { SkillName: "估价", Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "考古学", Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     {
-        SkillName: "技艺①" + '<select class="form-select Art" selectedIndex="-1">' +
+        SkillName: "技艺①" + '<select id="Art0" class="form-select Art" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">美术</option>' +
             '<option value="option2">摄影</option>' +
@@ -903,7 +903,7 @@ var rowsSkill = [
         , Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "技艺②" + '<select class="form-select Art" selectedIndex="-1">' +
+        SkillName: "技艺②" + '<select id="Art1" class="form-select Art" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">美术</option>' +
             '<option value="option2">摄影</option>' +
@@ -935,7 +935,7 @@ var rowsSkill = [
         , Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "技艺③" + '<select class="form-select Art" selectedIndex="-1">' +
+        SkillName: "技艺③" + '<select id="Art2" class="form-select Art" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">美术</option>' +
             '<option value="option2">摄影</option>' +
@@ -979,7 +979,7 @@ var rowsSkill = [
     { SkillName: "话术", Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "格斗：斗殴", Inception: "25", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     {
-        SkillName: "格斗①" + '<select class="form-select Fight" selectedIndex="-1">' +
+        SkillName: "格斗①" + '<select id="Fight0" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">鞭子</option>' +
             '<option value="option2">电锯</option>' +
@@ -992,7 +992,7 @@ var rowsSkill = [
         , Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "格斗②" + '<select class="form-select Fight" selectedIndex="-1">' +
+        SkillName: "格斗②" + '<select id="Fight1" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">鞭子</option>' +
             '<option value="option2">电锯</option>' +
@@ -1005,7 +1005,7 @@ var rowsSkill = [
         , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "格斗③" + '<select class="form-select Fight" selectedIndex="-1">' +
+        SkillName: "格斗③" + '<select id="Fight2" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">鞭子</option>' +
             '<option value="option2">电锯</option>' +
@@ -1019,7 +1019,7 @@ var rowsSkill = [
     },
     { SkillName: "射击：手枪", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     {
-        SkillName: "射击①" + '<select class="form-select Shoot" selectedIndex="-1">' +
+        SkillName: "射击①" + '<select id="Shoot0" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">步枪/霰弹枪</option>' +
             '<option value="option2">冲锋枪</option>' +
@@ -1031,7 +1031,7 @@ var rowsSkill = [
         , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "射击②" + '<select class="form-select Shoot" selectedIndex="-1">' +
+        SkillName: "射击②" + '<select id="Shoot1" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">步枪/霰弹枪</option>' +
             '<option value="option2">冲锋枪</option>' +
@@ -1043,7 +1043,7 @@ var rowsSkill = [
         , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "射击③" + '<select class="form-select Shoot" selectedIndex="-1">' +
+        SkillName: "射击③" + '<select id="Shoot2" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">步枪/霰弹枪</option>' +
             '<option value="option2">冲锋枪</option>' +
@@ -1059,15 +1059,15 @@ var rowsSkill = [
     { SkillName: "恐吓", Inception: "15", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "跳跃", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     {
-        SkillName: "外语①" + '<input type="text" class="form-control Language"/>'
+        SkillName: "外语①" + '<input id="Language0" type="text" class="form-control Language" onchange="changeSkill()"/>'
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "外语②" + '<input type="text" class="form-control Language"/>'
+        SkillName: "外语②" + '<input id="Language1" type="text" class="form-control Language" onchange="changeSkill()"/>'
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "外语③" + '<input type="text" class="form-control Language"/>'
+        SkillName: "外语③" + '<input id="Language2" type="text" class="form-control Language" onchange="changeSkill()"/>'
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     { SkillName: "母语", Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
@@ -1086,7 +1086,7 @@ var rowsSkill2 = [
     { SkillName: "操作重型机械", Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "说服", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     {
-        SkillName: "驾驶" + '<select class="form-select Shoot" selectedIndex="-1">' +
+        SkillName: "驾驶" + '<select id="Drive0" class="form-select Drive" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">飞行器</option>' +
             '<option value="option2">船</option>' +
@@ -1097,7 +1097,7 @@ var rowsSkill2 = [
     { SkillName: "心理学", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "骑术", Inception: "5", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     {
-        SkillName: "科学①" + '<select class="form-select Tech" selectedIndex="-1">' +
+        SkillName: "科学①" + '<select id="Tech0" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">地质学</option>' +
             '<option value="option2">化学</option>' +
@@ -1116,7 +1116,7 @@ var rowsSkill2 = [
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "科学②" + '<select class="form-select Tech" selectedIndex="-1">' +
+        SkillName: "科学②" + '<select id="Tech1" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">地质学</option>' +
             '<option value="option2">化学</option>' +
@@ -1135,7 +1135,7 @@ var rowsSkill2 = [
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
-        SkillName: "科学③" + '<select class="form-select Tech" selectedIndex="-1">' +
+        SkillName: "科学③" + '<select id="Tech2" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
             '<option value="option1">地质学</option>' +
             '<option value="option2">化学</option>' +
@@ -1156,7 +1156,7 @@ var rowsSkill2 = [
     { SkillName: "妙手", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "侦查", Inception: "25", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "潜行", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
-    { SkillName: "生存: <input class='form-control' type='text' id='Survive'/>", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
+    { SkillName: "生存: <input class='form-control' type='text' id='Survive' onchange='changeSkill()'/>", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "游泳", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "投掷", Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
     { SkillName: "追踪", Inception: "10", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: "" },
@@ -1234,6 +1234,83 @@ function ChangeProf(index) {
 
     }
 
+
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+    const characterSelect = document.getElementById('characterSelect');
+    const selectedCharacter = characterSelect.value;
+
+    // 从localStorage中获取选中角色的页面数据
+    const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+    const selectedCharacterData = savedCharacters[selectedCharacter];
+
+    // 获取<select>元素
+    var selectElementArt = document.getElementsByClassName("Art");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementArt.length; k++) {
+        for (var i = 0; i < selectElementArt[k].options.length; i++) {
+            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                selectElementArt[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementFight = document.getElementsByClassName("Fight");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementFight.length; k++) {
+        for (var i = 0; i < selectElementFight[k].options.length; i++) {
+            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                selectElementFight[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementShoot = document.getElementsByClassName("Shoot");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementShoot.length; k++) {
+        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                selectElementShoot[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementDrive = document.getElementsByClassName("Drive");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementDrive.length; k++) {
+        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                selectElementDrive[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementTech = document.getElementsByClassName("Tech");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementTech.length; k++) {
+        for (var i = 0; i < selectElementTech[k].options.length; i++) {
+            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                selectElementTech[k].selectedIndex = i;
+            }
+        }
+    }
+
+    $("#Survive")[0].value = selectedCharacterData.Survive;
+
+    const Language = $(".Language");
+    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+    }
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+
     if (InterestPoint > Interest) {
         layer.msg("分配的兴趣点数超出了兴趣购点总数");
     }
@@ -1294,6 +1371,83 @@ function ChangeGrowup(index) {
         }
 
     }
+
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+    const characterSelect = document.getElementById('characterSelect');
+    const selectedCharacter = characterSelect.value;
+
+    // 从localStorage中获取选中角色的页面数据
+    const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+    const selectedCharacterData = savedCharacters[selectedCharacter];
+
+    // 获取<select>元素
+    var selectElementArt = document.getElementsByClassName("Art");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementArt.length; k++) {
+        for (var i = 0; i < selectElementArt[k].options.length; i++) {
+            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                selectElementArt[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementFight = document.getElementsByClassName("Fight");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementFight.length; k++) {
+        for (var i = 0; i < selectElementFight[k].options.length; i++) {
+            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                selectElementFight[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementShoot = document.getElementsByClassName("Shoot");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementShoot.length; k++) {
+        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                selectElementShoot[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementDrive = document.getElementsByClassName("Drive");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementDrive.length; k++) {
+        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                selectElementDrive[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementTech = document.getElementsByClassName("Tech");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementTech.length; k++) {
+        for (var i = 0; i < selectElementTech[k].options.length; i++) {
+            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                selectElementTech[k].selectedIndex = i;
+            }
+        }
+    }
+
+    $("#Survive")[0].value = selectedCharacterData.Survive;
+
+    const Language = $(".Language");
+    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+    }
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+
     if (InterestPoint > Interest) {
         layer.msg("分配的兴趣点数超出了兴趣购点总数");
     }
@@ -1353,6 +1507,83 @@ function ChangeInterest(index) {
         }
 
     }
+
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+    const characterSelect = document.getElementById('characterSelect');
+    const selectedCharacter = characterSelect.value;
+
+    // 从localStorage中获取选中角色的页面数据
+    const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+    const selectedCharacterData = savedCharacters[selectedCharacter];
+
+    // 获取<select>元素
+    var selectElementArt = document.getElementsByClassName("Art");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementArt.length; k++) {
+        for (var i = 0; i < selectElementArt[k].options.length; i++) {
+            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                selectElementArt[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementFight = document.getElementsByClassName("Fight");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementFight.length; k++) {
+        for (var i = 0; i < selectElementFight[k].options.length; i++) {
+            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                selectElementFight[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementShoot = document.getElementsByClassName("Shoot");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementShoot.length; k++) {
+        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                selectElementShoot[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementDrive = document.getElementsByClassName("Drive");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementDrive.length; k++) {
+        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                selectElementDrive[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementTech = document.getElementsByClassName("Tech");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementTech.length; k++) {
+        for (var i = 0; i < selectElementTech[k].options.length; i++) {
+            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                selectElementTech[k].selectedIndex = i;
+            }
+        }
+    }
+
+    $("#Survive")[0].value = selectedCharacterData.Survive;
+
+    const Language = $(".Language");
+    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+    }
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+
     if (InterestPoint > Interest) {
         layer.msg("分配的兴趣点数超出了兴趣购点总数");
     }
@@ -1413,6 +1644,83 @@ function ChangeProf2(index) {
         }
 
     }
+
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+    const characterSelect = document.getElementById('characterSelect');
+    const selectedCharacter = characterSelect.value;
+
+    // 从localStorage中获取选中角色的页面数据
+    const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+    const selectedCharacterData = savedCharacters[selectedCharacter];
+
+    // 获取<select>元素
+    var selectElementArt = document.getElementsByClassName("Art");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementArt.length; k++) {
+        for (var i = 0; i < selectElementArt[k].options.length; i++) {
+            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                selectElementArt[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementFight = document.getElementsByClassName("Fight");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementFight.length; k++) {
+        for (var i = 0; i < selectElementFight[k].options.length; i++) {
+            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                selectElementFight[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementShoot = document.getElementsByClassName("Shoot");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementShoot.length; k++) {
+        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                selectElementShoot[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementDrive = document.getElementsByClassName("Drive");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementDrive.length; k++) {
+        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                selectElementDrive[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementTech = document.getElementsByClassName("Tech");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementTech.length; k++) {
+        for (var i = 0; i < selectElementTech[k].options.length; i++) {
+            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                selectElementTech[k].selectedIndex = i;
+            }
+        }
+    }
+
+    $("#Survive")[0].value = selectedCharacterData.Survive;
+
+    const Language = $(".Language");
+    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+    }
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+
     if (InterestPoint > Interest) {
         layer.msg("分配的兴趣点数超出了兴趣购点总数");
     }
@@ -1473,6 +1781,83 @@ function ChangeGrowup2(index) {
 
 
     }
+
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+    const characterSelect = document.getElementById('characterSelect');
+    const selectedCharacter = characterSelect.value;
+
+    // 从localStorage中获取选中角色的页面数据
+    const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+    const selectedCharacterData = savedCharacters[selectedCharacter];
+
+    // 获取<select>元素
+    var selectElementArt = document.getElementsByClassName("Art");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementArt.length; k++) {
+        for (var i = 0; i < selectElementArt[k].options.length; i++) {
+            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                selectElementArt[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementFight = document.getElementsByClassName("Fight");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementFight.length; k++) {
+        for (var i = 0; i < selectElementFight[k].options.length; i++) {
+            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                selectElementFight[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementShoot = document.getElementsByClassName("Shoot");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementShoot.length; k++) {
+        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                selectElementShoot[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementDrive = document.getElementsByClassName("Drive");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementDrive.length; k++) {
+        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                selectElementDrive[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementTech = document.getElementsByClassName("Tech");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementTech.length; k++) {
+        for (var i = 0; i < selectElementTech[k].options.length; i++) {
+            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                selectElementTech[k].selectedIndex = i;
+            }
+        }
+    }
+
+    $("#Survive")[0].value = selectedCharacterData.Survive;
+
+    const Language = $(".Language");
+    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+    }
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+
     if (InterestPoint > Interest) {
         layer.msg("分配的兴趣点数超出了兴趣购点总数");
     }
@@ -1533,6 +1918,83 @@ function ChangeInterest2(index) {
         }
 
     }
+
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+    const characterSelect = document.getElementById('characterSelect');
+    const selectedCharacter = characterSelect.value;
+
+    // 从localStorage中获取选中角色的页面数据
+    const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+    const selectedCharacterData = savedCharacters[selectedCharacter];
+
+    // 获取<select>元素
+    var selectElementArt = document.getElementsByClassName("Art");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementArt.length; k++) {
+        for (var i = 0; i < selectElementArt[k].options.length; i++) {
+            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                selectElementArt[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementFight = document.getElementsByClassName("Fight");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementFight.length; k++) {
+        for (var i = 0; i < selectElementFight[k].options.length; i++) {
+            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                selectElementFight[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementShoot = document.getElementsByClassName("Shoot");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementShoot.length; k++) {
+        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                selectElementShoot[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementDrive = document.getElementsByClassName("Drive");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementDrive.length; k++) {
+        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                selectElementDrive[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementTech = document.getElementsByClassName("Tech");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementTech.length; k++) {
+        for (var i = 0; i < selectElementTech[k].options.length; i++) {
+            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                selectElementTech[k].selectedIndex = i;
+            }
+        }
+    }
+
+    $("#Survive")[0].value = selectedCharacterData.Survive;
+
+    const Language = $(".Language");
+    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+    }
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+
     if (InterestPoint > Interest) {
         layer.msg("分配的兴趣点数超出了兴趣购点总数");
     }
@@ -1540,11 +2002,6 @@ function ChangeInterest2(index) {
         layer.msg("分配的职业点数超出了职业购点总数");
     }
 }
-
-//function MainTips() {
-//    //tips层
-//    layer.tips('关键链接 <br> 在背景故事中，选出你认为最重要的一个描述作为关键连接。<br> 关键连接不会被KP更改和设计、在你面对关键连接的危机时如果没有掷骰子的机会，那他就不能被KP摧毁、杀害、移除。玩家必须至少有一次掷骰子的机会来拯救该关键连接<br> ·关键连接可以帮助调查员恢复san值，但是如果失去关键连接则会进行一个1/1D6的SC', '#tipsMain');
-//}
 
 document.getElementById("tipsMain").addEventListener("click", function () {
     // 弹出提示框
@@ -1839,6 +2296,43 @@ function savePageContent() {
     const Stock = document.getElementById("Stock").value;
     const Other = document.getElementById("Other").value;
 
+    const Art = $(".Art option:selected");
+    const PreviewArt = [];
+    for (var i = 0; i < Art.length; i++) {
+        PreviewArt.push(Art[i].text);
+    }
+
+    const Fight = $(".Fight option:selected");
+    const PreviewFight = [];
+    for (var i = 0; i < Fight.length; i++) {
+        PreviewFight.push(Fight[i].text);
+    }
+
+    const Language = $(".Language");
+    const PreviewLanguage = [];
+    for (var i = 0; i < Language.length; i++) {
+        PreviewLanguage.push(Language[i].value);
+    }
+
+    const Shoot = $(".Shoot option:selected");
+    const PreviewShoot = [];
+    for (var i = 0; i < Shoot.length; i++) {
+        PreviewShoot.push(Shoot[i].text);
+    }
+
+    const Drive = $(".Drive option:selected");
+    const PreviewDrive = [];
+    for (var i = 0; i < Drive.length; i++) {
+        PreviewDrive.push(Drive[i].text);
+    }
+
+    const Tech = $(".Tech option:selected");
+    const PreviewTech = [];
+    for (var i = 0; i < Tech.length; i++) {
+        PreviewTech.push(Tech[i].text);
+    }
+
+    const Survive = $("#Survive").val();
 
     const pageContent = {
         Name: Name,
@@ -1887,6 +2381,13 @@ function savePageContent() {
         Luxury: Luxury,
         Stock: Stock,
         Other: Other,
+        Art: PreviewArt,
+        Fight: PreviewFight,
+        Language: PreviewLanguage,
+        Shoot: PreviewShoot,
+        Drive: PreviewDrive,
+        Tech: PreviewTech,
+        Survive: $("#Survive").val()
     }
 
     ////存储技能表成功标记checkbox
@@ -1908,6 +2409,15 @@ function savePageContent() {
 
     // 更新select选项
     loadCharacterList();
+
+    const Nowcharacter = document.getElementById("characterSelect");
+    // 遍历所有选项，找到匹配的值并选中它
+    for (let i = 0; i < Nowcharacter.options.length; i++) {
+        if (Nowcharacter.options[i].value === characterName) {
+            Nowcharacter.selectedIndex = i;
+            break;
+        }
+    }
 }
 
 // 加载角色列表到select选项中
@@ -2047,6 +2557,74 @@ document.getElementById('characterSelect').addEventListener('change', function (
 
     }
 
+    // 获取<select>元素
+    var selectElementArt = document.getElementsByClassName("Art");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementArt.length; k++) {
+        for (var i = 0; i < selectElementArt[k].options.length; i++) {
+            if (selectElementArt[k].options[i].text === selectedCharacterData.Art[k]) {
+                selectElementArt[k].selectedIndex = i;
+            }
+        }
+    }
+    
+
+    // 获取<select>元素
+    var selectElementFight = document.getElementsByClassName("Fight");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementFight.length; k++) {
+        for (var i = 0; i < selectElementFight[k].options.length; i++) {
+            if (selectElementFight[k].options[i].text === selectedCharacterData.Fight[k]) {
+                selectElementFight[k].selectedIndex = i;
+            }
+        }
+    }
+
+    const Language = $(".Language");
+    for (var i = 0; i < selectedCharacterData.Language.length; i++) {
+        Language[i].value = selectedCharacterData.Language[i];
+    }
+
+    // 获取<select>元素
+    var selectElementShoot = document.getElementsByClassName("Shoot");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementShoot.length; k++) {
+        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+            if (selectElementShoot[k].options[i].text === selectedCharacterData.Shoot[k]) {
+                selectElementShoot[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementDrive = document.getElementsByClassName("Drive");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementDrive.length; k++) {
+        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+            if (selectElementDrive[k].options[i].text === selectedCharacterData.Drive[k]) {
+                selectElementDrive[k].selectedIndex = i;
+            }
+        }
+    }
+
+    // 获取<select>元素
+    var selectElementTech = document.getElementsByClassName("Tech");
+
+    // 遍历所有选项，找到匹配的文本并选中它
+    for (var k = 0; k < selectElementTech.length; k++) {
+        for (var i = 0; i < selectElementTech[k].options.length; i++) {
+            if (selectElementTech[k].options[i].text === selectedCharacterData.Tech[k]) {
+                selectElementTech[k].selectedIndex = i;
+            }
+        }
+    }
+
+    $("#Survive")[0].value = selectedCharacterData.Survive;
+
     //// 从localStorage中获取选中角色的成长标记
     //const savedChecks = JSON.parse(localStorage.getItem('checks')) || {};
     //const selectedCheckData = savedChecks[selectedCharacter];
@@ -2085,4 +2663,94 @@ function DeltheCharactor() {
     }, function () {
         
     });
+}
+
+//预览
+function previewPageContent() {
+    //iframe层-父子操作
+    MyLayer.open({
+        type: 2,
+        area: ["1250px", "700px"],
+        fixed: false, //不固定
+        maxmin: true,
+        content: "/Print/Index",
+        success: function (layero, index) {
+            //保存打开iframe界面的index，方便其他js使用close时快速找到index
+            window.Index = index;
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    MyLayer.close(index); // 关闭当前窗口
+                }
+            });
+        }
+    });
+}
+
+//改变表格的技艺等等select时
+function changeSkill() {
+    const Art = $(".Art option:selected");
+    const PreviewArt = [];
+    for (var i = 0; i < Art.length; i++) {
+        PreviewArt.push(Art[i].text);
+    }
+    //localStorage.setItem("Art", JSON.stringify(previewArt));
+
+    const Fight = $(".Fight option:selected");
+    const PreviewFight = [];
+    for (var i = 0; i < Fight.length; i++) {
+        PreviewFight.push(Fight[i].text);
+    }
+    //localStorage.setItem("Fight", JSON.stringify(PreviewFight));
+
+    const Language = $(".Language");
+    const PreviewLanguage = [];
+    for (var i = 0; i < Language.length; i++) {
+        PreviewLanguage.push(Language[i].value);
+    }
+    //localStorage.setItem("Language", JSON.stringify(PreviewLanguage));
+
+    const Shoot = $(".Shoot option:selected");
+    const PreviewShoot = [];
+    for (var i = 0; i < Shoot.length; i++) {
+        PreviewShoot.push(Shoot[i].text);
+    }
+    //localStorage.setItem("Shoot", JSON.stringify(PreviewShoot));
+
+    const Drive = $(".Drive option:selected");
+    const PreviewDrive = [];
+    for (var i = 0; i < Drive.length; i++) {
+        PreviewDrive.push(Drive[i].text);
+    }
+    //localStorage.setItem("Drive", JSON.stringify(PreviewDrive));
+
+    const Tech = $(".Tech option:selected");
+    const PreviewTech = [];
+    for (var i = 0; i < Tech.length; i++) {
+        PreviewTech.push(Tech[i].text);
+    }
+    //localStorage.setItem("Tech", JSON.stringify(PreviewTech));
+
+    const Survive = $("#Survive").val();
+    //localStorage.setItem("Survive", JSON.stringify(Survive));
+
+    var SkillContent = {
+        PreviewArt: PreviewArt,
+        PreviewFight: PreviewFight,
+        PreviewLanguage: PreviewLanguage,
+        PreviewShoot: PreviewShoot,
+        PreviewDrive: PreviewDrive,
+        PreviewTech: PreviewTech,
+        Survive: Survive
+    }
+    
+
+    const characterSelect = document.getElementById('characterSelect');
+    const selectedCharacter = characterSelect.value;
+
+    // 从localStorage中获取之前保存的数据
+    const savedSkills = JSON.parse(localStorage.getItem('skillSelect')) || {};
+
+    // 将当前页面内容保存到localStorage中
+    savedSkills[selectedCharacter] = SkillContent;
+    localStorage.setItem('skillSelect', JSON.stringify(savedSkills));
 }
