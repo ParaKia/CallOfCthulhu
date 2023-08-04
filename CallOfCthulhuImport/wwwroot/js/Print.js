@@ -220,7 +220,7 @@ var columnsSkill = [
         field: "SkillName",
         title: "技能名称",
         align: "center",
-        width: 120
+        width: 170
     },
     {
         field: "Inception",
@@ -288,12 +288,12 @@ selectedCharacterData.Skill2[21].SkillName = "生存：" + selectedCharacterData
 
 $("#PreviewSkill1").bootstrapTable({
     columns: columnsSkill,
-    data: selectedCharacterData.Skill1
+    data: selectedCharacterData.Skill1,
 });
 
 $("#PreviewSkill2").bootstrapTable({
     columns: columnsSkill,
-    data: selectedCharacterData.Skill2
+    data: selectedCharacterData.Skill2,
 });
 
 var dataSkill1 = $("#PreviewSkill1").bootstrapTable("getData");
@@ -347,6 +347,7 @@ var option2 = {
     tooltip: {
         // 鼠标移动到数据点时显示 tooltip
         trigger: 'item',
+        position: 'bottom',
     },
     series: [
         {
@@ -364,3 +365,15 @@ var option2 = {
 // 使用刚指定的配置项和数据显示图表。
 myChart2.setOption(option2);
 
+var tableRowCount = $('#PreviewSkill2').bootstrapTable('getData').length; // 获取表格的行数
+var newRowData = {}; // 创建一个空对象，表示空数据
+
+// 使用 bootstrapTable 提供的方法在表格末尾添加新行数据
+$('#PreviewSkill2').bootstrapTable('insertRow', {
+    index: tableRowCount, // 在末尾插入
+    row: newRowData // 空数据对象
+});
+
+function PrintThisPage() {
+    window.print();
+}
