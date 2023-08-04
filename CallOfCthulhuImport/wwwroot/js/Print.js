@@ -204,23 +204,23 @@ var option = {
 // 使用刚指定的配置项和数据显示图表。
 myChart.setOption(option);
 
-var columnsSkill = [
+var columnsSkill1 = [
     {
         field: "Successsign",
         title: "成功标记",
         align: "center",
         checkbox: true,
     },
-    {
-        field: "Duty",
-        title: "本职",
-        align: "center",
-    },
+    //{
+    //    field: "Duty",
+    //    title: "本职",
+    //    align: "center",
+    //},
     {
         field: "SkillName",
         title: "技能名称",
         align: "center",
-        width: 170
+        width: 150
     },
     {
         field: "Inception",
@@ -259,41 +259,98 @@ var columnsSkill = [
     }
 ];
 
-selectedCharacterData.Skill1[4].SkillName = "技艺：" + selectedCharacterData.Art[0];
-selectedCharacterData.Skill1[5].SkillName = "技艺：" + selectedCharacterData.Art[1];
-selectedCharacterData.Skill1[6].SkillName = "技艺：" + selectedCharacterData.Art[2];
+var columnsSkill2 = [
+    {
+        field: "Successsign",
+        title: "成功标记",
+        align: "center",
+        checkbox: true,
+    },
+    //{
+    //    field: "Duty",
+    //    title: "本职",
+    //    align: "center",
+    //},
+    {
+        field: "SkillName",
+        title: "技能名称",
+        align: "center",
+        width: 150
+    },
+    {
+        field: "Inception",
+        title: "初始",
+        align: "center",
+    },
+    {
+        field: "Growup",
+        title: "成长",
+        align: "center",
+    },
+    {
+        field: "Profession",
+        title: "职业",
+        align: "center",
+    },
+    {
+        field: "Interest",
+        title: "兴趣",
+        align: "center",
+    },
+    {
+        field: "Normal",
+        title: "普通",
+        align: "center",
+    },
+    {
+        field: "Hard",
+        title: "困难",
+        align: "center",
+    },
+    {
+        field: "Exdifficult",
+        title: "极难",
+        align: "center",
+    }
+];
 
-selectedCharacterData.Skill1[19].SkillName = "格斗：" + selectedCharacterData.Fight[0];
-selectedCharacterData.Skill1[20].SkillName = "格斗：" + selectedCharacterData.Fight[1];
-selectedCharacterData.Skill1[21].SkillName = "格斗：" + selectedCharacterData.Fight[2];
+selectedCharacterData.Skill1[4].SkillName = /*"技艺：" + */selectedCharacterData.Art[0];
+selectedCharacterData.Skill1[5].SkillName = /*"技艺：" + */selectedCharacterData.Art[1];
+selectedCharacterData.Skill1[6].SkillName = /*"技艺：" + */selectedCharacterData.Art[2];
 
-selectedCharacterData.Skill1[23].SkillName = "射击：" + selectedCharacterData.Shoot[0];
-selectedCharacterData.Skill1[24].SkillName = "射击：" + selectedCharacterData.Shoot[1];
-selectedCharacterData.Skill1[25].SkillName = "射击：" + selectedCharacterData.Shoot[2];
+selectedCharacterData.Skill1[19].SkillName = /*"格斗：" + */selectedCharacterData.Fight[0];
+selectedCharacterData.Skill1[20].SkillName = /*"格斗：" + */selectedCharacterData.Fight[1];
+selectedCharacterData.Skill1[21].SkillName = /*"格斗：" + */selectedCharacterData.Fight[2];
 
-selectedCharacterData.Skill1[30].SkillName = "外语：" + selectedCharacterData.Language[0];
-selectedCharacterData.Skill1[31].SkillName = "外语：" + selectedCharacterData.Language[1];
-selectedCharacterData.Skill1[32].SkillName = "外语：" + selectedCharacterData.Language[2];
+selectedCharacterData.Skill1[23].SkillName = /*"射击：" + */selectedCharacterData.Shoot[0];
+selectedCharacterData.Skill1[24].SkillName = /*"射击：" + */selectedCharacterData.Shoot[1];
+selectedCharacterData.Skill1[25].SkillName = /*"射击：" + */selectedCharacterData.Shoot[2];
+
+selectedCharacterData.Skill1[30].SkillName = /*"外语：" + */selectedCharacterData.Language[0];
+selectedCharacterData.Skill1[31].SkillName = /*"外语：" + */selectedCharacterData.Language[1];
+selectedCharacterData.Skill1[32].SkillName = /*"外语：" + */selectedCharacterData.Language[2];
 
 
 selectedCharacterData.Skill2[11].SkillName = "驾驶：" + selectedCharacterData.Drive[0];
 
-selectedCharacterData.Skill2[15].SkillName = "科学：" + selectedCharacterData.Tech[0];
-selectedCharacterData.Skill2[16].SkillName = "科学：" + selectedCharacterData.Tech[1];
-selectedCharacterData.Skill2[17].SkillName = "科学：" + selectedCharacterData.Tech[2];
+selectedCharacterData.Skill2[15].SkillName = /*"科学：" + */selectedCharacterData.Tech[0];
+selectedCharacterData.Skill2[16].SkillName = /*"科学：" + */selectedCharacterData.Tech[1];
+selectedCharacterData.Skill2[17].SkillName = /*"科学：" + */selectedCharacterData.Tech[2];
 
-selectedCharacterData.Skill2[21].SkillName = "生存：" + selectedCharacterData.Survive;
+selectedCharacterData.Skill2[21].SkillName = /*"生存：" + */selectedCharacterData.Survive;
 
 
 
 $("#PreviewSkill1").bootstrapTable({
-    columns: columnsSkill,
+    columns: columnsSkill1,
     data: selectedCharacterData.Skill1,
+    height:1350
 });
 
 $("#PreviewSkill2").bootstrapTable({
-    columns: columnsSkill,
+    columns: columnsSkill2,
     data: selectedCharacterData.Skill2,
+    height: 1350
 });
 
 var dataSkill1 = $("#PreviewSkill1").bootstrapTable("getData");
@@ -377,3 +434,19 @@ $('#PreviewSkill2').bootstrapTable('insertRow', {
 function PrintThisPage() {
     window.print();
 }
+
+///*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/
+//document.getElementById("PreviewPrint").addEventListener("mouseover", function () {
+//    // 鼠标移入时，弹出提示框
+//    var tipsContent = '打印';
+//    this.tipsIndex = layer.tips(tipsContent, this, {
+//        tips: [2, '#PreviewPrint'], // 方向：1为向下
+//        time: 0 // 设置为0，阻止自动消失
+//    });
+//});
+
+//document.getElementById("PreviewPrint").addEventListener("mouseout", function () {
+//    // 鼠标移出时，取消提示框
+//    layer.close(this.tipsIndex);
+//});
+///*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/

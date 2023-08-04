@@ -2670,10 +2670,10 @@ function previewPageContent() {
     //iframe层-父子操作
     MyLayer.open({
         type: 2,
-        area: ["1300px", "700px"],
+        area: ["1200px", "700px"],
         fixed: false, //不固定
         maxmin: true,
-        title: "预览&打印<button class='btn btn-primary' style='float:right;margin-right:20px;margin-top:6px;' onclick='PrintThisPage()'>打印</button>",
+        title: "预览&打印",
         content: "/Print/Index",
         success: function (layero, index) {
             //保存打开iframe界面的index，方便其他js使用close时快速找到index
@@ -2754,8 +2754,4 @@ function changeSkill() {
     // 将当前页面内容保存到localStorage中
     savedSkills[selectedCharacter] = SkillContent;
     localStorage.setItem('skillSelect', JSON.stringify(savedSkills));
-}
-
-function PrintThisPage() {
-    window.print();
 }

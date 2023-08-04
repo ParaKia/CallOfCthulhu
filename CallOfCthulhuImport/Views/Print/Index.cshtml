@@ -15,34 +15,37 @@
 <link rel="icon" type="image/x-icon" href="/Cthulhu.ico">
 <style>
     .ski > tbody> tr{
-    height:40px;
+    height:38px;
     }
+    #PreviewSkill2 {
+  overflow: hidden;
+}
 </style>
 
 <div style="display:flex;">
-    <div style="width:330px;margin-left: 30px;margin-top: 40px;">
+    <div style="width:340px;margin-left: 15px;margin-top: 40px;">
         <div class="investigator" style="text-align:center;">调查员信息</div>
         <div class="investigator" style="display:flex;">姓名<div id="Name" style="margin-left: 10px;"></div></div>
         <div class="investigator" style="display:flex;">
             <div class="rowinves">玩家<div id="Player" style="margin-left: 10px;"></div></div>
-            <div class="rowinves">时代<div id="Century" style="margin-left: 10px;"></div></div>
+            <div class="rowinves" style="margin-left:4px;">时代<div id="Century" style="margin-left: 10px;"></div></div>
         </div>
         <div class="investigator" style="display:flex;">
-            <div class="rowinves">职业<div id="pref" style="margin-left: 10px;"></div></div>
-            <div class="rowinves">职业序号<div id="prefid" style="margin-left: 10px;"></div></div>
+            <div class="rowinves">职业<div id="pref" style="margin-left: 8px;"></div></div>
+            <div class="rowinves" style="margin-left:4px;">职业序号<div id="prefid" style="margin-left: 10px;"></div></div>
         </div>
         <div class="investigator" style="display:flex;">
             <div class="rowinves">年龄<div id="Age" style="margin-left: 10px;"></div></div>
-            <div class="rowinves">性别<div id="Sex" style="margin-left: 10px;"></div></div>
+            <div class="rowinves" style="margin-left:4px;">性别<div id="Sex" style="margin-left: 10px;"></div></div>
         </div>
         <div class="investigator" style="display:flex;">
             <div class="rowinves">住地<div id="Addr" style="margin-left: 10px;"></div></div>
-            <div class="rowinves">故乡<div id="Hometown" style="margin-left: 10px;"></div></div>
+            <div class="rowinves" style="margin-left:4px;">故乡<div id="Hometown" style="margin-left: 10px;"></div></div>
         </div>
 
     </div>
 
-    <div style="width:250px;margin-left: 10px;margin-top: 40px;">
+    <div style="width:250px;margin-top: 40px;">
         <p class="investigator" style="text-align:center;">属性</p>
         <div class="investigator" style="display:flex;">
             <div class="rowstats">力量<div id="StrRange" style="margin-left: 10px;"></div></div>
@@ -62,8 +65,9 @@
     </div>
 
     <div style="display:flex;margin-top: 4px;">
-        <div id="PreviewradarChart" style="width: 315px; height: 230px;"></div>
-        <div id="PreviewradarChart2" style="width: 315px; height: 230px;"></div>
+        <div id="PreviewradarChart" style="width: 270px; height: 230px;"></div>
+        <div id="PreviewradarChart2" style="width: 270px; height: 230px;"></div>
+        <div><img src="~/image/打印.png" id="PreviewPrint" style="width: 35px;position:relative;right:10px;cursor:pointer;" onclick="PrintThisPage()"/></div>
     </div>
 </div>
 
@@ -86,15 +90,17 @@
                 </div>
             </div>
 
-<div style="display:grid;">
-    <table id="PreviewWeapon" class="table table-hover"></table>
-    <table id="PreviewCarryon" class="table  table-hover"></table>
-</div>
-
 <div style="display:flex;">
-    <table id="PreviewSkill1" class="table table-hover ski"></table>
+    <table id="PreviewSkill1" class="table table-hover ski" style="width:588px!important;"></table>
     <table id="PreviewSkill2" class="table table-hover ski"></table>
 </div>
+
+<div style="display:grid;">
+    <table id="PreviewWeapon" class="table table-hover" ></table>
+    <table id="PreviewCarryon" class="table table-hover" ></table>
+</div>
+
+
 
 
 <script src="/js/Print.js" asp-append-version="true"></script>
