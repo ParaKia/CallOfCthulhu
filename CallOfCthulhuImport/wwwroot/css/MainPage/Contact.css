@@ -27,3 +27,8 @@
     margin-bottom: 10px;
     margin-top: 4px;
 }
+
+.myselft-container {
+    width: 100% !important;
+    left: 0% !important;
+}
