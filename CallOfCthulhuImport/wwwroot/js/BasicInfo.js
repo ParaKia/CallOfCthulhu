@@ -2755,3 +2755,4 @@ function changeSkill() {
     savedSkills[selectedCharacter] = SkillContent;
     localStorage.setItem('skillSelect', JSON.stringify(savedSkills));
 }
+

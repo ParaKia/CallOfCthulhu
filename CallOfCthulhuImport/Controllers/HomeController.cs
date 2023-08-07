@@ -33,7 +33,7 @@ namespace CallOfCthulhuImport.Controllers
             return View();
         }
 
-        public IActionResult Animation()
+        public IActionResult Settings()
         {
             return View();
         }

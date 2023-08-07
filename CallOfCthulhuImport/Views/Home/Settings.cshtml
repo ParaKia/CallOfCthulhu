@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css//MainPage/MainPageStyle.css" />
+    
+</head>
+<body>
+    <div class="Settings">
+        <h1>自定义分辨率</h1>
+        <p>选择一个分辨率：</p>
+        <button class="btn btn-primary" onclick="setCustomResolution(800, 600)">800x600</button>
+        <button class="btn btn-primary" onclick="setCustomResolution(1280, 720)">1280x720</button>
+        <button class="btn btn-primary" onclick="setCustomResolution(1900, 1080)">1920x1080</button>
+    </div>
+
+    <script>
+        function setCustomResolution(width, height) {
+            parent.document.body.style.width = width + 'px';
+            parent.document.body.style.height = height + 'px';
+        }
+    </script>
+</body>
+</html>

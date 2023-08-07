@@ -9,6 +9,11 @@
     src: url('/lib/font/ZCOOLKuaiLe-Regular.ttf') format('truetype'); /* 替换为你实际字体文件的路径 */
 }
 
+.myselft-container {
+    width: 75%;
+    left: 16%;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     /*font-family: 'MyCustomFont', sans-serif;*/
@@ -102,17 +107,6 @@ footer {
     text-align: center;
 }
 
-/* 窗帘的样式 */
-.curtain {
-    display: none; /* 初始状态隐藏 */
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 50%; /* 窗帘的宽度 */
-    background-color: #f1f1f1;
-}
-
 .animationDiv {
     opacity: 0;
     position: relative;
@@ -139,3 +133,8 @@ footer {
         padding: 10px;
         text-decoration: none;
     }
+
+.Settings {
+    text-align: center;
+    padding: 20px;
+}

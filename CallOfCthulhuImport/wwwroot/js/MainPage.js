@@ -47,19 +47,17 @@
 
 });
 
-//$("#smoothLink")[0].addEventListener("click", function (event) {
-//    event.preventDefault(); // 阻止默认点击行为
-//    var targetURL = event.href;
 
-//    fetch(targetURL)
-//        .then(function (response) {
-//            return response.text();
-//        })
-//        .then(function (data) {
-//            // 更新当前页面内容
-//            document.querySelector("#AllPages").innerHTML = data;
-//        })
-//        .catch(function (error) {
-//            console.error("Ajax 请求出错：", error);
-//        });
-//})
+
+//设置展开
+function Settings() {
+    layer.open({
+        type: 2,
+        title: '设置',
+        shadeClose: true,
+        shade: false,
+        maxmin: true, //开启最大化最小化按钮
+        area: ['445px', '215px'],
+        content: "/Home/Settings"
+    });
+}
