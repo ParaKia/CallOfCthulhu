@@ -177,10 +177,19 @@
                 <button class="btn btn-primary  btn-weapon" id="WeaponChoose" onclick="WeaponChoose()">选择武器</button>
                 <table id="Weapon" class="table table-hover"></table>
             </div>
-            <div>
-                <button class="btn btn-primary" onclick="AddNewRow()" style="float: right;margin-bottom: 6px;">额外随身物品</button>
-                <table id="Carryon" class="table"></table>
+            <div style="display:flex;margin-top: 4px;">
+                <div style="width:50%">
+                    <button class="btn btn-primary" onclick="AddNewRow()" style="float: right;margin-bottom: 6px;">额外随身物品</button>
+                    <table id="Carryon" class="table"></table>
+                </div>
+                <div style="width:50%;margin-left:4px;margin-top:44px;">
+                    <div class="input-group" style="height:100%;">
+                        <span class="input-group-text">其他资产列举</span>
+                        <textarea class="form-control" id="Other"></textarea>
+                    </div>
+                </div>
             </div>
+            
         </div>
 
         <div style="display: flex; justify-content: space-between;">
@@ -200,55 +209,52 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">形象描述</span>
                     <input type="text" class="form-control" id="AppDescription">
-                    <button class="input-group-text" id="tipsMain" @*onclick="MainTips()"*@>关键连接</button>
+                    <button class="input-group-text" id="tipsMain">关键连接</button>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">思念与信仰</span>
                     <input type="text" class="form-control" id="Faith">
-                    <span class="input-group-text"><input type="checkbox" /></span>
+                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">重要之人</span>
                     <input type="text" class="form-control" id="Important">
-                    <span class="input-group-text"><input type="checkbox" /></span>
+                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">意义非凡之地</span>
                     <input type="text" class="form-control" id="ImportantPlace">
-                    <span class="input-group-text"><input type="checkbox" /></span>
+                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">宝贵之物</span>
                     <input type="text" class="form-control" id="Treasure">
-                    <span class="input-group-text"><input type="checkbox" /></span>
+                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">特质</span>
                     <input type="text" class="form-control" id="Peculiarity">
-                    <span class="input-group-text"><input type="checkbox" /></span>
+                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">难言之隐</span>
                     <input type="text" class="form-control" id="HardTell">
-                    <span class="input-group-text"><input type="checkbox" /></span>
+                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">伤口和疤痕</span>
                     <input type="text" class="form-control" id="Scar">
-                    <span class="input-group-text"><input type="checkbox" /></span>
+                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text spanheader">恐惧症和狂躁症</span>
                     <input type="text" class="form-control" id="Phobia">
                 </div>
-                <div class="input-group">
-                    <span class="input-group-text spanheader">背景故事</span>
-                    <textarea class="form-control" aria-label="With textarea" id="BackgroundStory" style="height:77px;"></textarea>
-                </div>
+                
             </div>
 
             <div class="target" style="width: 50%;">
-                <div class="input-group mb-3" style="height: 100px;">
+                @*<div class="input-group mb-3" style="height: 100px;">
                     <span class="input-group-text spanheader">交通工具</span>
                     <textarea class="form-control" aria-label="With textarea" id="Transportation"></textarea>
                 </div>
@@ -267,6 +273,10 @@
                 <div class="input-group mb-3" style="height: 100px;">
                     <span class="input-group-text spanheader">其他</span>
                     <textarea class="form-control" aria-label="With textarea" id="Other"></textarea>
+                </div>*@
+                <div class="input-group">
+                    <span class="input-group-text spanheader">背景故事</span>
+                    <textarea class="form-control" aria-label="With textarea" id="BackgroundStory" style="height: 470px;"></textarea>
                 </div>
             </div>
         </div>

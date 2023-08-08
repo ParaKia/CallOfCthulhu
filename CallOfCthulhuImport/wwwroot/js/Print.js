@@ -71,6 +71,7 @@ var columnsCarryon = [
         field: "Id",
         title: "序号",
         align: "center",
+        visible: false,
         formatter: function (value, row, index) {
             return index + 1;
         }
@@ -93,11 +94,11 @@ var columnsCarryon = [
         width: 500,
         align: "center"
     },
-    {
-        field: "Bagage",
-        title: "背包格",
-        align: "center"
-    }
+    //{
+    //    field: "Bagage",
+    //    title: "背包格",
+    //    align: "center"
+    //}
 ];
 
 const characterSelect = parent.document.getElementById('characterSelect');
@@ -111,6 +112,7 @@ document.getElementById("Name").innerHTML = selectedCharacterData.Name;
 document.getElementById("Player").innerHTML = selectedCharacterData.Player;
 document.getElementById("Century").innerHTML = selectedCharacterData.Century;
 document.getElementById("pref").innerHTML = selectedCharacterData.Pref;
+document.getElementById("prefid").innerHTML = selectedCharacterData.Prefid;
 document.getElementById("Age").innerHTML = selectedCharacterData.Age;
 document.getElementById("Sex").innerHTML = selectedCharacterData.Sex;
 document.getElementById("Addr").innerHTML = selectedCharacterData.Addr;
@@ -124,6 +126,21 @@ document.getElementById("AppRange").innerHTML = selectedCharacterData.AppRange;
 document.getElementById("IntRange").innerHTML = selectedCharacterData.IntRange;
 document.getElementById("PowRange").innerHTML = selectedCharacterData.PowRange;
 document.getElementById("EduRange").innerHTML = selectedCharacterData.EduRange;
+document.getElementById("AppDescription").value = selectedCharacterData.AppDescription;
+document.getElementById("Faith").value = selectedCharacterData.Faith;
+document.getElementById("Important").value = selectedCharacterData.Important;
+document.getElementById("ImportantPlace").value = selectedCharacterData.ImportantPlace;
+document.getElementById("Treasure").value = selectedCharacterData.Treasure;
+document.getElementById("Peculiarity").value = selectedCharacterData.Peculiarity;
+document.getElementById("HardTell").value = selectedCharacterData.HardTell;
+document.getElementById("Scar").value = selectedCharacterData.Scar;
+document.getElementById("Phobia").value = selectedCharacterData.Phobia;
+document.getElementById("BackgroundStory").value = selectedCharacterData.BackgroundStory;
+//document.getElementById("Transportation").value = selectedCharacterData.Transportation;
+//document.getElementById("Domicile").value = selectedCharacterData.Domicile;
+//document.getElementById("Luxury").value = selectedCharacterData.Luxury;
+//document.getElementById("Stock").value = selectedCharacterData.Stock;
+document.getElementById("Other").value = selectedCharacterData.Other;
 
 document.getElementById("PreviewLifePoint").innerHTML = parent.document.getElementById("LifePoint").innerHTML
 document.getElementById("PreviewMagicPoint").innerHTML = parent.document.getElementById("MagicPoint").innerHTML
@@ -435,6 +452,11 @@ function PrintThisPage() {
     window.print();
 }
 
+//关键链接
+const Keys = $(".KeyConnection");
+for (var i = 0; i < Keys.length; i++) {
+    Keys[i].checked = selectedCharacterData.KeyConnection[i];
+}
 ///*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/
 //document.getElementById("PreviewPrint").addEventListener("mouseover", function () {
 //    // 鼠标移入时，弹出提示框

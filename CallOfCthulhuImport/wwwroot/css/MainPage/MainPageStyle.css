@@ -1,9 +1,4 @@
-﻿/*@font-face {
-    font-family: 'MyCustomFont';
-    src: url('/lib/font/JeufNl11C2Ld.woff2') format('woff2'), url('/lib/font/JeufNl11C2Ld.woff') format('woff');*/
-    /* 可以添加其他字体格式，如 .ttf 或 .eot */
-/*}*/
-
+﻿
 @font-face {
     font-family: 'Montserrat';
     src: url('/lib/font/ZCOOLKuaiLe-Regular.ttf') format('truetype'); /* 替换为你实际字体文件的路径 */
@@ -16,7 +11,6 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    /*font-family: 'MyCustomFont', sans-serif;*/
     background-color: #f7f7f7;
     color: #333;
 }

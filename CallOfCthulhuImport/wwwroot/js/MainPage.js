@@ -57,7 +57,7 @@ function Settings() {
         shadeClose: true,
         shade: false,
         maxmin: true, //开启最大化最小化按钮
-        area: ['445px', '215px'],
+        area: ['515px', '215px'],
         content: "/Home/Settings"
     });
 }

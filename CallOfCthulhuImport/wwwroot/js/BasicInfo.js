@@ -350,7 +350,8 @@ var columnsCarryon = [
         align: "center",
         formatter: function (value, row, index) {
             return index + 1;
-        }
+        },
+        visible: false
     },
     {
         field: "Status",
@@ -373,20 +374,19 @@ var columnsCarryon = [
     {
         field: "ObjectName",
         title: "物品名称",
-        width: 500,
         align: "center",
         formatter: function (value, row, index) {
             return '<input id="ObjectName' + index + '" type="text" class="form-control" value="' + value + '" onchange="NameChange(' + index + ')">'
         }
     },
-    {
-        field: "Bagage",
-        title: "背包格",
-        align: "center",
-        formatter: function (value, row, index) {
-            return '<input id="Bagage' + index + '" type="text" class="form-control" value="' + value + '" onchange="BagageChange(' + index + ')">'
-        }
-    },
+    //{
+    //    field: "Bagage",
+    //    title: "背包格",
+    //    align: "center",
+    //    formatter: function (value, row, index) {
+    //        return '<input id="Bagage' + index + '" type="text" class="form-control" value="' + value + '" onchange="BagageChange(' + index + ')">'
+    //    }
+    //},
     {
         title: "操作",
         align: "center",
@@ -401,8 +401,8 @@ var columnsCarryon = [
 
 //为随身携带物初始化2行数据
 var rows = [
-    { Id: 1, Status: "显露", Position: "头部", ObjectName: "", Bagage: "" },
-    { Id: 2, Status: "显露", Position: "头部", ObjectName: "", Bagage: "" },
+    { Id: 1, Status: "显露", Position: "头部", ObjectName: "", /*Bagage: ""*/ },
+    { Id: 2, Status: "显露", Position: "头部", ObjectName: "", /*Bagage: ""*/ },
 ];
 
 
@@ -528,7 +528,7 @@ function AddNewRow() {
         var select = selects[i];
         var selectedValue = select.value;
         //存储添加前的数据到localStorage中
-        if (selectedValue == "option1") {
+        if (selectedValue == "option1" || selectedValue == "option2" || selectedValue == "option3") {
             break;
         }
         localStorage.setItem("select_" + i, selectedValue);
@@ -542,7 +542,7 @@ function AddNewRow() {
         Status: "显露",
         Position: "头部",
         ObjectName: "",
-        Bagage: ""
+        //Bagage: ""
     };
 
     tableData.push(newRow);
@@ -2290,10 +2290,10 @@ function savePageContent() {
     const Scar = document.getElementById("Scar").value;
     const Phobia = document.getElementById("Phobia").value;
     const BackgroundStory = document.getElementById("BackgroundStory").value;
-    const Transportation = document.getElementById("Transportation").value;
-    const Domicile = document.getElementById("Domicile").value;
-    const Luxury = document.getElementById("Luxury").value;
-    const Stock = document.getElementById("Stock").value;
+    //const Transportation = document.getElementById("Transportation").value;
+    //const Domicile = document.getElementById("Domicile").value;
+    //const Luxury = document.getElementById("Luxury").value;
+    //const Stock = document.getElementById("Stock").value;
     const Other = document.getElementById("Other").value;
 
     const Art = $(".Art option:selected");
@@ -2332,7 +2332,21 @@ function savePageContent() {
         PreviewTech.push(Tech[i].text);
     }
 
-    const Survive = $("#Survive").val();
+    const KeyConnection = [];
+    const AllKey = $(".KeyConnection");
+    for (var i = 0; i < AllKey.length; i++) {
+        KeyConnection.push(AllKey[i].checked)
+    }
+
+    //const SelectName = document.getElementById('characterSelect');
+    //const CharacterName = SelectName.value;
+
+    //// 从localStorage中获取之前保存的数据
+    //const savedKeys = JSON.parse(localStorage.getItem('keySelect')) || {};
+
+    //// 将当前页面内容保存到localStorage中
+    //savedKeys[CharacterName] = KeyConnection;
+    //localStorage.setItem('keySelect', JSON.stringify(savedKeys));
 
     const pageContent = {
         Name: Name,
@@ -2376,10 +2390,10 @@ function savePageContent() {
         Scar: Scar,
         Phobia: Phobia,
         BackgroundStory: BackgroundStory,
-        Transportation: Transportation,
-        Domicile: Domicile,
-        Luxury: Luxury,
-        Stock: Stock,
+        //Transportation: Transportation,
+        //Domicile: Domicile,
+        //Luxury: Luxury,
+        //Stock: Stock,
         Other: Other,
         Art: PreviewArt,
         Fight: PreviewFight,
@@ -2387,7 +2401,8 @@ function savePageContent() {
         Shoot: PreviewShoot,
         Drive: PreviewDrive,
         Tech: PreviewTech,
-        Survive: $("#Survive").val()
+        Survive: $("#Survive").val(),
+        KeyConnection: KeyConnection,
     }
 
     ////存储技能表成功标记checkbox
@@ -2491,10 +2506,10 @@ document.getElementById('characterSelect').addEventListener('change', function (
     document.getElementById("Scar").value = selectedCharacterData.Scar;
     document.getElementById("Phobia").value = selectedCharacterData.Phobia;
     document.getElementById("BackgroundStory").value = selectedCharacterData.BackgroundStory;
-    document.getElementById("Transportation").value = selectedCharacterData.Transportation;
-    document.getElementById("Domicile").value = selectedCharacterData.Domicile;
-    document.getElementById("Luxury").value = selectedCharacterData.Luxury;
-    document.getElementById("Stock").value = selectedCharacterData.Stock;
+    //document.getElementById("Transportation").value = selectedCharacterData.Transportation;
+    //document.getElementById("Domicile").value = selectedCharacterData.Domicile;
+    //document.getElementById("Luxury").value = selectedCharacterData.Luxury;
+    //document.getElementById("Stock").value = selectedCharacterData.Stock;
     document.getElementById("Other").value = selectedCharacterData.Other;
 
 
@@ -2511,7 +2526,7 @@ document.getElementById('characterSelect').addEventListener('change', function (
         $("#Status" + i)[0].value = carryon[i].Status;
         $("#Position" + i)[0].value = carryon[i].Position;
         $("#ObjectName" + i)[0].value = carryon[i].ObjectName;
-        $("#Bagage" + i)[0].value = carryon[i].ObjectName;
+        //$("#Bagage" + i)[0].value = carryon[i].ObjectName;
 
     }
 
@@ -2624,6 +2639,11 @@ document.getElementById('characterSelect').addEventListener('change', function (
     }
 
     $("#Survive")[0].value = selectedCharacterData.Survive;
+
+    const Keys = $(".KeyConnection");
+    for (var i = 0; i < Keys.length; i++) {
+        Keys[i].checked = selectedCharacterData.KeyConnection[i];
+    }
 
     //// 从localStorage中获取选中角色的成长标记
     //const savedChecks = JSON.parse(localStorage.getItem('checks')) || {};
