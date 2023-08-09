@@ -448,6 +448,7 @@ $('#PreviewSkill2').bootstrapTable('insertRow', {
     row: newRowData // 空数据对象
 });
 
+//打印
 function PrintThisPage() {
     window.print();
 }
@@ -457,18 +458,34 @@ const Keys = $(".KeyConnection");
 for (var i = 0; i < Keys.length; i++) {
     Keys[i].checked = selectedCharacterData.KeyConnection[i];
 }
-///*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/
-//document.getElementById("PreviewPrint").addEventListener("mouseover", function () {
-//    // 鼠标移入时，弹出提示框
-//    var tipsContent = '打印';
-//    this.tipsIndex = layer.tips(tipsContent, this, {
-//        tips: [2, '#PreviewPrint'], // 方向：1为向下
-//        time: 0 // 设置为0，阻止自动消失
-//    });
-//});
 
-//document.getElementById("PreviewPrint").addEventListener("mouseout", function () {
-//    // 鼠标移出时，取消提示框
-//    layer.close(this.tipsIndex);
-//});
-///*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/
+
+//获取需要克隆的元素（第三类接触）
+const ExtraContent = parent.document.getElementById("ExtraContent");
+// 克隆 ExtraContent 元素（包括子节点）
+const clonedExtraContent = ExtraContent.cloneNode(true);
+//clonedExtraContent.className = "target";
+//创建标题
+const experienceContent = document.getElementById("ExperienceContent");
+// 创建新的内容元素
+const newContent = document.createElement("div");
+//newContent.className = "target";
+newContent.style = "display:flex;"
+newContent.innerHTML = `
+                <div style="width:28%;display:flex;" class="card-header">
+                    <div class="Thirdtitle"></div>经历
+                </div>
+                <div style="width:28%;margin-left: 10px;display:flex;" class="card-header">
+                    <div class="Thirdtitle"></div>神话（第三类接触）
+                </div>
+                <div style="width:40%;margin-left: 10px;display:flex;" class="card-header">
+                    <div class="Thirdtitle"></div>法术
+                </div>
+    `;
+//将克隆元素赋予需求页面
+const MainContent = document.getElementById("MainContent");
+const MainContentTarget = document.createElement("div");
+MainContentTarget.className = "target";
+MainContent.appendChild(MainContentTarget);
+MainContentTarget.appendChild(newContent);
+MainContentTarget.appendChild(clonedExtraContent);

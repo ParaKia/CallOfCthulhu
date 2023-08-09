@@ -14,177 +14,161 @@
 <link rel="stylesheet" href="/css/print/Print.css" />
 <link rel="icon" type="image/x-icon" href="/Cthulhu.ico">
 <style>
-    .ski > tbody> tr{
-    height:38px;
+    .ski > tbody > tr {
+        height: 38px;
     }
+
     #PreviewSkill2 {
-  overflow: hidden;
-}
+        overflow: hidden;
+    }
 </style>
 
-<div style="display:flex;">
-    <div style="width:340px;margin-left: 15px;margin-top: 40px;">
-        <div class="investigator" style="text-align:center;">调查员信息</div>
-        <div class="investigator" style="display:flex;">姓名<div id="Name" style="margin-left: 10px;"></div></div>
-        <div class="investigator" style="display:flex;">
-            <div class="rowinves">玩家<div id="Player" style="margin-left: 10px;"></div></div>
-            <div class="rowinves" style="margin-left:4px;">时代<div id="Century" style="margin-left: 10px;"></div></div>
-        </div>
-        <div class="investigator" style="display:flex;">
-            <div class="rowinves">职业<div id="pref" style="margin-left: 8px;"></div></div>
-            <div class="rowinves" style="margin-left:4px;">职业序号<div id="prefid" style="margin-left: 10px;"></div></div>
-        </div>
-        <div class="investigator" style="display:flex;">
-            <div class="rowinves">年龄<div id="Age" style="margin-left: 10px;"></div></div>
-            <div class="rowinves" style="margin-left:4px;">性别<div id="Sex" style="margin-left: 10px;"></div></div>
-        </div>
-        <div class="investigator" style="display:flex;">
-            <div class="rowinves">住地<div id="Addr" style="margin-left: 10px;"></div></div>
-            <div class="rowinves" style="margin-left:4px;">故乡<div id="Hometown" style="margin-left: 10px;"></div></div>
-        </div>
-
-    </div>
-
-    <div style="width:250px;margin-top: 40px;">
-        <p class="investigator" style="text-align:center;">属性</p>
-        <div class="investigator" style="display:flex;">
-            <div class="rowstats">力量<div id="StrRange" style="margin-left: 10px;"></div></div>
-            <div class="rowstats">敏捷<div id="DexRange" style="margin-left: 10px;"></div></div>
-            <div class="rowstats">意志<div id="PowRange" style="margin-left: 10px;"></div></div>
-        </div>
-        <div class="investigator" style="display:flex;">
-            <div class="rowstats">体质<div id="ConRange" style="margin-left: 10px;"></div></div>
-            <div class="rowstats">外貌<div id="AppRange" style="margin-left: 10px;"></div></div>
-            <div class="rowstats">教育<div id="EduRange" style="margin-left: 10px;"></div></div>
-        </div>
-        <div class="investigator" style="display:flex;">
-            <div class="rowstats">体型<div id="SizeRange" style="margin-left: 10px;"></div></div>
-            <div class="rowstats">智力<div id="IntRange" style="margin-left: 10px;"></div></div>
-            <div class="rowstats">幸运<div id="Luck" style="margin-left: 10px;"></div></div>
-        </div>
-    </div>
-
-    <div style="display:flex;margin-top: 4px;">
-        <div id="PreviewradarChart" style="width: 270px; height: 230px;"></div>
-        <div id="PreviewradarChart2" style="width: 270px; height: 230px;"></div>
-        <div><img src="~/image/打印.png" id="PreviewPrint" style="width: 35px;position:relative;right:10px;cursor:pointer;" onclick="PrintThisPage()"/></div>
-    </div>
-</div>
-
-<div style="display:flex;justify-content: center;margin-bottom: 4px;position:relative;">
-                <div style="margin-right:1rem;display:flex;">
-                    <label>生命值：</label>
-                    <div id="PreviewLifePoint">0</div>
-                </div>
-                <div style="margin-right:1rem;display:flex;">
-                    <label>魔法值：</label>
-                    <div id="PreviewMagicPoint">0</div>
-                </div>
-                <div style="margin-right:1rem;display:flex;">
-                    <label>理智值：</label>
-                    <div id="PreviewSanPoint">0</div>
-                </div>
-                <div style="margin-right:1rem;display:flex;">
-                    <label>伤害加值：</label>
-                    <div id="PreviewDamagePoint">0</div>
-                </div>
+<div id="MainContent">
+    <div style="display:flex;">
+        <div style="width:340px;margin-left: 15px;margin-top: 40px;">
+            <div class="investigator" style="text-align:center;">调查员信息</div>
+            <div class="investigator" style="display:flex;">姓名<div id="Name" style="margin-left: 10px;"></div></div>
+            <div class="investigator" style="display:flex;">
+                <div class="rowinves">玩家<div id="Player" style="margin-left: 10px;"></div></div>
+                <div class="rowinves" style="margin-left:4px;">时代<div id="Century" style="margin-left: 10px;"></div></div>
+            </div>
+            <div class="investigator" style="display:flex;">
+                <div class="rowinves">职业<div id="pref" style="margin-left: 8px;"></div></div>
+                <div class="rowinves" style="margin-left:4px;">职业序号<div id="prefid" style="margin-left: 10px;"></div></div>
+            </div>
+            <div class="investigator" style="display:flex;">
+                <div class="rowinves">年龄<div id="Age" style="margin-left: 10px;"></div></div>
+                <div class="rowinves" style="margin-left:4px;">性别<div id="Sex" style="margin-left: 10px;"></div></div>
+            </div>
+            <div class="investigator" style="display:flex;">
+                <div class="rowinves">住地<div id="Addr" style="margin-left: 10px;"></div></div>
+                <div class="rowinves" style="margin-left:4px;">故乡<div id="Hometown" style="margin-left: 10px;"></div></div>
             </div>
 
-<div style="display:flex;">
-    <table id="PreviewSkill1" class="table table-hover ski" style="width:588px!important;"></table>
-    <table id="PreviewSkill2" class="table table-hover ski"></table>
-</div>
-
-<div class="target" style="display:grid;">
-    <table id="PreviewWeapon" class="table table-hover"></table>
-    <div style="display:flex;margin-top:4px;">
-        <div style="width:50%">
-            <table id="PreviewCarryon" class="table table-hover"></table>
         </div>
-        <div style="width:50%;margin-left:4px;">
-            <div class="input-group" style="height:100%;">
-                <span class="input-group-text">其他资产列举</span>
-                <textarea class="form-control" id="Other"></textarea>
+
+        <div style="width:250px;margin-top: 40px;">
+            <p class="investigator" style="text-align:center;">属性</p>
+            <div class="investigator" style="display:flex;">
+                <div class="rowstats">力量<div id="StrRange" style="margin-left: 10px;"></div></div>
+                <div class="rowstats">敏捷<div id="DexRange" style="margin-left: 10px;"></div></div>
+                <div class="rowstats">意志<div id="PowRange" style="margin-left: 10px;"></div></div>
+            </div>
+            <div class="investigator" style="display:flex;">
+                <div class="rowstats">体质<div id="ConRange" style="margin-left: 10px;"></div></div>
+                <div class="rowstats">外貌<div id="AppRange" style="margin-left: 10px;"></div></div>
+                <div class="rowstats">教育<div id="EduRange" style="margin-left: 10px;"></div></div>
+            </div>
+            <div class="investigator" style="display:flex;">
+                <div class="rowstats">体型<div id="SizeRange" style="margin-left: 10px;"></div></div>
+                <div class="rowstats">智力<div id="IntRange" style="margin-left: 10px;"></div></div>
+                <div class="rowstats">幸运<div id="Luck" style="margin-left: 10px;"></div></div>
             </div>
         </div>
-    </div>
-</div>
 
-<div style="display:flex;" class="target">
+        <div style="display:flex;margin-top: 4px;">
+            <div id="PreviewradarChart" style="width: 270px; height: 230px;"></div>
+            <div id="PreviewradarChart2" style="width: 270px; height: 230px;"></div>
+            <div><img src="~/image/打印.png" id="PreviewPrint" style="width: 35px;position:relative;right:10px;cursor:pointer;" onclick="PrintThisPage()" /></div>
+        </div>
+    </div>
+
+    <div style="display:flex;justify-content: center;margin-bottom: 4px;position:relative;">
+        <div style="margin-right:1rem;display:flex;">
+            <label>生命值：</label>
+            <div id="PreviewLifePoint">0</div>
+        </div>
+        <div style="margin-right:1rem;display:flex;">
+            <label>魔法值：</label>
+            <div id="PreviewMagicPoint">0</div>
+        </div>
+        <div style="margin-right:1rem;display:flex;">
+            <label>理智值：</label>
+            <div id="PreviewSanPoint">0</div>
+        </div>
+        <div style="margin-right:1rem;display:flex;">
+            <label>伤害加值：</label>
+            <div id="PreviewDamagePoint">0</div>
+        </div>
+    </div>
+
+    <div style="display:flex;">
+        <table id="PreviewSkill1" class="table table-hover ski" style="width:588px!important;"></table>
+        <table id="PreviewSkill2" class="table table-hover ski"></table>
+    </div>
+
+    <div class="target" style="display:grid;">
+        <table id="PreviewWeapon" class="table table-hover"></table>
+        <div style="display:flex;margin-top:4px;">
             <div style="width:50%">
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">形象描述</span>
-                    <input type="text" class="form-control" id="AppDescription">
-                    <button class="input-group-text" id="tipsMain">关键连接</button>
-                </div>
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">思念与信仰</span>
-                    <input type="text" class="form-control" id="Faith">
-                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
-                </div>
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">重要之人</span>
-                    <input type="text" class="form-control" id="Important">
-                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
-                </div>
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">意义非凡之地</span>
-                    <input type="text" class="form-control" id="ImportantPlace">
-                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
-                </div>
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">宝贵之物</span>
-                    <input type="text" class="form-control" id="Treasure">
-                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
-                </div>
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">特质</span>
-                    <input type="text" class="form-control" id="Peculiarity">
-                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
-                </div>
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">难言之隐</span>
-                    <input type="text" class="form-control" id="HardTell">
-                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
-                </div>
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">伤口和疤痕</span>
-                    <input type="text" class="form-control" id="Scar">
-                    <span class="input-group-text"><input type="checkbox" class="KeyConnection"/></span>
-                </div>
-                <div class="input-group ">
-                    <span class="input-group-text spanheader">恐惧症和狂躁症</span>
-                    <input type="text" class="form-control" id="Phobia">
-                </div>
+                <table id="PreviewCarryon" class="table table-hover"></table>
             </div>
-
-            <div style="width: 50%;margin-left: 4px;">
-                @*<div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">交通工具</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Transportation"></textarea>
-                </div>
-                <div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">住所</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Domicile"></textarea>
-                </div>
-                <div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">奢侈品</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Luxury"></textarea>
-                </div>
-                <div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">股票/证券</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Stock"></textarea>
-                </div>
-                <div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">其他</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Other"></textarea>
-                </div>*@
-                <div class="input-group">
-                    <span class="input-group-text spanheader">背景故事</span>
-                    <textarea class="form-control" aria-label="With textarea" id="BackgroundStory" style="height: 342px;"></textarea>
+            <div style="width:50%;margin-left:4px;">
+                <div class="input-group" style="height:100%;">
+                    <span class="input-group-text">其他资产列举</span>
+                    <textarea class="form-control" id="Other"></textarea>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div style="display:flex;" class="target">
+        <div style="width:50%">
+            <div class="input-group ">
+                <span class="input-group-text spanheader">形象描述</span>
+                <input type="text" class="form-control" id="AppDescription">
+                <button class="input-group-text" id="tipsMain">关键连接</button>
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text spanheader">思念与信仰</span>
+                <input type="text" class="form-control" id="Faith">
+                <span class="input-group-text"><input type="checkbox" class="KeyConnection" /></span>
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text spanheader">重要之人</span>
+                <input type="text" class="form-control" id="Important">
+                <span class="input-group-text"><input type="checkbox" class="KeyConnection" /></span>
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text spanheader">意义非凡之地</span>
+                <input type="text" class="form-control" id="ImportantPlace">
+                <span class="input-group-text"><input type="checkbox" class="KeyConnection" /></span>
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text spanheader">宝贵之物</span>
+                <input type="text" class="form-control" id="Treasure">
+                <span class="input-group-text"><input type="checkbox" class="KeyConnection" /></span>
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text spanheader">特质</span>
+                <input type="text" class="form-control" id="Peculiarity">
+                <span class="input-group-text"><input type="checkbox" class="KeyConnection" /></span>
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text spanheader">难言之隐</span>
+                <input type="text" class="form-control" id="HardTell">
+                <span class="input-group-text"><input type="checkbox" class="KeyConnection" /></span>
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text spanheader">伤口和疤痕</span>
+                <input type="text" class="form-control" id="Scar">
+                <span class="input-group-text"><input type="checkbox" class="KeyConnection" /></span>
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text spanheader">恐惧症和狂躁症</span>
+                <input type="text" class="form-control" id="Phobia">
+            </div>
+        </div>
+
+        <div style="width: 50%;margin-left: 4px;">
+            <div class="input-group">
+                <span class="input-group-text spanheader">背景故事</span>
+                <textarea class="form-control" aria-label="With textarea" id="BackgroundStory" style="height: 342px;"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <script src="/js/Print.js" asp-append-version="true"></script>

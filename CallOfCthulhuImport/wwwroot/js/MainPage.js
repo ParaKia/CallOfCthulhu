@@ -7,7 +7,7 @@
         //var targetURL = $('#smoothLink').attr('href');
 
         // 获取滑动容器和内容
-        var container = $('.container');
+        var container = $('.myselft-container');
         var content = $('#RenderBody');
         var containerside = $('.sidebar');
         var contentside = $('#RenderSide');

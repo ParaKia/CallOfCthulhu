@@ -2094,6 +2094,25 @@ document.getElementById("Skills").addEventListener("mouseout", function () {
 });
 /*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/
 
+/*----------------------------------------------------------角色经历提示信息----------------------------------------------------------*/
+document.getElementById("ExTips").addEventListener("mouseover", function () {
+    // 鼠标移入时，弹出提示框
+    var tipsContent = '当你的角色曾经参与过某些团或遭遇过某些事件后你可以：<br>' +
+        '点击经历：添加 经历模组+人物变化<br>' + 
+        '点击神话：添加 遭遇+结果(第三类接触[古籍、咒文、神话知识等])<br>' + 
+        '点击法术：添加 名称+代价+效果<br>' +
+        '删除：默认删除最后一行数据';
+    this.tipsIndex = layer.tips(tipsContent, this, {
+        tips: [2, '#ExTips'], // 方向：1为向下
+        time: 0 // 设置为0，阻止自动消失
+    });
+});
+
+document.getElementById("ExTips").addEventListener("mouseout", function () {
+    // 鼠标移出时，取消提示框
+    layer.close(this.tipsIndex);
+});
+/*----------------------------------------------------------角色经历提示信息----------------------------------------------------------*/
 
 var previousValueInt2;//智力
 
@@ -2296,6 +2315,18 @@ function savePageContent() {
     //const Stock = document.getElementById("Stock").value;
     const Other = document.getElementById("Other").value;
 
+    //获取需要克隆的元素（第三类接触）
+    const ExtraContent = document.getElementById("ExtraContent");
+    // 克隆 ExtraContent 元素（包括子节点）
+    const clonedExtraContent = ExtraContent.cloneNode(true);
+    const clonedExtraContentStringify = clonedExtraContent.outerHTML;
+    // 获取所有 第三类接触的input 元素的值并存储
+    const inputValues = [];
+    const inputElements = document.getElementsByClassName("unique");
+    inputElements.forEach((input) => {
+        inputValues.push(input.value);
+    });
+
     const Art = $(".Art option:selected");
     const PreviewArt = [];
     for (var i = 0; i < Art.length; i++) {
@@ -2338,15 +2369,6 @@ function savePageContent() {
         KeyConnection.push(AllKey[i].checked)
     }
 
-    //const SelectName = document.getElementById('characterSelect');
-    //const CharacterName = SelectName.value;
-
-    //// 从localStorage中获取之前保存的数据
-    //const savedKeys = JSON.parse(localStorage.getItem('keySelect')) || {};
-
-    //// 将当前页面内容保存到localStorage中
-    //savedKeys[CharacterName] = KeyConnection;
-    //localStorage.setItem('keySelect', JSON.stringify(savedKeys));
 
     const pageContent = {
         Name: Name,
@@ -2403,6 +2425,8 @@ function savePageContent() {
         Tech: PreviewTech,
         Survive: $("#Survive").val(),
         KeyConnection: KeyConnection,
+        clonedExtraContentStringify: clonedExtraContentStringify,
+        inputValues: inputValues,
     }
 
     ////存储技能表成功标记checkbox
@@ -2645,18 +2669,32 @@ document.getElementById('characterSelect').addEventListener('change', function (
         Keys[i].checked = selectedCharacterData.KeyConnection[i];
     }
 
-    //// 从localStorage中获取选中角色的成长标记
-    //const savedChecks = JSON.parse(localStorage.getItem('checks')) || {};
-    //const selectedCheckData = savedChecks[selectedCharacter];
-    //const allChecks = $(".checkbox");
-    //// 确保 selectedCheckData 是对象
-    //if (typeof selectedCheckData === 'object' && selectedCheckData !== null) {
-    //    // 遍历所有复选框元素
-    //    for (var i = 0; i < allChecks.length; i++) {
-    //        // 设置复选框的checked属性为 selectedCheckData 对应的值
-    //        allChecks[i].checked = selectedCheckData[i];
-    //    }
-    //}
+    // 获取 ExtraContent 的引用
+    const ExtraContent = document.getElementById("ExtraContent");
+
+    // 获取保存的数据（从 localStorage 中获取）
+    const storedContentAsString = selectedCharacterData.clonedExtraContentStringify;
+
+    // 创建一个临时元素并将存储的内容设置为其 innerHTML
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = storedContentAsString;
+
+    // 获取创建的节点
+    const storedNode = tempElement.firstChild;
+
+    // 删除 ExtraContent 的所有子节点
+    while (ExtraContent.firstChild) {
+        ExtraContent.removeChild(ExtraContent.firstChild);
+    }
+
+    // 将存储的节点添加到 ExtraContent 中
+    ExtraContent.appendChild(storedNode.cloneNode(true));
+
+    // 设置 input 元素的值
+    const inputElements = document.getElementsByClassName("unique");
+    inputElements.forEach((input, index) => {
+        input.value = selectedCharacterData.inputValues[index];
+    });
 });
 
 //删除当前选择的角色
@@ -2776,3 +2814,92 @@ function changeSkill() {
     localStorage.setItem('skillSelect', JSON.stringify(savedSkills));
 }
 
+
+//老卡经历添加
+function ExperienceAdd() {
+    const experienceContent = document.getElementById("ExperienceContent");
+    // 创建新的内容元素
+    const newContent = document.createElement("div");
+    newContent.className = "input-group Extra";
+    newContent.innerHTML = `
+      <span class="input-group-text">经历模组</span>
+      <input type="text" class="form-control unique">
+      <span class="input-group-text">人物变化</span>
+      <input type="text" class="form-control unique">
+    `;
+
+    // 将新内容添加到ExperienceContent中
+    experienceContent.appendChild(newContent);
+}
+
+//老卡经历删除
+function ExperienceDel() {
+    const experienceContent = document.getElementById("ExperienceContent");
+    // 获取ExperienceContent的子元素个数
+    const childCount = experienceContent.childElementCount;
+
+    // 如果存在子元素，则删除最后一个子元素
+    if (childCount > 0) {
+        experienceContent.removeChild(experienceContent.lastChild);
+    }
+}
+
+//老卡神话添加
+function MythicAdd() {
+    const experienceContent = document.getElementById("MythicContent");
+    // 创建新的内容元素
+    const newContent = document.createElement("div");
+    newContent.className = "input-group Extra";
+    newContent.innerHTML = `
+      <span class="input-group-text">遭遇</span>
+      <input type="text" class="form-control unique">
+      <span class="input-group-text">结果</span>
+      <input type="text" class="form-control unique">
+    `;
+
+    // 将新内容添加到ExperienceContent中
+    experienceContent.appendChild(newContent);
+}
+
+//老卡神话删除
+function MythicDel() {
+    const experienceContent = document.getElementById("MythicContent");
+    // 获取ExperienceContent的子元素个数
+    const childCount = experienceContent.childElementCount;
+
+    // 如果存在子元素，则删除最后一个子元素
+    if (childCount > 0) {
+        experienceContent.removeChild(experienceContent.lastChild);
+    }
+}
+
+//老卡法术添加
+function MagicAdd() {
+    const experienceContent = document.getElementById("MagicContent");
+    // 创建新的内容元素
+    const newContent = document.createElement("div");
+    newContent.className = "input-group Extra";
+    newContent.innerHTML = `
+      <span class="input-group-text">名称</span>
+      <input type="text" class="form-control unique">
+      <span class="input-group-text">代价</span>
+      <input type="text" class="form-control unique">
+      <span class="input-group-text">效果</span>
+      <input type="text" class="form-control unique">
+    `;
+
+    // 将新内容添加到ExperienceContent中
+    experienceContent.appendChild(newContent);
+}
+
+//老卡法术删除
+function MagicDel() {
+    const experienceContent = document.getElementById("MagicContent");
+    // 获取ExperienceContent的子元素个数
+    const childCount = experienceContent.childElementCount;
+
+    // 如果存在子元素，则删除最后一个子元素
+    if (childCount > 0) {
+        experienceContent.removeChild(experienceContent.lastChild);
+    }
+}

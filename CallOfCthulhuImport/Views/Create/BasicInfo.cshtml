@@ -281,7 +281,37 @@
             </div>
         </div>
 
-        <div id="section5" class="target" style="display:flex;">
+        <div style="display:flex;justify-content:end;"><img src="~/image/提示.png" id="ExTips" width="40px;"/></div>
+        <div id="section5" class="target">
+            <div style="display:flex;">
+                <div style="width:28%">
+                    <button class="btn btn-primary" id="Experience" onclick="ExperienceAdd()">经历</button>
+                    <button class="btn btn-primary" id="DelEx" onclick="ExperienceDel()">删除</button>
+
+                </div>
+                <div style="width:28%;margin-left: 10px;">
+                    <button class="btn btn-primary" id="Mythic" onclick="MythicAdd()">神话</button>
+                    <button class="btn btn-primary" id="DelMythic" onclick="MythicDel()">删除</button>
+                </div>
+                <div style="width:40%;margin-left: 10px;">
+                    <button class="btn btn-primary" id="Magic" onclick="MagicAdd()">法术</button>
+                    <button class="btn btn-primary" id="DelMagic" onclick="MagicDel()">删除</button>
+                </div>
+            </div>
+            <div style="display:flex;" id="ExtraContent">
+                <div style="width:28%;margin-top:4px" id="ExperienceContent">
+                    
+                </div>
+                <div style="width:28%;margin-left: 10px;margin-top:4px" id="MythicContent">
+                    
+                </div>
+                <div style="width:40%;margin-left: 10px;margin-top:4px" id="MagicContent">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="section6" class="target" style="display:flex;">
             <div id="radarChart" style="width: 600px; height: 400px;"></div>
             <div id="radarChart2" style="width: 600px; height: 400px;"></div>
         </div>
