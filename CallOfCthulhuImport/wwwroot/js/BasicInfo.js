@@ -2094,6 +2094,22 @@ document.getElementById("Skills").addEventListener("mouseout", function () {
 });
 /*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/
 
+/*----------------------------------------------------------预览按钮提示信息----------------------------------------------------------*/
+document.getElementById("previewButton").addEventListener("mouseover", function () {
+    // 鼠标移入时，弹出提示框
+    var tipsContent = '记得先保存再预览噢！';
+    this.tipsIndex = layer.tips(tipsContent, this, {
+        tips: [1, '#previewButton'], // 方向：1为向下
+        time: 0 // 设置为0，阻止自动消失
+    });
+});
+
+document.getElementById("previewButton").addEventListener("mouseout", function () {
+    // 鼠标移出时，取消提示框
+    layer.close(this.tipsIndex);
+});
+/*----------------------------------------------------------预览按钮提示信息----------------------------------------------------------*/
+
 /*----------------------------------------------------------角色经历提示信息----------------------------------------------------------*/
 document.getElementById("ExTips").addEventListener("mouseover", function () {
     // 鼠标移入时，弹出提示框
