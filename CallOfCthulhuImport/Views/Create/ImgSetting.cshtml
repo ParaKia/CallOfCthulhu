@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/echarts.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/lib/bootstrap-table-1.15.3/bootstrap-table.js"></script>
+<script src="~/lib/layer/layer.js"></script>
+<script src="~/lib/cropperjs/dist/cropper.min.js"></script>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/lib/bootstrap-table-1.15.3/bootstrap-table.css" />
+<link rel="stylesheet" href="~/lib/layer/theme/default/layer.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/lib/cropperjs/dist/cropper.min.css" asp-append-version="true" />
+<link rel="stylesheet" href="/css//MainPage/MainPageStyle.css" />
+<link rel="stylesheet" href="/css/CreatePL/BasicInfo.css" />
+<link rel="icon" type="image/x-icon" href="/Cthulhu.ico">
+
+<style>
+    #avatar-img[src="#"] {
+    display: none;
+}
+</style>
+
+<div class="row1" style="display:flex;justify-content:center;margin-top:4px;">
+    <label for="file-input" class="btn btn-primary" style="width: 60%;">头 像 上 传</label>
+    <input type="file" id="file-input" style="display: none;">
+</div>
+<div class="row2" style="display:flex;justify-content:center;margin-top:4px;width:90%;margin-left:5%">
+    <img src="#" id="avatar-img" style="width:90%;"/>
+</div>
+<div class="row3">
+
+</div>
+
+<script src="/js/ImgSetting.js" asp-append-version="true"></script>

@@ -7,6 +7,10 @@ var Support = 0;//支援
 
 //存储layer供给全局使用
 window.MyLayer = layer;
+//存储cropper对象便于操作
+window.cro = null;
+//存储cropper裁剪完成的URL便于操作
+window.cropperResult = "";
 //初始化点数
 var previousValueInt = parseInt(document.getElementById("IntShow").innerHTML);//智力
 
@@ -336,7 +340,7 @@ var columns = [
         width: 65,
         formatter: function (value, row, index) {
             return [
-                '<button class="btn btn-primary remove" style="width:65px;cursor:pointer" onclick="Remove(' + index + ')">删除</button>'
+                '<button class="btn btn-danger remove" style="width:65px;cursor:pointer" onclick="Remove(' + index + ')">删除</button>'
             ]
         }
     }
@@ -393,7 +397,7 @@ var columnsCarryon = [
         width: 65,
         formatter: function (value, row, index) {
             return [
-                '<button class="btn btn-primary removeCarryon" style="width:65px;cursor:pointer" onclick="RemoveCarryon(' + index + ')">删除</button>'
+                '<button class="btn btn-danger removeCarryon" style="width:65px;cursor:pointer" onclick="RemoveCarryon(' + index + ')">删除</button>'
             ]
         }
     }
@@ -2097,7 +2101,8 @@ document.getElementById("Skills").addEventListener("mouseout", function () {
 /*----------------------------------------------------------预览按钮提示信息----------------------------------------------------------*/
 document.getElementById("previewButton").addEventListener("mouseover", function () {
     // 鼠标移入时，弹出提示框
-    var tipsContent = '记得先保存再预览噢！';
+    var tipsContent = '1：记得先保存再预览噢！<br>' +
+        '2.如果你选择了一张已有的卡，可以直接预览';
     this.tipsIndex = layer.tips(tipsContent, this, {
         tips: [1, '#previewButton'], // 方向：1为向下
         time: 0 // 设置为0，阻止自动消失
@@ -2919,3 +2924,29 @@ function MagicDel() {
         experienceContent.removeChild(experienceContent.lastChild);
     }
 }
+
+/*---------------------------------------------上传头像---------------------------------------------*/
+const iframeId = "my-iframe"; // 你的 iframe 的 ID
+function ImgSetting() {
+    layer.open({
+        area: ["380px", "480px"],
+        title: "更换头像",
+        btn: ['确定', '取消'],
+        type:2,
+        fixed: false, //不固定
+        content: "/Create/ImgSetting",
+        yes: function (layero, index) {
+            var result = cro.getCroppedCanvas().toDataURL('image/png');
+            cropperResult = result;
+            console.log(index[0].id);
+            //赋予主界面img且去掉多余的提示字
+            const avatarImage = document.getElementById('avatar-image');
+            const avaterText = document.getElementById('avatar-text');
+            avatarImage.src = cropperResult;
+            avaterText.style.display = "none";
+            //index为一个对象，找到他的id，由于id为iframe-layerxxxxx，为了提取xxxxx这串数字，需要split切片一次获取准确id
+            layer.close(index[0].id.split('r')[1]);
+        }
+    });
+}
+/*---------------------------------------------上传头像---------------------------------------------*/

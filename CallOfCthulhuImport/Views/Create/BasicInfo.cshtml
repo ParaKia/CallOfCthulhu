@@ -7,9 +7,11 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script src="~/lib/bootstrap-table-1.15.3/bootstrap-table.js"></script>
 <script src="~/lib/layer/layer.js"></script>
+<script src="~/lib/cropperjs/dist/cropper.min.js"></script>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 <link rel="stylesheet" href="~/lib/bootstrap-table-1.15.3/bootstrap-table.css" />
 <link rel="stylesheet" href="~/lib/layer/theme/default/layer.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/lib/cropperjs/dist/cropper.min.css" asp-append-version="true" />
 <link rel="stylesheet" href="/css//MainPage/MainPageStyle.css" />
 <link rel="stylesheet" href="/css/CreatePL/BasicInfo.css" />
 <link rel="icon" type="image/x-icon" href="/Cthulhu.ico">
@@ -38,7 +40,7 @@
                 <select class="form-select" style="width:15%;margin-right:4px;" id="characterSelect" selectedIndex="-1">
                     <option disabled selected>------------</option>
                 </select>
-                <button class="btn btn-primary" id="delButton" onclick="DeltheCharactor()" disabled>删除该角色卡</button>
+                <button class="btn btn-danger" id="delButton" onclick="DeltheCharactor()" disabled>删除该角色卡</button>
             </div>
             <div class="mb-3" style="display: flex;justify-content:center;">
                 <div style="margin-right:8px;">
@@ -68,6 +70,19 @@
                     <input type="text" id="credit" style="display:none" />
                     <input type="text" id="status" style="display:none" />
                 </div>
+                <div class="mt-5">
+                    <div class="avatar-box">
+                        <div id="cropper-container">
+                        <img id="avatar-image" src="#" >
+                        </div>
+                        <div id="avatar-text" style="font-size: 15px;">可以有角色形象噢</div>
+                        <div class="overlay">
+                            <label for="file-input" class="btn btn-secondary" style="width: 100%;" onclick="ImgSetting()">头 像 设 置</label>
+                            <input type="button" id="button-input" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                @*<img src="~/image/Me.jpg" id="testimg" style="margin-top:120px"/>*@
             </div>
             <div class="mb-3" style="display: flex;justify-content:center;">
                 <div style="margin-right:8px;">
@@ -167,7 +182,7 @@
                 <div id="EduShow">50</div>
             </div>
             <div style="display:flex;justify-content: end;margin-top:10px;">
-                <button class="btn btn-primary" id="Propoties">确认</button>
+                <button class="btn btn-success" id="Propoties">确认</button>
             </div>
 
         </div>
@@ -201,7 +216,7 @@
             <table id="Skill2" class="table"></table>
         </div>
         <div style="display:flex;justify-content: end;margin-top:10px;position: relative;top: -195px;">
-            <button class="btn btn-primary" id="Skills">确认</button>
+            <button class="btn btn-success" id="Skills">确认</button>
         </div>
 
         <div style="display:flex;">
@@ -254,26 +269,6 @@
             </div>
 
             <div class="target" style="width: 50%;">
-                @*<div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">交通工具</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Transportation"></textarea>
-                </div>
-                <div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">住所</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Domicile"></textarea>
-                </div>
-                <div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">奢侈品</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Luxury"></textarea>
-                </div>
-                <div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">股票/证券</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Stock"></textarea>
-                </div>
-                <div class="input-group mb-3" style="height: 100px;">
-                    <span class="input-group-text spanheader">其他</span>
-                    <textarea class="form-control" aria-label="With textarea" id="Other"></textarea>
-                </div>*@
                 <div class="input-group">
                     <span class="input-group-text spanheader">背景故事</span>
                     <textarea class="form-control" aria-label="With textarea" id="BackgroundStory" style="height: 470px;"></textarea>
@@ -286,16 +281,16 @@
             <div style="display:flex;">
                 <div style="width:28%">
                     <button class="btn btn-primary" id="Experience" onclick="ExperienceAdd()">经历</button>
-                    <button class="btn btn-primary" id="DelEx" onclick="ExperienceDel()">删除</button>
+                    <button class="btn btn-danger" id="DelEx" onclick="ExperienceDel()">删除</button>
 
                 </div>
                 <div style="width:28%;margin-left: 10px;">
                     <button class="btn btn-primary" id="Mythic" onclick="MythicAdd()">神话</button>
-                    <button class="btn btn-primary" id="DelMythic" onclick="MythicDel()">删除</button>
+                    <button class="btn btn-danger" id="DelMythic" onclick="MythicDel()">删除</button>
                 </div>
                 <div style="width:40%;margin-left: 10px;">
                     <button class="btn btn-primary" id="Magic" onclick="MagicAdd()">法术</button>
-                    <button class="btn btn-primary" id="DelMagic" onclick="MagicDel()">删除</button>
+                    <button class="btn btn-danger" id="DelMagic" onclick="MagicDel()">删除</button>
                 </div>
             </div>
             <div style="display:flex;" id="ExtraContent">

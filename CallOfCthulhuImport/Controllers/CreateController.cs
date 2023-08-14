@@ -27,6 +27,11 @@ namespace CallOfCthulhuImport.Controllers
             return View();
         }
 
+        public IActionResult ImgSetting()
+        {
+            return View();
+        }
+
         public object PrefJson()
         {
             string jsonFilePath = Path.Combine(_hostingEnvironment.ContentRootPath, "Json", "Prefs.json");

@@ -92,5 +92,40 @@
 
 /* 将所有元素的字体大小减少1px */
 /** {
-    font-size: calc(1em - 1px);
+    font-size: 16px!important
 }*/
+#avatar-image[src="#"] {
+    display: none;
+}
+
+
+.avatar-box {
+    width: 120px;
+    height: 150px;
+    border: 2px dashed #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    overflow: hidden;
+    top:35px;
+}
+
+    .avatar-box img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+.overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.avatar-box:hover .overlay {
+    display: block;
+}
