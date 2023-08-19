@@ -40,6 +40,8 @@ $(document).ready(function () {
         // 向下滑动 50px
         $(".sidebar").css('transform', 'translateY(220px)');
     });
+
+    justifyIndexDEB();
 });
 //实时更新人物数据
 $(function () {
@@ -204,7 +206,9 @@ $(function () {
                             break;
                     }
                 }
+
             }
+            $("#PROF")[0].innerHTML = 0;
         }
         catch {
             $("#PROF")[0].innerHTML = 0;
@@ -2433,10 +2437,6 @@ function savePageContent() {
         Scar: Scar,
         Phobia: Phobia,
         BackgroundStory: BackgroundStory,
-        //Transportation: Transportation,
-        //Domicile: Domicile,
-        //Luxury: Luxury,
-        //Stock: Stock,
         Other: Other,
         Art: PreviewArt,
         Fight: PreviewFight,
@@ -2448,36 +2448,59 @@ function savePageContent() {
         KeyConnection: KeyConnection,
         clonedExtraContentStringify: clonedExtraContentStringify,
         inputValues: inputValues,
+        CropperResult: cropperResult,
     }
 
-    ////存储技能表成功标记checkbox
-    //const allchecks = $(".checkbox");
-    //const stateString = {};
-    //for (var i = 0; i < allchecks.length; i++) {
-    //    stateString[i] = allchecks[i].checked;
-    //}
-    //const savedChecks = JSON.parse(localStorage.getItem('checks')) || {};
-    //savedChecks[characterName] = stateString;
-    //localStorage.setItem('checks', JSON.stringify(savedChecks));
+    //调用 addOrUpdateCharacter() 存储数据到IndexedDB中
+    addOrUpdateCharacter(pageContent, "characterMsg", "Characters");
 
-    // 从localStorage中获取之前保存的数据
-    const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
+    //// 从localStorage中获取之前保存的数据
+    //const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
 
-    // 将当前页面内容保存到localStorage中
-    savedCharacters[characterName] = pageContent;
-    localStorage.setItem('characters', JSON.stringify(savedCharacters));
+    //// 将当前页面内容保存到localStorage中
+    //savedCharacters[characterName] = pageContent;
+    //localStorage.setItem('characters', JSON.stringify(savedCharacters));
 
-    // 更新select选项
+    // 更新角色select选项
     loadCharacterList();
 
     const Nowcharacter = document.getElementById("characterSelect");
-    // 遍历所有选项，找到匹配的值并选中它
+    // 遍历所有角色选项，找到匹配的值并选中它
     for (let i = 0; i < Nowcharacter.options.length; i++) {
         if (Nowcharacter.options[i].value === characterName) {
             Nowcharacter.selectedIndex = i;
             break;
         }
     }
+
+    //保存后更新角色多维图
+    $("#Propoties").click();
+    $("#Skills").click();
+}
+
+const characterSelect = document.getElementById('characterSelect');
+
+// 从 IndexedDB 获取角色数据
+function getCharactersFromDB(dbName, objectStoreName) {
+    return new Promise((resolve, reject) => {
+        const request = window.indexedDB.open(dbName, 1);
+
+        request.onsuccess = function (event) {
+            const db = event.target.result;
+            const transaction = db.transaction([objectStoreName], 'readonly');
+            const objectStore = transaction.objectStore(objectStoreName);
+
+            const getAllRequest = objectStore.getAll();
+            getAllRequest.onsuccess = function (event) {
+                const characters = event.target.result;
+                resolve(characters);
+            };
+        };
+
+        request.onerror = function (event) {
+            reject(event.target.error);
+        };
+    });
 }
 
 // 加载角色列表到select选项中
@@ -2485,16 +2508,33 @@ function loadCharacterList() {
     const characterSelect = document.getElementById('characterSelect');
     characterSelect.innerHTML = '<option disabled selected>------------</option>';
 
-    // 从localStorage中获取保存的角色名字列表
-    const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
+    //// 从localStorage中获取保存的角色名字列表
+    //const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
 
-    // 将每个角色名字作为option添加到select中
-    for (const characterName in savedCharacters) {
-        const option = document.createElement('option');
-        option.value = characterName;
-        option.textContent = characterName;
-        characterSelect.appendChild(option);
-    }
+    //// 将每个角色名字作为option添加到select中
+    //for (const characterName in savedCharacters) {
+    //    const option = document.createElement('option');
+    //    option.value = characterName;
+    //    option.textContent = characterName;
+    //    characterSelect.appendChild(option);
+    //}
+
+    const dbName = "characterMsg";
+    const objectStoreName = "Characters";
+
+    getCharactersFromDB(dbName, objectStoreName)
+        .then(characters => {
+            characterSelect.innerHTML = '<option disabled selected>请选择角色</option>';
+            characters.forEach(character => {
+                const option = document.createElement('option');
+                option.value = character.Name;
+                option.textContent = character.Name;
+                characterSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('发生错误:', error);
+        });
 }
 
 // 切换选项时显示对应的网页数据
@@ -2502,220 +2542,230 @@ document.getElementById('characterSelect').addEventListener('change', function (
     const characterSelect = document.getElementById('characterSelect');
     const selectedCharacter = characterSelect.value;
 
-    // 从localStorage中获取选中角色的页面数据
-    const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
-    const selectedCharacterData = savedCharacters[selectedCharacter];
+    // 从localStorage中获取选中角色的页面数据(local被IndexedDB替换后可以不再使用)
+    //const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
+    //const selectedCharacterData = savedCharacters[selectedCharacter];
+
+    // 调用 ReadCharacter() 来获取角色数据,获取的数据存储在characterMsg中
+    ReadCharacter("characterMsg", "Characters", selectedCharacter)
+        .then(characterMsg => {
+            console.log('characterMsg:', characterMsg);
+            // 在这里处理获取到的角色数据
+            // 将页面数据设置为当前选中角色的数据
+            document.getElementById("Name").value = characterMsg.Name;
+            document.getElementById("Player").value = characterMsg.Player;
+            document.getElementById("Century").value = characterMsg.Century;
+            document.getElementById("pref").value = characterMsg.Pref;
+            document.getElementById("prefid").value = characterMsg.Prefid;
+            document.getElementById("description").value = characterMsg.Description;
+            document.getElementById("credit").value = characterMsg.Credit;
+            document.getElementById("status").value = characterMsg.Status;
+            Sta = characterMsg.Status;
+            document.getElementById("Age").value = characterMsg.Age;
+            document.getElementById("Sex").value = characterMsg.Sex;
+            document.getElementById("Addr").value = characterMsg.Addr;
+            document.getElementById("Hometown").value = characterMsg.Hometown;
+            document.getElementById("Luck").value = characterMsg.Luck;
+            document.getElementById("LifePoint").value = characterMsg.LifePoint;
+            document.getElementById("MagicPoint").value = characterMsg.MagicPoint;
+            document.getElementById("SanPoint").value = characterMsg.SanPoint;
+            document.getElementById("DamagePoint").value = characterMsg.DamagePoint;
+            document.getElementById("SumPoint").value = characterMsg.SumPoint;
+            document.getElementById("UsedPoint").value = characterMsg.UsedPoint;
+            document.getElementById("StrRange").value = characterMsg.StrRange;
+            document.getElementById("ConRange").value = characterMsg.ConRange;
+            document.getElementById("SizeRange").value = characterMsg.SizeRange;
+            document.getElementById("DexRange").value = characterMsg.DexRange;
+            document.getElementById("AppRange").value = characterMsg.AppRange;
+            document.getElementById("IntRange").value = characterMsg.IntRange;
+            document.getElementById("PowRange").value = characterMsg.PowRange;
+            document.getElementById("EduRange").value = characterMsg.EduRange;
+            $("#Weapon").bootstrapTable("load", characterMsg.Weapon);
+            $("#Carryon").bootstrapTable("load", characterMsg.Carryon);
+            $("#Skill1").bootstrapTable("load", characterMsg.Skill1);
+            $("#Skill2").bootstrapTable("load", characterMsg.Skill2);
+            document.getElementById("AppDescription").value = characterMsg.AppDescription;
+            document.getElementById("Faith").value = characterMsg.Faith;
+            document.getElementById("Important").value = characterMsg.Important;
+            document.getElementById("ImportantPlace").value = characterMsg.ImportantPlace;
+            document.getElementById("Treasure").value = characterMsg.Treasure;
+            document.getElementById("Peculiarity").value = characterMsg.Peculiarity;
+            document.getElementById("HardTell").value = characterMsg.HardTell;
+            document.getElementById("Scar").value = characterMsg.Scar;
+            document.getElementById("Phobia").value = characterMsg.Phobia;
+            document.getElementById("BackgroundStory").value = characterMsg.BackgroundStory;
+            document.getElementById("Other").value = characterMsg.Other;
+
+            const avatarImage = document.getElementById('avatar-image');
+            const avaterText = document.getElementById('avatar-text');
+            avatarImage.src = characterMsg.CropperResult;
+            avaterText.style.display = "none";
+
+            // 延迟一段时间后再生成图表，例如延迟 500 毫秒
+            setTimeout(function () {
+                document.getElementById('Propoties').click();
+                document.getElementById('Skills').click();
+            }, 500);
+
+            //将表格信息填入select和input中
+            var carryon = $("#Carryon").bootstrapTable("getData");
+            for (var i = 0; i < carryon.length; i++) {
+                $("#Status" + i)[0].value = carryon[i].Status;
+                $("#Position" + i)[0].value = carryon[i].Position;
+                $("#ObjectName" + i)[0].value = carryon[i].ObjectName;
+                //$("#Bagage" + i)[0].value = carryon[i].ObjectName;
+
+            }
+
+            var row = $("#Skill1").bootstrapTable("getData")
+            row[13].Inception = Math.floor(previousValueDex / 2);
+            // 更新表格中的数据
+            $("#Skill1").bootstrapTable("updateRow", {
+                index: 13,
+                row: row[13]
+            });
+            var SumPoint = 0;
+            var InterestPoint = 0;
+            for (var i = 0; i < row.length; i++) {
+                $("#Grow" + i)[0].value = row[i].Growup;
+                $("#Prof" + i)[0].value = row[i].Profession;
+                $("#Interest" + i)[0].value = row[i].Interest;
+
+                if (!isNaN(parseInt($("#Prof" + i)[0].value))) {
+                    SumPoint += parseInt($("#Prof" + i)[0].value)
+                    $("#EXPROF")[0].innerHTML = SumPoint;
+                }
+                if (!isNaN(parseInt($("#Interest" + i)[0].value))) {
+                    InterestPoint += parseInt($("#Interest" + i)[0].value);
+                    $("#EXINTEREST")[0].innerHTML = InterestPoint;
+                }
+
+            }
+
+            var rows = $("#Skill2").bootstrapTable("getData")
+            for (var i = 0; i < rows.length; i++) {
+                $("#Grows" + i)[0].value = rows[i].Growup;
+                $("#Profs" + i)[0].value = rows[i].Profession;
+                $("#Interests" + i)[0].value = rows[i].Interest;
+
+                if (!isNaN(parseInt($("#Profs" + i)[0].value))) {
+                    SumPoint += parseInt($("#Profs" + i)[0].value)
+                    $("#EXPROF")[0].innerHTML = SumPoint;
+                }
+                if (!isNaN(parseInt($("#Interests" + i)[0].value))) {
+                    InterestPoint += parseInt($("#Interests" + i)[0].value);
+                    $("#EXINTEREST")[0].innerHTML = InterestPoint;
+                }
+
+            }
+
+            // 获取<select>元素
+            var selectElementArt = document.getElementsByClassName("Art");
+
+            // 遍历所有选项，找到匹配的文本并选中它
+            for (var k = 0; k < selectElementArt.length; k++) {
+                for (var i = 0; i < selectElementArt[k].options.length; i++) {
+                    if (selectElementArt[k].options[i].text === characterMsg.Art[k]) {
+                        selectElementArt[k].selectedIndex = i;
+                    }
+                }
+            }
+
+
+            // 获取<select>元素
+            var selectElementFight = document.getElementsByClassName("Fight");
+
+            // 遍历所有选项，找到匹配的文本并选中它
+            for (var k = 0; k < selectElementFight.length; k++) {
+                for (var i = 0; i < selectElementFight[k].options.length; i++) {
+                    if (selectElementFight[k].options[i].text === characterMsg.Fight[k]) {
+                        selectElementFight[k].selectedIndex = i;
+                    }
+                }
+            }
+
+            const Language = $(".Language");
+            for (var i = 0; i < characterMsg.Language.length; i++) {
+                Language[i].value = characterMsg.Language[i];
+            }
+
+            // 获取<select>元素
+            var selectElementShoot = document.getElementsByClassName("Shoot");
+
+            // 遍历所有选项，找到匹配的文本并选中它
+            for (var k = 0; k < selectElementShoot.length; k++) {
+                for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+                    if (selectElementShoot[k].options[i].text === characterMsg.Shoot[k]) {
+                        selectElementShoot[k].selectedIndex = i;
+                    }
+                }
+            }
+
+            // 获取<select>元素
+            var selectElementDrive = document.getElementsByClassName("Drive");
+
+            // 遍历所有选项，找到匹配的文本并选中它
+            for (var k = 0; k < selectElementDrive.length; k++) {
+                for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+                    if (selectElementDrive[k].options[i].text === characterMsg.Drive[k]) {
+                        selectElementDrive[k].selectedIndex = i;
+                    }
+                }
+            }
+
+            // 获取<select>元素
+            var selectElementTech = document.getElementsByClassName("Tech");
+
+            // 遍历所有选项，找到匹配的文本并选中它
+            for (var k = 0; k < selectElementTech.length; k++) {
+                for (var i = 0; i < selectElementTech[k].options.length; i++) {
+                    if (selectElementTech[k].options[i].text === characterMsg.Tech[k]) {
+                        selectElementTech[k].selectedIndex = i;
+                    }
+                }
+            }
+
+            $("#Survive")[0].value = characterMsg.Survive;
+
+            const Keys = $(".KeyConnection");
+            for (var i = 0; i < Keys.length; i++) {
+                Keys[i].checked = characterMsg.KeyConnection[i];
+            }
+
+            // 获取 ExtraContent 的引用
+            const ExtraContent = document.getElementById("ExtraContent");
+
+            // 获取保存的数据（从 localStorage 中获取）
+            const storedContentAsString = characterMsg.clonedExtraContentStringify;
+
+            // 创建一个临时元素并将存储的内容设置为其 innerHTML
+            const tempElement = document.createElement("div");
+            tempElement.innerHTML = storedContentAsString;
+
+            // 获取创建的节点
+            const storedNode = tempElement.firstChild;
+
+            // 删除 ExtraContent 的所有子节点
+            while (ExtraContent.firstChild) {
+                ExtraContent.removeChild(ExtraContent.firstChild);
+            }
+
+            // 将存储的节点添加到 ExtraContent 中
+            ExtraContent.appendChild(storedNode.cloneNode(true));
+
+            // 设置 input 元素的值
+            const inputElements = document.getElementsByClassName("unique");
+            inputElements.forEach((input, index) => {
+                input.value = characterMsg.inputValues[index];
+            });
+        })
+        .catch(error => {
+            console.error('发生错误:', error);
+        });
 
     $("#delButton")[0].disabled = false;
 
-    // 将页面数据设置为当前选中角色的数据
-    document.getElementById("Name").value = selectedCharacterData.Name;
-    document.getElementById("Player").value = selectedCharacterData.Player;
-    document.getElementById("Century").value = selectedCharacterData.Century;
-    document.getElementById("pref").value = selectedCharacterData.Pref;
-    document.getElementById("prefid").value = selectedCharacterData.Prefid;
-    document.getElementById("description").value = selectedCharacterData.Description;
-    document.getElementById("credit").value = selectedCharacterData.Credit;
-    document.getElementById("status").value = selectedCharacterData.Status;
-    Sta = selectedCharacterData.Status;
-    document.getElementById("Age").value = selectedCharacterData.Age;
-    document.getElementById("Sex").value = selectedCharacterData.Sex;
-    document.getElementById("Addr").value = selectedCharacterData.Addr;
-    document.getElementById("Hometown").value = selectedCharacterData.Hometown;
-    document.getElementById("Luck").value = selectedCharacterData.Luck;
-    document.getElementById("LifePoint").value = selectedCharacterData.LifePoint;
-    document.getElementById("MagicPoint").value = selectedCharacterData.MagicPoint;
-    document.getElementById("SanPoint").value = selectedCharacterData.SanPoint;
-    document.getElementById("DamagePoint").value = selectedCharacterData.DamagePoint;
-    document.getElementById("SumPoint").value = selectedCharacterData.SumPoint;
-    document.getElementById("UsedPoint").value = selectedCharacterData.UsedPoint;
-    document.getElementById("StrRange").value = selectedCharacterData.StrRange;
-    document.getElementById("ConRange").value = selectedCharacterData.ConRange;
-    document.getElementById("SizeRange").value = selectedCharacterData.SizeRange;
-    document.getElementById("DexRange").value = selectedCharacterData.DexRange;
-    document.getElementById("AppRange").value = selectedCharacterData.AppRange;
-    document.getElementById("IntRange").value = selectedCharacterData.IntRange;
-    document.getElementById("PowRange").value = selectedCharacterData.PowRange;
-    document.getElementById("EduRange").value = selectedCharacterData.EduRange;
-    $("#Weapon").bootstrapTable("load", selectedCharacterData.Weapon);
-    $("#Carryon").bootstrapTable("load", selectedCharacterData.Carryon);
-    $("#Skill1").bootstrapTable("load", selectedCharacterData.Skill1);
-    $("#Skill2").bootstrapTable("load", selectedCharacterData.Skill2);
-    document.getElementById("AppDescription").value = selectedCharacterData.AppDescription;
-    document.getElementById("Faith").value = selectedCharacterData.Faith;
-    document.getElementById("Important").value = selectedCharacterData.Important;
-    document.getElementById("ImportantPlace").value = selectedCharacterData.ImportantPlace;
-    document.getElementById("Treasure").value = selectedCharacterData.Treasure;
-    document.getElementById("Peculiarity").value = selectedCharacterData.Peculiarity;
-    document.getElementById("HardTell").value = selectedCharacterData.HardTell;
-    document.getElementById("Scar").value = selectedCharacterData.Scar;
-    document.getElementById("Phobia").value = selectedCharacterData.Phobia;
-    document.getElementById("BackgroundStory").value = selectedCharacterData.BackgroundStory;
-    //document.getElementById("Transportation").value = selectedCharacterData.Transportation;
-    //document.getElementById("Domicile").value = selectedCharacterData.Domicile;
-    //document.getElementById("Luxury").value = selectedCharacterData.Luxury;
-    //document.getElementById("Stock").value = selectedCharacterData.Stock;
-    document.getElementById("Other").value = selectedCharacterData.Other;
 
-
-
-    // 延迟一段时间后再生成图表，例如延迟 500 毫秒
-    setTimeout(function () {
-        document.getElementById('Propoties').click();
-        document.getElementById('Skills').click();
-    }, 500);
-
-    //将表格信息填入select和input中
-    var carryon = $("#Carryon").bootstrapTable("getData");
-    for (var i = 0; i < carryon.length; i++) {
-        $("#Status" + i)[0].value = carryon[i].Status;
-        $("#Position" + i)[0].value = carryon[i].Position;
-        $("#ObjectName" + i)[0].value = carryon[i].ObjectName;
-        //$("#Bagage" + i)[0].value = carryon[i].ObjectName;
-
-    }
-
-    var row = $("#Skill1").bootstrapTable("getData")
-    row[13].Inception = Math.floor(previousValueDex / 2);
-    // 更新表格中的数据
-    $("#Skill1").bootstrapTable("updateRow", {
-        index: 13,
-        row: row[13]
-    });
-    var SumPoint = 0;
-    var InterestPoint = 0;
-    for (var i = 0; i < row.length; i++) {
-        $("#Grow" + i)[0].value = row[i].Growup;
-        $("#Prof" + i)[0].value = row[i].Profession;
-        $("#Interest" + i)[0].value = row[i].Interest;
-
-        if (!isNaN(parseInt($("#Prof" + i)[0].value))) {
-            SumPoint += parseInt($("#Prof" + i)[0].value)
-            $("#EXPROF")[0].innerHTML = SumPoint;
-        }
-        if (!isNaN(parseInt($("#Interest" + i)[0].value))) {
-            InterestPoint += parseInt($("#Interest" + i)[0].value);
-            $("#EXINTEREST")[0].innerHTML = InterestPoint;
-        }
-
-    }
-
-    var rows = $("#Skill2").bootstrapTable("getData")
-    for (var i = 0; i < rows.length; i++) {
-        $("#Grows" + i)[0].value = rows[i].Growup;
-        $("#Profs" + i)[0].value = rows[i].Profession;
-        $("#Interests" + i)[0].value = rows[i].Interest;
-
-        if (!isNaN(parseInt($("#Profs" + i)[0].value))) {
-            SumPoint += parseInt($("#Profs" + i)[0].value)
-            $("#EXPROF")[0].innerHTML = SumPoint;
-        }
-        if (!isNaN(parseInt($("#Interests" + i)[0].value))) {
-            InterestPoint += parseInt($("#Interests" + i)[0].value);
-            $("#EXINTEREST")[0].innerHTML = InterestPoint;
-        }
-
-    }
-
-    // 获取<select>元素
-    var selectElementArt = document.getElementsByClassName("Art");
-
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementArt.length; k++) {
-        for (var i = 0; i < selectElementArt[k].options.length; i++) {
-            if (selectElementArt[k].options[i].text === selectedCharacterData.Art[k]) {
-                selectElementArt[k].selectedIndex = i;
-            }
-        }
-    }
-    
-
-    // 获取<select>元素
-    var selectElementFight = document.getElementsByClassName("Fight");
-
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementFight.length; k++) {
-        for (var i = 0; i < selectElementFight[k].options.length; i++) {
-            if (selectElementFight[k].options[i].text === selectedCharacterData.Fight[k]) {
-                selectElementFight[k].selectedIndex = i;
-            }
-        }
-    }
-
-    const Language = $(".Language");
-    for (var i = 0; i < selectedCharacterData.Language.length; i++) {
-        Language[i].value = selectedCharacterData.Language[i];
-    }
-
-    // 获取<select>元素
-    var selectElementShoot = document.getElementsByClassName("Shoot");
-
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementShoot.length; k++) {
-        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
-            if (selectElementShoot[k].options[i].text === selectedCharacterData.Shoot[k]) {
-                selectElementShoot[k].selectedIndex = i;
-            }
-        }
-    }
-
-    // 获取<select>元素
-    var selectElementDrive = document.getElementsByClassName("Drive");
-
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementDrive.length; k++) {
-        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
-            if (selectElementDrive[k].options[i].text === selectedCharacterData.Drive[k]) {
-                selectElementDrive[k].selectedIndex = i;
-            }
-        }
-    }
-
-    // 获取<select>元素
-    var selectElementTech = document.getElementsByClassName("Tech");
-
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementTech.length; k++) {
-        for (var i = 0; i < selectElementTech[k].options.length; i++) {
-            if (selectElementTech[k].options[i].text === selectedCharacterData.Tech[k]) {
-                selectElementTech[k].selectedIndex = i;
-            }
-        }
-    }
-
-    $("#Survive")[0].value = selectedCharacterData.Survive;
-
-    const Keys = $(".KeyConnection");
-    for (var i = 0; i < Keys.length; i++) {
-        Keys[i].checked = selectedCharacterData.KeyConnection[i];
-    }
-
-    // 获取 ExtraContent 的引用
-    const ExtraContent = document.getElementById("ExtraContent");
-
-    // 获取保存的数据（从 localStorage 中获取）
-    const storedContentAsString = selectedCharacterData.clonedExtraContentStringify;
-
-    // 创建一个临时元素并将存储的内容设置为其 innerHTML
-    const tempElement = document.createElement("div");
-    tempElement.innerHTML = storedContentAsString;
-
-    // 获取创建的节点
-    const storedNode = tempElement.firstChild;
-
-    // 删除 ExtraContent 的所有子节点
-    while (ExtraContent.firstChild) {
-        ExtraContent.removeChild(ExtraContent.firstChild);
-    }
-
-    // 将存储的节点添加到 ExtraContent 中
-    ExtraContent.appendChild(storedNode.cloneNode(true));
-
-    // 设置 input 元素的值
-    const inputElements = document.getElementsByClassName("unique");
-    inputElements.forEach((input, index) => {
-        input.value = selectedCharacterData.inputValues[index];
-    });
 });
 
 //删除当前选择的角色
@@ -2728,16 +2778,19 @@ function DeltheCharactor() {
         const selectedCharacter = characterSelect.value;
 
         // 从localStorage中获取选中角色的页面数据
-        const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
-        const selectedCharacterData = savedCharacters[selectedCharacter];
-        // 获取到相应的数据后，检查 selectedCharacterData 是否有值
-        if (selectedCharacterData) {
-            // 删除这条数据
-            delete savedCharacters[selectedCharacter];
-            // 将更新后的数据重新保存到 localStorage 中
-            localStorage.setItem('characters', JSON.stringify(savedCharacters));
-            loadCharacterList();
-        }
+        //const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
+        //const selectedCharacterData = savedCharacters[selectedCharacter];
+        //// 获取到相应的数据后，检查 selectedCharacterData 是否有值
+        //if (selectedCharacterData) {
+        //    // 删除这条数据
+        //    delete savedCharacters[selectedCharacter];
+        //    // 将更新后的数据重新保存到 localStorage 中
+        //    localStorage.setItem('characters', JSON.stringify(savedCharacters));
+        //    loadCharacterList();
+        //}
+
+        RemoveCharacter("characterMsg", "Characters", selectedCharacter);
+        loadCharacterList();
         layer.msg('删除成功', { icon: 1 });
     }, function () {
         
@@ -2938,7 +2991,6 @@ function ImgSetting() {
         yes: function (layero, index) {
             var result = cro.getCroppedCanvas().toDataURL('image/png');
             cropperResult = result;
-            console.log(index[0].id);
             //赋予主界面img且去掉多余的提示字
             const avatarImage = document.getElementById('avatar-image');
             const avaterText = document.getElementById('avatar-text');
@@ -2950,3 +3002,101 @@ function ImgSetting() {
     });
 }
 /*---------------------------------------------上传头像---------------------------------------------*/
+
+/*---------------------------------------------IndexDB----------------------------------------------*/
+//运行时判断是否可以创建网页数据库
+function justifyIndexDEB() {
+    if ("indexedDB" in window) {
+        // 支持
+        console.log(" 支持indexedDB...");
+        //createindexDB();    //创建数据库，下面有定义
+    } else {
+        // 不支持
+        console.log("不支持indexedDB...");
+        window.indexedDB = window.mozIndexedDB || window.webkitIndexedDB;
+    }
+}
+
+//新增或者更新角色信息
+function addOrUpdateCharacter(characterData, dbName, objectStoreName) {
+    const request = window.indexedDB.open(dbName, 1);
+
+    request.onupgradeneeded = function (event) {
+        const db = event.target.result;
+        var objectStore;
+        if (!db.objectStoreNames.contains(objectStoreName)) {
+            objectStore = db.createObjectStore(objectStoreName, {
+                keyPath: 'Name',
+                //autoIncrement: true
+            });
+        }
+
+        // 在这里可以添加索引等
+    };
+
+    request.onsuccess = function (event) {
+        const db = event.target.result;
+        const transaction = db.transaction([objectStoreName], 'readwrite');
+        const objectStore = transaction.objectStore(objectStoreName);
+
+        const putRequest = objectStore.put(characterData);
+        putRequest.onsuccess = function (event) {
+            console.log('数据已添加或更新:', event.target.result);
+        };
+    };
+
+    request.onerror = function (event) {
+        console.error('发生错误:', event.target.error);
+    };
+}
+
+//读取角色信息
+function ReadCharacter(dbName, objectStoreName, characterName) {
+    return new Promise((resolve, reject) => {
+        const request = window.indexedDB.open(dbName, 1);
+
+        request.onsuccess = function (event) {
+            const db = event.target.result;
+            const transaction = db.transaction([objectStoreName], 'readonly');
+            const objectStore = transaction.objectStore(objectStoreName);
+
+            const getRequest = objectStore.get(characterName);
+            getRequest.onsuccess = function (event) {
+                const characterData = event.target.result;
+                if (characterData) {
+                    console.log('获取的角色数据:', characterData);
+                    resolve(characterData);
+                } else {
+                    console.log('未找到角色' + characterName + '的数据');
+                    resolve(null);
+                }
+            };
+        };
+
+        request.onerror = function (event) {
+            console.error('发生错误:', event.target.error);
+            reject(event.target.error);
+        };
+    });
+}
+
+//删除角色信息
+function RemoveCharacter(dbName, objectStoreName, characterName) {
+    const request = window.indexedDB.open(dbName, 1);
+
+    request.onsuccess = function (event) {
+        const db = event.target.result;
+        const transaction = db.transaction([objectStoreName], 'readwrite');
+        const objectStore = transaction.objectStore(objectStoreName);
+
+        const deleteRequest = objectStore.delete(characterName);
+        deleteRequest.onsuccess = function (event) {
+            console.log(characterName + '的角色数据已删除');
+        };
+    };
+
+    request.onerror = function (event) {
+        console.error('发生错误:', event.target.error);
+    };
+}
+/*---------------------------------------------IndexDB----------------------------------------------*/
