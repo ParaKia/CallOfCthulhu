@@ -2599,6 +2599,7 @@ document.getElementById('characterSelect').addEventListener('change', function (
             const avatarImage = document.getElementById('avatar-image');
             const avaterText = document.getElementById('avatar-text');
             avatarImage.src = characterMsg.CropperResult;
+            cropperResult = characterMsg.CropperResult;
             avaterText.style.display = "none";
 
             // 延迟一段时间后再生成图表，例如延迟 500 毫秒

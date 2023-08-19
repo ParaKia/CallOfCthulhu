@@ -489,3 +489,8 @@ MainContentTarget.className = "target";
 MainContent.appendChild(MainContentTarget);
 MainContentTarget.appendChild(newContent);
 MainContentTarget.appendChild(clonedExtraContent);
+
+const avatarImage = document.getElementById('avatar-image');
+const avaterText = document.getElementById('avatar-text');
+avatarImage.src = parent.window.cropperResult;
+avaterText.style.display = "none";
