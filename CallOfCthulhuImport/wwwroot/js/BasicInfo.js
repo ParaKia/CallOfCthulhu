@@ -2524,7 +2524,7 @@ function loadCharacterList() {
 
     getCharactersFromDB(dbName, objectStoreName)
         .then(characters => {
-            characterSelect.innerHTML = '<option disabled selected>请选择角色</option>';
+            characterSelect.innerHTML = '<option disabled selected>----请选择角色----</option>';
             characters.forEach(character => {
                 const option = document.createElement('option');
                 option.value = character.Name;

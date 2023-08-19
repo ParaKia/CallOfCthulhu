@@ -6,7 +6,7 @@
 
 .myselft-container {
     width: 80%;
-    left: 16%;
+    left: 14%;
 }
 
 body {
@@ -111,7 +111,7 @@ footer {
 /* 目录样式 */
 .sidebar {
     position: fixed;
-    left: 5%;
+    left: 3%;
     width: 11%;
     background: #f0f0f0;
     border-radius: 5px;
@@ -130,4 +130,9 @@ footer {
 .Settings {
     text-align: center;
     padding: 20px;
+}
+
+.active {
+    background-color: #f0f0f0; /* 高亮背景颜色 */
+    font-weight: bold; /* 高亮字体粗细 */
 }
