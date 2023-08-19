@@ -70,7 +70,7 @@
                     <input type="text" id="credit" style="display:none" />
                     <input type="text" id="status" style="display:none" />
                 </div>
-                <div class="mt-5">
+                <div>
                     <div class="avatar-box">
                         <div id="cropper-container">
                         <img id="avatar-image" src="#" >
@@ -84,7 +84,7 @@
                 </div>
                 @*<img src="~/image/Me.jpg" id="testimg" style="margin-top:120px"/>*@
             </div>
-            <div class="mb-3" style="display: flex;justify-content:center;">
+            <div class="mb-3" style="display: flex;justify-content:center;margin-top: -75px;">
                 <div style="margin-right:8px;">
                     <label class="form-label">年龄<img src="~/image/提示.png" style="width:20px;" id="AgeTips" /></label>
                     <input type="text" id="Age" class="form-control" placeholder="您角色的年龄">
@@ -212,8 +212,8 @@
             <img src="~/image/提示.png" style="width:38px;" id="IconTips" />
         </div>
         <div id="section3" class="target" style="display:flex;">
-            <table id="Skill1" class="table"></table>
-            <table id="Skill2" class="table"></table>
+            <table id="Skill1" class="table" ></table>
+            <table id="Skill2" class="table" ></table>
         </div>
         <div style="display:flex;justify-content: end;margin-top:10px;position: relative;top: -195px;">
             <button class="btn btn-success" id="Skills">确认</button>
@@ -284,7 +284,7 @@
                     <button class="btn btn-danger" id="DelEx" onclick="ExperienceDel()">删除</button>
 
                 </div>
-                <div style="min-width:28%;margin-left: 10px;">
+                <div style="min-width:28%;margin-left: 37px;">
                     <button class="btn btn-primary" id="Mythic" onclick="MythicAdd()">神话</button>
                     <button class="btn btn-danger" id="DelMythic" onclick="MythicDel()">删除</button>
                 </div>
@@ -294,10 +294,10 @@
                 </div>
             </div>
             <div style="display:flex;" id="ExtraContent">
-                <div style="min-width:28%;margin-top:4px" id="ExperienceContent">
+                <div style="min-width:28%;max-width:28%;margin-top:4px" id="ExperienceContent">
                     
                 </div>
-                <div style="min-width:28%;margin-left: 10px;margin-top:4px" id="MythicContent">
+                <div style="min-width:28%;max-width:28%;margin-left: 37px;margin-top:4px" id="MythicContent">
                     
                 </div>
                 <div style="min-width:40%;margin-left: 10px;margin-top:4px" id="MagicContent">
@@ -307,8 +307,8 @@
         </div>
 
         <div id="section6" class="target" style="display:flex;">
-            <div id="radarChart" style="width: 600px; height: 400px;margin-left: 7%;"></div>
-            <div id="radarChart2" style="width: 600px; height: 400px;"></div>
+            <div id="radarChart" style="width: 48%; height: 400px;"></div>
+            <div id="radarChart2" style="width: 48%; height: 400px;"></div>
         </div>
         <div style="position:relative;top:-100px;display:flex;justify-content:end">
             <button class="btn btn-primary" id="previewButton" onclick="previewPageContent()" style="margin-right: 4px;">预览</button>
