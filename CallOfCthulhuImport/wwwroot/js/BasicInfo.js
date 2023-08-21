@@ -2980,7 +2980,6 @@ function MagicDel() {
 }
 
 /*---------------------------------------------上传头像---------------------------------------------*/
-const iframeId = "my-iframe"; // 你的 iframe 的 ID
 function ImgSetting() {
     layer.open({
         area: ["380px", "480px"],

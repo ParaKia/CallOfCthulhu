@@ -136,3 +136,9 @@ footer {
     background-color: #f0f0f0; /* 高亮背景颜色 */
     font-weight: bold; /* 高亮字体粗细 */
 }
+
+/* 高亮 */
+.highlight {
+    color: #5eb700;
+    transition: color 0.3s ease;
+}
