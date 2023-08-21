@@ -140,5 +140,5 @@ footer {
 /* 高亮 */
 .highlight {
     color: #5eb700;
-    transition: color 0.3s ease;
+    transition: color 0.1s ease;
 }
