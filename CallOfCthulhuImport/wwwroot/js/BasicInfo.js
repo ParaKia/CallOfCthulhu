@@ -2454,24 +2454,20 @@ function savePageContent() {
     //调用 addOrUpdateCharacter() 存储数据到IndexedDB中
     addOrUpdateCharacter(pageContent, "characterMsg", "Characters");
 
-    //// 从localStorage中获取之前保存的数据
-    //const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
-
-    //// 将当前页面内容保存到localStorage中
-    //savedCharacters[characterName] = pageContent;
-    //localStorage.setItem('characters', JSON.stringify(savedCharacters));
-
     // 更新角色select选项
     loadCharacterList();
 
-    const Nowcharacter = document.getElementById("characterSelect");
-    // 遍历所有角色选项，找到匹配的值并选中它
-    for (let i = 0; i < Nowcharacter.options.length; i++) {
-        if (Nowcharacter.options[i].value === characterName) {
-            Nowcharacter.selectedIndex = i;
-            break;
+    setTimeout(function () {
+        const Nowcharacter = document.getElementById("characterSelect");
+        // 遍历所有角色选项，找到匹配的值并选中它
+        for (let i = 0; i < Nowcharacter.options.length; i++) {
+            if (Nowcharacter.options[i].value === characterName) {
+                Nowcharacter.selectedIndex = i;
+                break;
+            }
         }
-    }
+    },1000)
+    
 
     //保存后更新角色多维图
     $("#Propoties").click();
@@ -2480,7 +2476,7 @@ function savePageContent() {
 
 const characterSelect = document.getElementById('characterSelect');
 
-// 从 IndexedDB 获取角色数据
+// 从 IndexedDB 获取角色KeyPath数据
 function getCharactersFromDB(dbName, objectStoreName) {
     return new Promise((resolve, reject) => {
         const request = window.indexedDB.open(dbName, 1);
@@ -2506,19 +2502,6 @@ function getCharactersFromDB(dbName, objectStoreName) {
 // 加载角色列表到select选项中
 function loadCharacterList() {
     const characterSelect = document.getElementById('characterSelect');
-    characterSelect.innerHTML = '<option disabled selected>------------</option>';
-
-    //// 从localStorage中获取保存的角色名字列表
-    //const savedCharacters = JSON.parse(localStorage.getItem('characters')) || {};
-
-    //// 将每个角色名字作为option添加到select中
-    //for (const characterName in savedCharacters) {
-    //    const option = document.createElement('option');
-    //    option.value = characterName;
-    //    option.textContent = characterName;
-    //    characterSelect.appendChild(option);
-    //}
-
     const dbName = "characterMsg";
     const objectStoreName = "Characters";
 
