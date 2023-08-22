@@ -208,10 +208,12 @@ $(function () {
                 }
 
             }
-            $("#PROF")[0].innerHTML = 0;
+            if ($("#PROF")[0].innerHTML == "NaN") {
+                $("#PROF")[0].innerHTML = 0;
+            }
         }
         catch {
-            $("#PROF")[0].innerHTML = 0;
+            
         }
     }, 10);
 
