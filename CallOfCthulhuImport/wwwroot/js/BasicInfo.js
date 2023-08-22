@@ -2483,6 +2483,12 @@ function getCharactersFromDB(dbName, objectStoreName) {
 
         request.onsuccess = function (event) {
             const db = event.target.result;
+
+            if (!db.objectStoreNames.contains(objectStoreName)) {
+                window.indexedDB.deleteDatabase("characterMsg");
+                return;
+            }
+
             const transaction = db.transaction([objectStoreName], 'readonly');
             const objectStore = transaction.objectStore(objectStoreName);
 
