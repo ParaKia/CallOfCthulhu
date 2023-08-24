@@ -221,11 +221,18 @@ $(function () {
 
 //幸运值在15-90间波动
 function RandomLuck() {
-    var result = Math.random() * (90 + 1 - 15) + 15;
-    while (result > 90) {
-        result = Math.random() * (90 + 1 - 15) + 15;
-    }
-    result = parseInt(result);
+    //var result = Math.random() * (90 + 1 - 15) + 15;
+    //while (result > 90) {
+    //    result = Math.random() * (90 + 1 - 15) + 15;
+    //}
+    //result = parseInt(result);
+    var min = 15;
+    var max = 90;
+
+    var range = (max - min) / 5; // 计算能够被5整除的步长范围
+    var randomStep = Math.floor(Math.random() * (range + 1)); // 生成随机步长
+
+    var result = min + randomStep * 5; // 计算最终结果
     $("#Luck")[0].value = result;
 }
 
@@ -3091,3 +3098,34 @@ function RemoveCharacter(dbName, objectStoreName, characterName) {
     };
 }
 /*---------------------------------------------IndexDB----------------------------------------------*/
+
+window.onload = function () {
+    Particles.init({
+        selector: '.background',
+        responsive: [
+            {
+                breakpoint: 2560,
+                options: {
+                    maxParticles: 600,
+                    color: '#000000',
+                    connectParticles: false
+                }
+            },
+            {
+                breakpoint: 425,
+                options: {
+                    maxParticles: 100,
+                    connectParticles: true
+                }
+            },
+            {
+                breakpoint: 320,
+                options: {
+                    maxParticles: 0
+                }
+            }
+        ]
+        
+    });
+    
+};

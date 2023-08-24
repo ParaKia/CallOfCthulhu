@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true">
     <link rel="stylesheet" href="~/lib/layer/theme/default/layer.css" asp-append-version="true" />
     <link rel="stylesheet" href="/css//MainPage/MainPageStyle.css" />
+    <link rel="stylesheet" href="/css/Backgroud.css"/>
     <link rel="icon" type="image/x-icon" href="/Cthulhu.ico">
 </head>
-<body id="AllPages">
+<body id="AllPages" class="">
     <header style="z-index: 9999;">
         <h1>欢迎 调查员</h1>
         <nav class="mainTitle">
@@ -61,8 +62,14 @@
             <div>版权所有 © 2023 CthulhuMaker&货</div>
         </div>
     </footer>
+
+    @*<canvas class="background" style="z-index: -1;"></canvas>*@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
 
+@*<script src="~/js/three.r134.min.js"></script>
+<script src="/js/Clouds.js"></script>*@
+<script src="/js/anime.min.js"></script>
+<script src="~/lib/particlesjs/dist/particles.min.js"></script>
 <script src="/js/MainPage.js" asp-append-version="true"></script>
