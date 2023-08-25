@@ -1,0 +1,117 @@
+﻿body {
+    background-image: url("../../image/background.png");
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.scrapbook {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 15px;
+    column-count: 2;
+    column-gap: 22px;
+    max-width: 1200px;
+    margin-bottom: 70px;
+    position: relative;
+    left: -5%;
+}
+
+    .scrapbook h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        font-family: "Permanent Marker", cursive;
+        padding: 10px 20px;
+        background-color: #ffeecc;
+        border-radius: 5px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        transform: rotate(-2deg);
+    }
+
+    .scrapbook p {
+        position: relative;
+        padding: 10px;
+        background-color: #ffeecc;
+        border-radius: 5px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transform: rotate(2deg);
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        max-width: 75% !important;
+    }
+
+.random {
+    transform: rotate(calc(-2deg + 4deg * var(--rotation))) !important;
+    background-color: var(--bgcolor) !important;
+    font-family: var(--font) !important;
+    font-size: var(--fontsize) !important;
+    white-space: pre-wrap !important;
+}
+
+.polaroid {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: rotate(var(--rotation, -4deg));
+    margin-bottom: 20px;
+}
+
+    .polaroid img {
+        display: block;
+        min-width: 100%;
+        object-fit: cover;
+        height: 345px;
+        overflow: hidden;
+    }
+
+    .polaroid::before,
+    .polaroid::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 20px;
+        background-color: #ccc;
+        transform: rotate(45deg);
+    }
+
+    .polaroid::before {
+        left: -3px;
+        top: -10px;
+    }
+
+    .polaroid::after {
+        right: -3px;
+        top: -10px;
+    }
+
+    .polaroid figcaption {
+        font-family: "Permanent Marker", cursive;
+        font-size: 18px;
+        margin-top: 10px;
+        color: #333;
+    }
+
+.polaroid-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    max-width: 100%; /* Ensure the group does not exceed the width of the parent */
+}
+
+    .polaroid-group .polaroid {
+        width: 48%; /* Adjust the width as needed */
+        transform: rotate( -2deg ); /* Add a slight rotation for a more random appearance */
+    }
+
+        .polaroid-group .polaroid + .polaroid {
+            transform: rotate(2deg); /* Opposite rotation for variety */
+            margin-top: -20px; /* Add negative margin to create overlap */
+        }

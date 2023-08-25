@@ -38,6 +38,11 @@ namespace CallOfCthulhuImport.Controllers
             return View();
         }
 
+        public IActionResult Lof_Love()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

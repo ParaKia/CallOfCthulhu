@@ -68,16 +68,19 @@ window.addEventListener('scroll', function () {
     for (var i = 0; i < sections.length; i++) {
         var section = sections[i].getAttribute('href');
         var target = document.querySelector(section);
-        var rect = target.getBoundingClientRect();
+        if (target != null) {
+            var rect = target.getBoundingClientRect();
 
-        // Adjust the threshold value as needed
-        var threshold = 300;
+            // Adjust the threshold value as needed
+            var threshold = 300;
 
-        if (rect.top <= threshold && rect.bottom >= 20) {
-            sections[i].classList.add('highlight');
-        } else {
-            sections[i].classList.remove('highlight');
+            if (rect.top <= threshold && rect.bottom >= 20) {
+                sections[i].classList.add('highlight');
+            } else {
+                sections[i].classList.remove('highlight');
+            }
         }
+        
     }
 });
 
