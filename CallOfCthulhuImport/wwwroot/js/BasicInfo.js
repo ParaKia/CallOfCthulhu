@@ -1293,7 +1293,7 @@ function ChangeProf(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    if (selectedCharacterData != undefined) {
+    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
         // 获取<select>元素
         var selectElementArt = document.getElementsByClassName("Art");
 
@@ -1433,7 +1433,7 @@ function ChangeGrowup(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    if (selectedCharacterData != undefined) {
+    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
         // 获取<select>元素
         var selectElementArt = document.getElementsByClassName("Art");
 
@@ -1572,7 +1572,7 @@ function ChangeInterest(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    if (selectedCharacterData != undefined) {
+    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
         // 获取<select>元素
         var selectElementArt = document.getElementsByClassName("Art");
 
@@ -1712,7 +1712,7 @@ function ChangeProf2(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    if (selectedCharacterData != undefined) {
+    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
         // 获取<select>元素
         var selectElementArt = document.getElementsByClassName("Art");
 
@@ -1852,7 +1852,7 @@ function ChangeGrowup2(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    if (selectedCharacterData != undefined) {
+    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
         // 获取<select>元素
         var selectElementArt = document.getElementsByClassName("Art");
 
@@ -1988,7 +1988,7 @@ function ChangeInterest2(index) {
     const characterSelect = document.getElementById('characterSelect');
     const selectedCharacter = characterSelect.value;
 
-    if (selectedCharacter != undefined) {
+    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
         // 从localStorage中获取选中角色的页面数据
         const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
         const selectedCharacterData = savedCharacters[selectedCharacter];
