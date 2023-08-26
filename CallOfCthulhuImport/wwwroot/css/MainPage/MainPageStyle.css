@@ -119,6 +119,7 @@ footer {
     opacity: 0;
     top: -50px; /* 初始位置上移 50px */
     transition: transform 1s, opacity 1s; /* 添加过渡效果 */
+    display:none;
 }
 
     /* 目录链接样式 */

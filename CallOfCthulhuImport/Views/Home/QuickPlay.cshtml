@@ -1,0 +1,104 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+@*<script src="~/lib/layer/layer.js"></script>*@
+@*<script src="~/lib/bootstrap-5.3/bootstrap-5.3.1.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/lib/bootstrap-5.3/bootstrap-5.3.1.css" asp-append-version="true">*@
+@*<link rel="stylesheet" href="~/lib/layer/theme/default/layer.css" asp-append-version="true" />*@
+<link rel="stylesheet" href="/css//MainPage/MainPageStyle.css" />
+@*<link rel="stylesheet" href="/css/Backgroud.css" />*@
+<link rel="icon" type="image/x-icon" href="/Cthulhu.ico">
+
+<div class="accordion" id="accordionExample" style="position:relative;left:-5%;">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button style="font-size:28px;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                什么是克苏鲁的呼唤(COC)
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <span style="font-size:18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;克苏鲁的呼唤“为桌上角色扮演游戏，目前最新版本为第七版游戏规则。玩家<span style="font-weight:600;color:red">(PL)</span>应使用自行创建的人物——被称之为调查员<span style="font-weight:600;color:red">(PC)</span>——进行行动，主持人（在克苏鲁的呼唤中又称守秘人，keeper（kill player bushi），简称<span style="font-weight:600;color:red">KP</span>）根据模组给出一定反馈。
+
+                    通常而言，玩家扮演的都是与黑暗作斗争者（或就卷入事件的普通人）。
+
+                    在大多数情况下，该游戏的主题是恐怖的，但是不排除玩家们自创的、基于该种游戏规则非恐怖模组。
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+            <button style="font-size:28px;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                第一步应该做什么
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <span style="font-size:18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不着急的玩家可以尝试读一读规则书（有简易版本）
+                </span>
+
+                <span style="font-size:18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比较着急的新手玩家可以直接进入车卡（创建调查员阶段）：
+                </span>
+
+                <div style="display:flex">
+                    <div style="margin-right:40px;font-size:18px;">
+                        <span>
+                            <span style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先</span>，是人物基本定位，你需要明白你擅长的技能、不擅长的科目。或者做一个大多都略知一二的多面手<br />
+                        </span>
+                        <span>
+                            <span style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随后</span>，你便可以根据你的构思，结合团本背景选好对应的职业（职业会根据属性来确定你的职业点数）<br />
+                            简单而言如果你点了较多的力量，那么选择力量×2的职业，会大幅度提高你的职业点数<br />
+                        </span>
+                        <span>
+                            <span style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后</span>，确定你的随身携带物品，如果你的PC属于家财万贯之士或其他原因，可以有无法携带的固定资产<br />
+                        </span>
+                        <span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;做好以上这些工作后，就可以开始为你的角色进行技能点数的分配了，根据PC的职业和性格，可以分配<br />
+                            到对应的技能，让你的PC活灵活现<br />
+                        </span>
+                        <span>
+                            <span style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后</span>,便是根据你参加的团本背景，再次完善你PC的性格、信仰、背景故事等等，丰富PC的阅历
+                        </span>
+                    </div>
+                    <div>
+                        <span style="font-size:18px;">
+                            以下是个人推荐（<span style="color:red;">非常主观且无脑</span>）<br />
+                            身体里沉睡的野兽，觉醒了：主要加点：力量+体型+意志<br />
+                            头脑发达，四肢简单：      主要加点：教育+智力+意志<br />
+                            魅惑！魅惑！魅惑！：      主要加点：外貌+意志+敏捷/教育/智力<br />
+                            我刚暗杀完安*晋*回来：    主要加点：敏捷+意志+体质+力量<br />
+                            叶师傅（都略懂一二）：    主要加点：力量+敏捷（其他几项都点点）<br />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+            <button style="font-size:28px;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                带着车好的卡，该如何跑团
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <span style="font-size:18px;">
+                    （1）代入PC的视角和性格进行跑团是十分必要的，你需要将你本人的认知和PC进行一个区分，可以有本人的见解，但你的PC终究不是你本人<br />
+                    （2）新手可以尝试多发言，快速进入状态需要有足够的RP（角色扮演），同时多发言也能帮助新手更加集中注意力和思考后续该如何推进故事<br />
+                    （3）其中有一项你几乎无法决定的事实：以骰子的大小点数决定你技能的成功与否，这里非常推荐优先RP以获取优势位置后再做投掷，KP或许给给予优势骰奖励<br />
+                    （4）不要试图和一些不可名状之物强行搏斗，除非你和你的团队有足够信心一击毙命<br />
+                    （5）尽可能不要与队友产生冲突（秘密团、内战团除外）<br />
+                    （6）偶尔跟KP皮一下是可以的，但别蹬鼻子上脸以为KP好欺负噢！<br />
+                    （7）大体上这是团队游戏，尽可能减少个人英雄主义，杜绝独狼行为<br />
+                    （8）不懂规则可以询问成熟的KP，但还是更支持花时间阅读电子材料而非做伸手党<br />
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

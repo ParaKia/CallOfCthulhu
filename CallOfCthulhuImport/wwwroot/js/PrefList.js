@@ -388,6 +388,7 @@ $(function () {
             for (var i = 0; i < rowsSkill.length; i++) {
                 rowsSkill[i].Duty = "";
             }
+            rowsSkill[10].Duty = Credit;
             var skills = newDescription.split("，");
 
             //按逗号分隔出来的技能能直接匹配的视为本职⭐（表1）

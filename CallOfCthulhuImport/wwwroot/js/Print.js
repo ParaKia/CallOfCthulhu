@@ -178,6 +178,7 @@ ReadCharacter("characterMsg", "Characters", selectedCharacter)
         document.getElementById("PreviewMagicPoint").innerHTML = parent.document.getElementById("MagicPoint").innerHTML
         document.getElementById("PreviewSanPoint").innerHTML = parent.document.getElementById("SanPoint").innerHTML
         document.getElementById("PreviewDamagePoint").innerHTML = parent.document.getElementById("DamagePoint").innerHTML
+        document.getElementById("PreviewMovPoint").innerHTML = parent.document.getElementById("MovPoint").innerHTML
 
         $("#PreviewCarryon").bootstrapTable({
             columns: columnsCarryon,

@@ -4,11 +4,13 @@
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/echarts.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+@*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
+   <script src="~/lib/bootstrap-5.2.3-dist/js/bootstrap.min.js" asp-append-version="true"></script>
 <script src="~/lib/bootstrap-table-1.15.3/bootstrap-table.js"></script>
 <script src="~/lib/layer/layer.js"></script>
 <script src="~/lib/cropperjs/dist/cropper.min.js"></script>
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+@*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
+<link rel="stylesheet" href="~/lib/bootstrap-5.2.3-dist/css/bootstrap.min.css" asp-append-version="true">
 <link rel="stylesheet" href="~/lib/bootstrap-table-1.15.3/bootstrap-table.css" />
 <link rel="stylesheet" href="~/lib/layer/theme/default/layer.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/lib/cropperjs/dist/cropper.min.css" asp-append-version="true" />
@@ -128,6 +130,11 @@
                 <div style="margin-right:1rem;display:flex;">
                     <label>伤害加值：</label>
                     <div id="DamagePoint">0</div>
+                </div>
+                <div style="margin-right:1rem;display:flex;">
+                    <label>Mov(行动力)：</label>
+                    <div id="MovPoint">0</div>
+                    <img src="~/image/提示.png" style="width:25px;margin-left:4px;" id="DamageMovTips" />
                 </div>
             </div>
             <div style="display:flex;justify-content: center;">
@@ -325,7 +332,7 @@
         <div style="display:flex;font-size:22px;" class="card-header">
             <div class="Thirdtitle"></div>角色属性图
         </div>
-        <div id="section6" class="target" style="display:flex;">
+        <div id="section6" class="target" style="display:flex;margin-bottom: 220px;">
             <div id="radarChart" style="width: 48%; height: 400px;"></div>
             <div id="radarChart2" style="width: 48%; height: 400px;"></div>
         </div>

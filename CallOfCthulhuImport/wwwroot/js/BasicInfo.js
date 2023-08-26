@@ -4,6 +4,7 @@ var Negotiate = 0;//交涉
 var Battle = 0;//战斗
 var Stunt = 0;//特技
 var Support = 0;//支援
+var Age = 0;
 
 //存储layer供给全局使用
 window.MyLayer = layer;
@@ -93,6 +94,8 @@ $(function () {
         previousValueCon = parseInt(document.getElementById("ConShow").innerHTML);//体质
         previousValueSize = parseInt(document.getElementById("SizeShow").innerHTML);//体型
 
+        //年龄数据
+        Age = parseInt(document.getElementById("Age").value);
 
         $("#UsedPoint")[0].innerHTML = previousValueInt + previousValueStr + previousValueEdu + previousValueDex +
             previousValueApp + previousValuePow + previousValueCon + previousValueSize;
@@ -116,6 +119,35 @@ $(function () {
         }
         else if (205 <= (previousValueStr + previousValueSize) && (previousValueStr + previousValueSize) <= 284) {
             $("#DamagePoint")[0].innerHTML = "2D6";
+        }
+
+        if (previousValueStr < previousValueSize && previousValueDex < previousValueSize) {
+            $("#MovPoint")[0].innerHTML = 7;
+        }
+        else if (previousValueStr >= previousValueSize || previousValueDex >= previousValueSize) {
+            $("#MovPoint")[0].innerHTML = 8;
+        }
+        else if (previousValueStr == previousValueSize && previousValueDex == previousValueSize) {
+            $("#MovPoint")[0].innerHTML = 8;
+        }
+        if (previousValueStr > previousValueSize && previousValueDex > previousValueSize) {
+            $("#MovPoint")[0].innerHTML = 9;
+        }
+
+        if (Age >= 40 && Age < 50) {
+            $("#MovPoint")[0].innerHTML -= 1;
+        }
+        else if (Age >= 50 && Age < 60) {
+            $("#MovPoint")[0].innerHTML -= 2;
+        }
+        else if (Age >= 60 && Age < 70) {
+            $("#MovPoint")[0].innerHTML -= 3;
+        }
+        else if (Age >= 70 && Age < 80) {
+            $("#MovPoint")[0].innerHTML -= 4;
+        }
+        else if (Age >= 80) {
+            $("#MovPoint")[0].innerHTML -= 5;
         }
 
         try {
@@ -629,6 +661,7 @@ var columnsSkill = [
         field: "Duty",
         title: "本职",
         align: "center",
+        width: 71,
     },
     {
         field: "SkillName",
@@ -1260,72 +1293,75 @@ function ChangeProf(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    // 获取<select>元素
-    var selectElementArt = document.getElementsByClassName("Art");
+    if (selectedCharacterData != undefined) {
+        // 获取<select>元素
+        var selectElementArt = document.getElementsByClassName("Art");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementArt.length; k++) {
-        for (var i = 0; i < selectElementArt[k].options.length; i++) {
-            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
-                selectElementArt[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementArt.length; k++) {
+            for (var i = 0; i < selectElementArt[k].options.length; i++) {
+                if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                    selectElementArt[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementFight = document.getElementsByClassName("Fight");
+        // 获取<select>元素
+        var selectElementFight = document.getElementsByClassName("Fight");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementFight.length; k++) {
-        for (var i = 0; i < selectElementFight[k].options.length; i++) {
-            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
-                selectElementFight[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementFight.length; k++) {
+            for (var i = 0; i < selectElementFight[k].options.length; i++) {
+                if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                    selectElementFight[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementShoot = document.getElementsByClassName("Shoot");
+        // 获取<select>元素
+        var selectElementShoot = document.getElementsByClassName("Shoot");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementShoot.length; k++) {
-        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
-            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
-                selectElementShoot[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementShoot.length; k++) {
+            for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+                if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                    selectElementShoot[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementDrive = document.getElementsByClassName("Drive");
+        // 获取<select>元素
+        var selectElementDrive = document.getElementsByClassName("Drive");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementDrive.length; k++) {
-        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
-            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
-                selectElementDrive[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementDrive.length; k++) {
+            for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+                if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                    selectElementDrive[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementTech = document.getElementsByClassName("Tech");
+        // 获取<select>元素
+        var selectElementTech = document.getElementsByClassName("Tech");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementTech.length; k++) {
-        for (var i = 0; i < selectElementTech[k].options.length; i++) {
-            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
-                selectElementTech[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementTech.length; k++) {
+            for (var i = 0; i < selectElementTech[k].options.length; i++) {
+                if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                    selectElementTech[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    $("#Survive")[0].value = selectedCharacterData.Survive;
+        $("#Survive")[0].value = selectedCharacterData.Survive;
 
-    const Language = $(".Language");
-    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
-        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        const Language = $(".Language");
+        for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+            Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        }
     }
+    
     /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
 
     if (InterestPoint > Interest) {
@@ -1397,72 +1433,75 @@ function ChangeGrowup(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    // 获取<select>元素
-    var selectElementArt = document.getElementsByClassName("Art");
+    if (selectedCharacterData != undefined) {
+        // 获取<select>元素
+        var selectElementArt = document.getElementsByClassName("Art");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementArt.length; k++) {
-        for (var i = 0; i < selectElementArt[k].options.length; i++) {
-            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
-                selectElementArt[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementArt.length; k++) {
+            for (var i = 0; i < selectElementArt[k].options.length; i++) {
+                if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                    selectElementArt[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementFight = document.getElementsByClassName("Fight");
+        // 获取<select>元素
+        var selectElementFight = document.getElementsByClassName("Fight");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementFight.length; k++) {
-        for (var i = 0; i < selectElementFight[k].options.length; i++) {
-            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
-                selectElementFight[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementFight.length; k++) {
+            for (var i = 0; i < selectElementFight[k].options.length; i++) {
+                if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                    selectElementFight[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementShoot = document.getElementsByClassName("Shoot");
+        // 获取<select>元素
+        var selectElementShoot = document.getElementsByClassName("Shoot");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementShoot.length; k++) {
-        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
-            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
-                selectElementShoot[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementShoot.length; k++) {
+            for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+                if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                    selectElementShoot[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementDrive = document.getElementsByClassName("Drive");
+        // 获取<select>元素
+        var selectElementDrive = document.getElementsByClassName("Drive");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementDrive.length; k++) {
-        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
-            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
-                selectElementDrive[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementDrive.length; k++) {
+            for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+                if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                    selectElementDrive[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementTech = document.getElementsByClassName("Tech");
+        // 获取<select>元素
+        var selectElementTech = document.getElementsByClassName("Tech");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementTech.length; k++) {
-        for (var i = 0; i < selectElementTech[k].options.length; i++) {
-            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
-                selectElementTech[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementTech.length; k++) {
+            for (var i = 0; i < selectElementTech[k].options.length; i++) {
+                if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                    selectElementTech[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    $("#Survive")[0].value = selectedCharacterData.Survive;
+        $("#Survive")[0].value = selectedCharacterData.Survive;
 
-    const Language = $(".Language");
-    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
-        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        const Language = $(".Language");
+        for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+            Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        }
     }
+    
     /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
 
     if (InterestPoint > Interest) {
@@ -1533,72 +1572,75 @@ function ChangeInterest(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    // 获取<select>元素
-    var selectElementArt = document.getElementsByClassName("Art");
+    if (selectedCharacterData != undefined) {
+        // 获取<select>元素
+        var selectElementArt = document.getElementsByClassName("Art");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementArt.length; k++) {
-        for (var i = 0; i < selectElementArt[k].options.length; i++) {
-            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
-                selectElementArt[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementArt.length; k++) {
+            for (var i = 0; i < selectElementArt[k].options.length; i++) {
+                if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                    selectElementArt[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementFight = document.getElementsByClassName("Fight");
+        // 获取<select>元素
+        var selectElementFight = document.getElementsByClassName("Fight");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementFight.length; k++) {
-        for (var i = 0; i < selectElementFight[k].options.length; i++) {
-            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
-                selectElementFight[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementFight.length; k++) {
+            for (var i = 0; i < selectElementFight[k].options.length; i++) {
+                if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                    selectElementFight[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementShoot = document.getElementsByClassName("Shoot");
+        // 获取<select>元素
+        var selectElementShoot = document.getElementsByClassName("Shoot");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementShoot.length; k++) {
-        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
-            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
-                selectElementShoot[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementShoot.length; k++) {
+            for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+                if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                    selectElementShoot[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementDrive = document.getElementsByClassName("Drive");
+        // 获取<select>元素
+        var selectElementDrive = document.getElementsByClassName("Drive");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementDrive.length; k++) {
-        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
-            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
-                selectElementDrive[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementDrive.length; k++) {
+            for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+                if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                    selectElementDrive[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementTech = document.getElementsByClassName("Tech");
+        // 获取<select>元素
+        var selectElementTech = document.getElementsByClassName("Tech");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementTech.length; k++) {
-        for (var i = 0; i < selectElementTech[k].options.length; i++) {
-            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
-                selectElementTech[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementTech.length; k++) {
+            for (var i = 0; i < selectElementTech[k].options.length; i++) {
+                if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                    selectElementTech[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    $("#Survive")[0].value = selectedCharacterData.Survive;
+        $("#Survive")[0].value = selectedCharacterData.Survive;
 
-    const Language = $(".Language");
-    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
-        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        const Language = $(".Language");
+        for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+            Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        }
     }
+    
     /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
 
     if (InterestPoint > Interest) {
@@ -1670,72 +1712,75 @@ function ChangeProf2(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    // 获取<select>元素
-    var selectElementArt = document.getElementsByClassName("Art");
+    if (selectedCharacterData != undefined) {
+        // 获取<select>元素
+        var selectElementArt = document.getElementsByClassName("Art");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementArt.length; k++) {
-        for (var i = 0; i < selectElementArt[k].options.length; i++) {
-            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
-                selectElementArt[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementArt.length; k++) {
+            for (var i = 0; i < selectElementArt[k].options.length; i++) {
+                if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                    selectElementArt[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementFight = document.getElementsByClassName("Fight");
+        // 获取<select>元素
+        var selectElementFight = document.getElementsByClassName("Fight");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementFight.length; k++) {
-        for (var i = 0; i < selectElementFight[k].options.length; i++) {
-            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
-                selectElementFight[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementFight.length; k++) {
+            for (var i = 0; i < selectElementFight[k].options.length; i++) {
+                if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                    selectElementFight[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementShoot = document.getElementsByClassName("Shoot");
+        // 获取<select>元素
+        var selectElementShoot = document.getElementsByClassName("Shoot");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementShoot.length; k++) {
-        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
-            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
-                selectElementShoot[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementShoot.length; k++) {
+            for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+                if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                    selectElementShoot[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementDrive = document.getElementsByClassName("Drive");
+        // 获取<select>元素
+        var selectElementDrive = document.getElementsByClassName("Drive");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementDrive.length; k++) {
-        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
-            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
-                selectElementDrive[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementDrive.length; k++) {
+            for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+                if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                    selectElementDrive[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementTech = document.getElementsByClassName("Tech");
+        // 获取<select>元素
+        var selectElementTech = document.getElementsByClassName("Tech");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementTech.length; k++) {
-        for (var i = 0; i < selectElementTech[k].options.length; i++) {
-            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
-                selectElementTech[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementTech.length; k++) {
+            for (var i = 0; i < selectElementTech[k].options.length; i++) {
+                if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                    selectElementTech[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    $("#Survive")[0].value = selectedCharacterData.Survive;
+        $("#Survive")[0].value = selectedCharacterData.Survive;
 
-    const Language = $(".Language");
-    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
-        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        const Language = $(".Language");
+        for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+            Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        }
     }
+    
     /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
 
     if (InterestPoint > Interest) {
@@ -1807,72 +1852,75 @@ function ChangeGrowup2(index) {
     const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
     const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    // 获取<select>元素
-    var selectElementArt = document.getElementsByClassName("Art");
+    if (selectedCharacterData != undefined) {
+        // 获取<select>元素
+        var selectElementArt = document.getElementsByClassName("Art");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementArt.length; k++) {
-        for (var i = 0; i < selectElementArt[k].options.length; i++) {
-            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
-                selectElementArt[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementArt.length; k++) {
+            for (var i = 0; i < selectElementArt[k].options.length; i++) {
+                if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                    selectElementArt[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementFight = document.getElementsByClassName("Fight");
+        // 获取<select>元素
+        var selectElementFight = document.getElementsByClassName("Fight");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementFight.length; k++) {
-        for (var i = 0; i < selectElementFight[k].options.length; i++) {
-            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
-                selectElementFight[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementFight.length; k++) {
+            for (var i = 0; i < selectElementFight[k].options.length; i++) {
+                if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                    selectElementFight[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementShoot = document.getElementsByClassName("Shoot");
+        // 获取<select>元素
+        var selectElementShoot = document.getElementsByClassName("Shoot");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementShoot.length; k++) {
-        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
-            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
-                selectElementShoot[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementShoot.length; k++) {
+            for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+                if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                    selectElementShoot[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementDrive = document.getElementsByClassName("Drive");
+        // 获取<select>元素
+        var selectElementDrive = document.getElementsByClassName("Drive");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementDrive.length; k++) {
-        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
-            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
-                selectElementDrive[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementDrive.length; k++) {
+            for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+                if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                    selectElementDrive[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementTech = document.getElementsByClassName("Tech");
+        // 获取<select>元素
+        var selectElementTech = document.getElementsByClassName("Tech");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementTech.length; k++) {
-        for (var i = 0; i < selectElementTech[k].options.length; i++) {
-            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
-                selectElementTech[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementTech.length; k++) {
+            for (var i = 0; i < selectElementTech[k].options.length; i++) {
+                if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                    selectElementTech[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    $("#Survive")[0].value = selectedCharacterData.Survive;
+        $("#Survive")[0].value = selectedCharacterData.Survive;
 
-    const Language = $(".Language");
-    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
-        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        const Language = $(".Language");
+        for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+            Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        }
     }
+    
     /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
 
     if (InterestPoint > Interest) {
@@ -1940,76 +1988,79 @@ function ChangeInterest2(index) {
     const characterSelect = document.getElementById('characterSelect');
     const selectedCharacter = characterSelect.value;
 
-    // 从localStorage中获取选中角色的页面数据
-    const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
-    const selectedCharacterData = savedCharacters[selectedCharacter];
+    if (selectedCharacter != undefined) {
+        // 从localStorage中获取选中角色的页面数据
+        const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+        const selectedCharacterData = savedCharacters[selectedCharacter];
 
-    // 获取<select>元素
-    var selectElementArt = document.getElementsByClassName("Art");
+        // 获取<select>元素
+        var selectElementArt = document.getElementsByClassName("Art");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementArt.length; k++) {
-        for (var i = 0; i < selectElementArt[k].options.length; i++) {
-            if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
-                selectElementArt[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementArt.length; k++) {
+            for (var i = 0; i < selectElementArt[k].options.length; i++) {
+                if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                    selectElementArt[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementFight = document.getElementsByClassName("Fight");
+        // 获取<select>元素
+        var selectElementFight = document.getElementsByClassName("Fight");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementFight.length; k++) {
-        for (var i = 0; i < selectElementFight[k].options.length; i++) {
-            if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
-                selectElementFight[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementFight.length; k++) {
+            for (var i = 0; i < selectElementFight[k].options.length; i++) {
+                if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                    selectElementFight[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementShoot = document.getElementsByClassName("Shoot");
+        // 获取<select>元素
+        var selectElementShoot = document.getElementsByClassName("Shoot");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementShoot.length; k++) {
-        for (var i = 0; i < selectElementShoot[k].options.length; i++) {
-            if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
-                selectElementShoot[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementShoot.length; k++) {
+            for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+                if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                    selectElementShoot[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementDrive = document.getElementsByClassName("Drive");
+        // 获取<select>元素
+        var selectElementDrive = document.getElementsByClassName("Drive");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementDrive.length; k++) {
-        for (var i = 0; i < selectElementDrive[k].options.length; i++) {
-            if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
-                selectElementDrive[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementDrive.length; k++) {
+            for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+                if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                    selectElementDrive[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    // 获取<select>元素
-    var selectElementTech = document.getElementsByClassName("Tech");
+        // 获取<select>元素
+        var selectElementTech = document.getElementsByClassName("Tech");
 
-    // 遍历所有选项，找到匹配的文本并选中它
-    for (var k = 0; k < selectElementTech.length; k++) {
-        for (var i = 0; i < selectElementTech[k].options.length; i++) {
-            if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
-                selectElementTech[k].selectedIndex = i;
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementTech.length; k++) {
+            for (var i = 0; i < selectElementTech[k].options.length; i++) {
+                if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                    selectElementTech[k].selectedIndex = i;
+                }
             }
         }
-    }
 
-    $("#Survive")[0].value = selectedCharacterData.Survive;
+        $("#Survive")[0].value = selectedCharacterData.Survive;
 
-    const Language = $(".Language");
-    for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
-        Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        const Language = $(".Language");
+        for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+            Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        }
     }
+   
     /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
 
     if (InterestPoint > Interest) {
@@ -2106,6 +2157,39 @@ document.getElementById("Skills").addEventListener("mouseover", function () {
 });
 
 document.getElementById("Skills").addEventListener("mouseout", function () {
+    // 鼠标移出时，取消提示框
+    layer.close(this.tipsIndex);
+});
+/*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/
+
+/*----------------------------------------------------------角色技能确认按钮提示信息----------------------------------------------------------*/
+document.getElementById("DamageMovTips").addEventListener("mouseover", function () {
+    // 鼠标移入时，弹出提示框
+    var tipsContent = '伤害加值（力量+体型）如下<br />' + 
+        '2-64    : -2&nbsp&nbsp&nbsp&nbsp' + 
+        '65-84   : -1<br />' + 
+        '85-124  : 无&nbsp&nbsp&nbsp&nbsp' + 
+        '125-164 : 1D4<br />' + 
+        '165-204 : 1D6&nbsp&nbsp&nbsp&nbsp' +
+        '205-284 : 2D6<br />' +
+        '行动力如下<br />' +
+        '敏捷&力量 < 体型   ： Mov7<br />' +
+        '敏捷or力量 ≥ 体型 ： Mov8<br />' +
+        '敏捷=力量 = 体型   ： Mov8<br />' +
+        '敏捷&力量 > 体型   ： Mov9<br />' +
+        '同时也需遵守年龄规则:<br />' + 
+        '年龄 > 40 : Mov - 1<br />' +
+        '年龄 > 50 : Mov - 2<br />' +
+        '年龄 > 60 : Mov - 3<br />' +
+        '年龄 > 70 : Mov - 4<br />' +
+        '年龄 > 80 : Mov - 5';
+    this.tipsIndex = layer.tips(tipsContent, this, {
+        tips: [2, '#DamageMovTips'], // 方向：1为向下
+        time: 0 // 设置为0，阻止自动消失
+    });
+});
+
+document.getElementById("DamageMovTips").addEventListener("mouseout", function () {
     // 鼠标移出时，取消提示框
     layer.close(this.tipsIndex);
 });
@@ -3106,9 +3190,9 @@ window.onload = function () {
             {
                 breakpoint: 2560,
                 options: {
-                    maxParticles: 600,
+                    maxParticles: 150,
                     color: '#000000',
-                    connectParticles: false
+                    connectParticles: true
                 }
             },
             {
