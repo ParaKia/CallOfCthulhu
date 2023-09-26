@@ -6,22 +6,39 @@ var Stunt = 0;//特技
 var Support = 0;//支援
 var Age = 0;
 
+//存储表格数据供给全局使用
+window.TableSkill1 = null;
+window.TableSkill2 = null;
 //存储layer供给全局使用
 window.MyLayer = layer;
 //存储cropper对象便于操作
 window.cro = null;
 //存储cropper裁剪完成的URL便于操作
 window.cropperResult = "";
+//存储人物带点数供全局使用
+window.Int = "";
+window.Str = "";
+window.Edu = "";
+window.Dex = "";
+window.App = "";
+window.Pow = "";
+window.Con = "";
+window.Size = "";
+window.Lucky = "";
+window.Hp = "";
+window.Mp = "";
+window.CharaName = "";
+
+
 //初始化点数
 var previousValueInt = parseInt(document.getElementById("IntShow").innerHTML);//智力
-
 var previousValueStr = parseInt(document.getElementById("StrShow").innerHTML);//力量
 var previousValueEdu = parseInt(document.getElementById("EduShow").innerHTML);//教育
 var previousValueDex = parseInt(document.getElementById("DexShow").innerHTML);//敏捷
 var previousValueApp = parseInt(document.getElementById("AppShow").innerHTML);//外貌
 var previousValuePow = parseInt(document.getElementById("PowShow").innerHTML);//意志
-var previousValuePow = parseInt(document.getElementById("ConShow").innerHTML);//体质
-var previousValuePow = parseInt(document.getElementById("SizeShow").innerHTML);//体型
+var previousValueCon = parseInt(document.getElementById("ConShow").innerHTML);//体质
+var previousValueSize = parseInt(document.getElementById("SizeShow").innerHTML);//体型
 
 //职业属性（在选择职业后，自动赋值）
 var Sta = "";
@@ -80,6 +97,8 @@ $(function () {
         } else if (total <= $("#SumPoint")[0].value && isExceeded) {
             isExceeded = false;
         }
+        //角色名
+        window.CharaName = document.getElementById('Name').value
         //兴趣点数计算
         previousValueInt = parseInt(document.getElementById("IntShow").innerHTML);//智力
         Interest = previousValueInt * 2;
@@ -2383,6 +2402,19 @@ toggleButton.addEventListener('click', () => {
 
 //保存整个页面的数据
 function savePageContent() {
+    window.TableSkill1 = $("#Skill1").bootstrapTable("getData");
+    window.TableSkill2 = $("#Skill2").bootstrapTable("getData");
+    window.Str = document.getElementById("StrRange").value;
+    window.Con = document.getElementById("ConRange").value;
+    window.Size = document.getElementById("SizeRange").value;
+    Window.Dex = document.getElementById("DexRange").value;
+    window.App = document.getElementById("AppRange").value;
+    window.Int = document.getElementById("IntRange").value;
+    window.Pow = document.getElementById("PowRange").value;
+    window.Edu = document.getElementById("EduRange").value;
+    window.Lucky = document.getElementById("Luck").value;
+    window.Hp = document.getElementById("LifePoint");
+    window.Mp = document.getElementById("MagicPoint");
     //角色名
     const characterName = document.getElementById('Name').value;
     // 获取整个页面的 HTML 内容
@@ -3090,11 +3122,13 @@ function ImgSetting() {
 function justifyIndexDEB() {
     if ("indexedDB" in window) {
         // 支持
-        console.log(" 支持indexedDB...");
+        console.log("不支持indexedDB... 可以正常车卡");
+        layer.msg("支持indexedDB... 可以正常车卡");
         //createindexDB();    //创建数据库，下面有定义
     } else {
         // 不支持
         console.log("不支持indexedDB...");
+        layer.msg("不支持indexedDB... 请更换谷歌浏览器");
         window.indexedDB = window.mozIndexedDB || window.webkitIndexedDB;
     }
 }
@@ -3213,3 +3247,14 @@ window.onload = function () {
     });
     
 };
+
+function previewInputCard() {
+    layer.open({
+        area: ["980px", "580px"],
+        title: "骰娘导入",
+        btn: ['确定',],
+        type: 2,
+        fixed: false, //不固定
+        content: "/Create/InputCard",
+    });
+}
