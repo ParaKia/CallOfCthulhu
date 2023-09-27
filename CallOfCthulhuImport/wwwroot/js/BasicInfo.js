@@ -28,6 +28,7 @@ window.Lucky = "";
 window.Hp = "";
 window.Mp = "";
 window.CharaName = "";
+window.Inindex = 1;
 
 
 //初始化点数
@@ -81,6 +82,14 @@ $(function () {
             $("#PowShow").text($("#PowRange").val()),
             $("#EduShow").text($("#EduRange").val());
     }, 0.01);
+
+    setInterval(function () {
+        var NowName = document.getElementById("Name").value;
+        if (NowName != "" && Inindex == 1) {
+            savePageContent();
+            Inindex++;
+        }
+    }, 2000);
 
     setInterval(function () {
         var total = parseInt($("#StrShow")[0].innerHTML) +
@@ -1050,39 +1059,39 @@ var rowsSkill = [
     {
         SkillName: "格斗①" + '<select id="Fight0" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">鞭子</option>' +
-            '<option value="option2">电锯</option>' +
-            '<option value="option3">链枷</option>' +
-            '<option value="option3">绞具</option>' +
-            '<option value="option3">斧</option>' +
-            '<option value="option3">剑</option>' +
-            '<option value="option3">矛</option>' +
+            '<option value="鞭子">鞭子</option>' +
+            '<option value="电锯">电锯</option>' +
+            '<option value="链枷">链枷</option>' +
+            '<option value="绞具">绞具</option>' +
+            '<option value="斧">斧</option>' +
+            '<option value="剑">剑</option>' +
+            '<option value="矛">矛</option>' +
             '</select>'
-        , Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
+        , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
         SkillName: "格斗②" + '<select id="Fight1" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">鞭子</option>' +
-            '<option value="option2">电锯</option>' +
-            '<option value="option3">链枷</option>' +
-            '<option value="option3">绞具</option>' +
-            '<option value="option3">斧</option>' +
-            '<option value="option3">剑</option>' +
-            '<option value="option3">矛</option>' +
+            '<option value="鞭子">鞭子</option>' +
+            '<option value="电锯">电锯</option>' +
+            '<option value="链枷">链枷</option>' +
+            '<option value="绞具">绞具</option>' +
+            '<option value="斧">斧</option>' +
+            '<option value="剑">剑</option>' +
+            '<option value="矛">矛</option>' +
             '</select>'
         , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
         SkillName: "格斗③" + '<select id="Fight2" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">鞭子</option>' +
-            '<option value="option2">电锯</option>' +
-            '<option value="option3">链枷</option>' +
-            '<option value="option3">绞具</option>' +
-            '<option value="option3">斧</option>' +
-            '<option value="option3">剑</option>' +
-            '<option value="option3">矛</option>' +
+            '<option value="鞭子">鞭子</option>' +
+            '<option value="电锯">电锯</option>' +
+            '<option value="链枷">链枷</option>' +
+            '<option value="绞具">绞具</option>' +
+            '<option value="斧">斧</option>' +
+            '<option value="剑">剑</option>' +
+            '<option value="矛">矛</option>' +
             '</select>'
         , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
@@ -1090,36 +1099,36 @@ var rowsSkill = [
     {
         SkillName: "射击①" + '<select id="Shoot0" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">步枪/霰弹枪</option>' +
-            '<option value="option2">冲锋枪</option>' +
-            '<option value="option3">弓术</option>' +
-            '<option value="option3">喷射器</option>' +
-            '<option value="option3">机枪</option>' +
-            '<option value="option3">重武器</option>' +
+            '<option value="步枪/霰弹枪">步枪/霰弹枪</option>' +
+            '<option value="冲锋枪">冲锋枪</option>' +
+            '<option value="弓术">弓术</option>' +
+            '<option value="喷射器">喷射器</option>' +
+            '<option value="机枪">机枪</option>' +
+            '<option value="重武器">重武器</option>' +
             '</select>'
         , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
         SkillName: "射击②" + '<select id="Shoot1" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">步枪/霰弹枪</option>' +
-            '<option value="option2">冲锋枪</option>' +
-            '<option value="option3">弓术</option>' +
-            '<option value="option3">喷射器</option>' +
-            '<option value="option3">机枪</option>' +
-            '<option value="option3">重武器</option>' +
+            '<option value="步枪/霰弹枪">步枪/霰弹枪</option>' +
+            '<option value="冲锋枪">冲锋枪</option>' +
+            '<option value="弓术">弓术</option>' +
+            '<option value="喷射器">喷射器</option>' +
+            '<option value="机枪">机枪</option>' +
+            '<option value="重武器">重武器</option>' +
             '</select>'
         , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
         SkillName: "射击③" + '<select id="Shoot2" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">步枪/霰弹枪</option>' +
-            '<option value="option2">冲锋枪</option>' +
-            '<option value="option3">弓术</option>' +
-            '<option value="option3">喷射器</option>' +
-            '<option value="option3">机枪</option>' +
-            '<option value="option3">重武器</option>' +
+            '<option value="步枪/霰弹枪">步枪/霰弹枪</option>' +
+            '<option value="冲锋枪">冲锋枪</option>' +
+            '<option value="弓术">弓术</option>' +
+            '<option value="喷射器">喷射器</option>' +
+            '<option value="机枪">机枪</option>' +
+            '<option value="重武器">重武器</option>' +
             '</select>'
         , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
@@ -1157,8 +1166,8 @@ var rowsSkill2 = [
     {
         SkillName: "驾驶" + '<select id="Drive0" class="form-select Drive" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">飞行器</option>' +
-            '<option value="option2">船</option>' +
+            '<option value="飞行器">飞行器</option>' +
+            '<option value="船">船</option>' +
             '</select>'
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
@@ -1168,57 +1177,57 @@ var rowsSkill2 = [
     {
         SkillName: "科学①" + '<select id="Tech0" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">地质学</option>' +
-            '<option value="option2">化学</option>' +
-            '<option value="option3">生物学</option>' +
-            '<option value="option3">数学</option>' +
-            '<option value="option3">天文学</option>' +
-            '<option value="option3">物理学</option>' +
-            '<option value="option3">药学</option>' +
-            '<option value="option3">植物学</option>' +
-            '<option value="option3">动物学</option>' +
-            '<option value="option3">密码学</option>' +
-            '<option value="option3">工程学</option>' +
-            '<option value="option3">气象学</option>' +
-            '<option value="option3">司法科学</option>' +
+            '<option value="地质学">地质学</option>' +
+            '<option value="化学">化学</option>' +
+            '<option value="生物学">生物学</option>' +
+            '<option value="数学">数学</option>' +
+            '<option value="天文学">天文学</option>' +
+            '<option value="物理学">物理学</option>' +
+            '<option value="药学">药学</option>' +
+            '<option value="植物学">植物学</option>' +
+            '<option value="动物学">动物学</option>' +
+            '<option value="密码学">密码学</option>' +
+            '<option value="工程学">工程学</option>' +
+            '<option value="气象学">气象学</option>' +
+            '<option value="司法科学">司法科学</option>' +
             '</select>'
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
         SkillName: "科学②" + '<select id="Tech1" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">地质学</option>' +
-            '<option value="option2">化学</option>' +
-            '<option value="option3">生物学</option>' +
-            '<option value="option3">数学</option>' +
-            '<option value="option3">天文学</option>' +
-            '<option value="option3">物理学</option>' +
-            '<option value="option3">药学</option>' +
-            '<option value="option3">植物学</option>' +
-            '<option value="option3">动物学</option>' +
-            '<option value="option3">密码学</option>' +
-            '<option value="option3">工程学</option>' +
-            '<option value="option3">气象学</option>' +
-            '<option value="option3">司法科学</option>' +
+            '<option value="地质学">地质学</option>' +
+            '<option value="化学">化学</option>' +
+            '<option value="生物学">生物学</option>' +
+            '<option value="数学">数学</option>' +
+            '<option value="天文学">天文学</option>' +
+            '<option value="物理学">物理学</option>' +
+            '<option value="药学">药学</option>' +
+            '<option value="植物学">植物学</option>' +
+            '<option value="动物学">动物学</option>' +
+            '<option value="密码学">密码学</option>' +
+            '<option value="工程学">工程学</option>' +
+            '<option value="气象学">气象学</option>' +
+            '<option value="司法科学">司法科学</option>' +
             '</select>'
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
     {
         SkillName: "科学③" + '<select id="Tech2" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
             '<option value="option1"></option>' +
-            '<option value="option1">地质学</option>' +
-            '<option value="option2">化学</option>' +
-            '<option value="option3">生物学</option>' +
-            '<option value="option3">数学</option>' +
-            '<option value="option3">天文学</option>' +
-            '<option value="option3">物理学</option>' +
-            '<option value="option3">药学</option>' +
-            '<option value="option3">植物学</option>' +
-            '<option value="option3">动物学</option>' +
-            '<option value="option3">密码学</option>' +
-            '<option value="option3">工程学</option>' +
-            '<option value="option3">气象学</option>' +
-            '<option value="option3">司法科学</option>' +
+            '<option value="地质学">地质学</option>' +
+            '<option value="化学">化学</option>' +
+            '<option value="生物学">生物学</option>' +
+            '<option value="数学">数学</option>' +
+            '<option value="天文学">天文学</option>' +
+            '<option value="物理学">物理学</option>' +
+            '<option value="药学">药学</option>' +
+            '<option value="植物学">植物学</option>' +
+            '<option value="动物学">动物学</option>' +
+            '<option value="密码学">密码学</option>' +
+            '<option value="工程学">工程学</option>' +
+            '<option value="气象学">气象学</option>' +
+            '<option value="司法科学">司法科学</option>' +
             '</select>'
         , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
     },
@@ -2951,7 +2960,7 @@ function previewPageContent() {
     });
 }
 
-//改变表格的技艺等等select时
+//改变表格的技艺、格斗等等select时
 function changeSkill() {
     const Art = $(".Art option:selected");
     const PreviewArt = [];
@@ -3011,6 +3020,7 @@ function changeSkill() {
 
     const characterSelect = document.getElementById('characterSelect');
     const selectedCharacter = characterSelect.value;
+    //const selectedCharacter = document.getElementById("Name").value;
 
     // 从localStorage中获取之前保存的数据
     const savedSkills = JSON.parse(localStorage.getItem('skillSelect')) || {};
@@ -3018,6 +3028,248 @@ function changeSkill() {
     // 将当前页面内容保存到localStorage中
     savedSkills[selectedCharacter] = SkillContent;
     localStorage.setItem('skillSelect', JSON.stringify(savedSkills));
+
+    if ($("#Fight0").val() != "option1") {
+        if ($("#Fight0").val() == "鞭子") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[19].Inception = 5;
+        }
+        else if ($("#Fight0").val() == "电锯" || $("#Fight0").val() == "链枷") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[19].Inception = 10;
+        }
+        else if ($("#Fight0").val() == "绞具" || $("#Fight0").val() == "斧") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[19].Inception = 15;
+        }
+        else if ($("#Fight0").val() == "剑" || $("#Fight0").val() == "矛") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[19].Inception = 20;
+        }
+        
+    }
+    if ($("#Fight1").val() != "option1") {
+        if ($("#Fight1").val() == "鞭子") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[20].Inception = 5;
+        }
+        else if ($("#Fight1").val() == "电锯" || $("#Fight1").val() == "链枷") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[20].Inception = 10;
+        }
+        else if ($("#Fight1").val() == "绞具" || $("#Fight1").val() == "斧") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[20].Inception = 15;
+        }
+        else if ($("#Fight1").val() == "剑" || $("#Fight1").val() == "矛") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[20].Inception = 20;
+        }
+        
+    }
+    if ($("#Fight2").val() != "option1") {
+        if ($("#Fight2").val() == "鞭子") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[21].Inception = 5;
+        }
+        else if ($("#Fight2").val() == "电锯" || $("#Fight2").val() == "链枷") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[21].Inception = 10;
+        }
+        else if ($("#Fight2").val() == "绞具" || $("#Fight2").val() == "斧") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[21].Inception = 15;
+        }
+        else if ($("#Fight2").val() == "剑" || $("#Fight2").val() == "矛") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[21].Inception = 20;
+        }
+        
+    }
+    if ($("#Shoot0").val() != "option1") {
+        if ($("#Shoot0").val() == "步枪/霰弹枪") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[23].Inception = 25;
+        }
+        else if ($("#Shoot0").val() == "冲锋枪" || $("#Shoot0").val() == "弓术") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[23].Inception = 15;
+        }
+        else if ($("#Shoot0").val() == "重武器" || $("#Shoot0").val() == "机枪" || $("#Shoot0").val() == "喷射器") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[23].Inception = 10;
+        }
+        
+    }
+    if ($("#Shoot1").val() != "option1") {
+        if ($("#Shoot1").val() == "步枪/霰弹枪") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[24].Inception = 25;
+        }
+        else if ($("#Shoot1").val() == "冲锋枪" || $("#Shoot1").val() == "弓术") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[24].Inception = 15;
+        }
+        else if ($("#Shoot1").val() == "重武器" || $("#Shoot1").val() == "机枪" || $("#Shoot1").val() == "喷射器") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[24].Inception = 10;
+        }
+        
+    }
+    if ($("#Shoot2").val() != "option1") {
+        if ($("#Shoot2").val() == "步枪/霰弹枪") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[25].Inception = 25;
+        }
+        else if ($("#Shoot2").val() == "冲锋枪" || $("#Shoot2").val() == "弓术") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[25].Inception = 15;
+        }
+        else if ($("#Shoot2").val() == "重武器" || $("#Shoot2").val() == "机枪" || $("#Shoot2").val() == "喷射器") {
+            var rows = $("#Skill1").bootstrapTable("getData");
+            rows[25].Inception = 10;
+        }
+        
+    }
+    if ($("#Tech0").val() != "option1") {
+        if ($("#Tech0").val() == "数学") {
+            var rows = $("#Skill2").bootstrapTable("getData");
+            rows[15].Inception = 10;
+        }
+    }
+    if ($("#Tech1").val() != "option1") {
+        if ($("#Tech1").val() == "数学") {
+            var rows = $("#Skill2").bootstrapTable("getData");
+            rows[16].Inception = 10;
+        }
+    }
+    if ($("#Tech2").val() != "option1") {
+        if ($("#Tech2").val() == "数学") {
+            var rows = $("#Skill2").bootstrapTable("getData");
+            rows[17].Inception = 10;
+        }
+    }
+
+    // 更新表格中的数据
+    //$("#Skill1").bootstrapTable("updateRow", {
+    //    index: 19,
+    //    row: rows[19]
+    //});
+
+    //$("#Skill1").bootstrapTable("updateRow", {
+    //    index: 20,
+    //    row: rows[20]
+    //});
+
+    //$("#Skill1").bootstrapTable("updateRow", {
+    //    index: 21,
+    //    row: rows[21]
+    //});
+
+    //$("#Skill1").bootstrapTable("updateRow", {
+    //    index: 23,
+    //    row: rows[23]
+    //});
+
+    //$("#Skill1").bootstrapTable("updateRow", {
+    //    index: 24,
+    //    row: rows[24]
+    //});
+
+    //$("#Skill1").bootstrapTable("updateRow", {
+    //    index: 25,
+    //    row: rows[25]
+    //});
+
+    //$("#Skill2").bootstrapTable("updateRow", {
+    //    index: 15,
+    //    row: rows[15]
+    //});
+
+    //$("#Skill2").bootstrapTable("updateRow", {
+    //    index: 16,
+    //    row: rows[16]
+    //});
+
+    //$("#Skill2").bootstrapTable("updateRow", {
+    //    index: 17,
+    //    row: rows[17]
+    //});
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
+        // 从localStorage中获取选中角色的页面数据
+        const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+        const selectedCharacterData = savedCharacters[selectedCharacter];
+
+        // 获取<select>元素
+        var selectElementArt = document.getElementsByClassName("Art");
+
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementArt.length; k++) {
+            for (var i = 0; i < selectElementArt[k].options.length; i++) {
+                if (selectElementArt[k].options[i].text === selectedCharacterData.PreviewArt[k]) {
+                    selectElementArt[k].selectedIndex = i;
+                }
+            }
+        }
+
+        // 获取<select>元素
+        var selectElementFight = document.getElementsByClassName("Fight");
+
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementFight.length; k++) {
+            for (var i = 0; i < selectElementFight[k].options.length; i++) {
+                if (selectElementFight[k].options[i].text === selectedCharacterData.PreviewFight[k]) {
+                    selectElementFight[k].selectedIndex = i;
+                }
+            }
+        }
+
+        // 获取<select>元素
+        var selectElementShoot = document.getElementsByClassName("Shoot");
+
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementShoot.length; k++) {
+            for (var i = 0; i < selectElementShoot[k].options.length; i++) {
+                if (selectElementShoot[k].options[i].text === selectedCharacterData.PreviewShoot[k]) {
+                    selectElementShoot[k].selectedIndex = i;
+                }
+            }
+        }
+
+        // 获取<select>元素
+        var selectElementDrive = document.getElementsByClassName("Drive");
+
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementDrive.length; k++) {
+            for (var i = 0; i < selectElementDrive[k].options.length; i++) {
+                if (selectElementDrive[k].options[i].text === selectedCharacterData.PreviewDrive[k]) {
+                    selectElementDrive[k].selectedIndex = i;
+                }
+            }
+        }
+
+        // 获取<select>元素
+        var selectElementTech = document.getElementsByClassName("Tech");
+
+        // 遍历所有选项，找到匹配的文本并选中它
+        for (var k = 0; k < selectElementTech.length; k++) {
+            for (var i = 0; i < selectElementTech[k].options.length; i++) {
+                if (selectElementTech[k].options[i].text === selectedCharacterData.PreviewTech[k]) {
+                    selectElementTech[k].selectedIndex = i;
+                }
+            }
+        }
+
+        $("#Survive")[0].value = selectedCharacterData.Survive;
+
+        const Language = $(".Language");
+        for (var i = 0; i < selectedCharacterData.PreviewLanguage.length; i++) {
+            Language[i].value = selectedCharacterData.PreviewLanguage[i];
+        }
+    }
+
+    /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
 }
 
 

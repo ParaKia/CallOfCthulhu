@@ -178,39 +178,39 @@ $(function () {
         {
             SkillName: "格斗①" + '<select id="Fight0" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">鞭子</option>' +
-                '<option value="option2">电锯</option>' +
-                '<option value="option3">链枷</option>' +
-                '<option value="option3">绞具</option>' +
-                '<option value="option3">斧</option>' +
-                '<option value="option3">剑</option>' +
-                '<option value="option3">矛</option>' +
+                '<option value="鞭子">鞭子</option>' +
+                '<option value="电锯">电锯</option>' +
+                '<option value="链枷">链枷</option>' +
+                '<option value="绞具">绞具</option>' +
+                '<option value="斧">斧</option>' +
+                '<option value="剑">剑</option>' +
+                '<option value="矛">矛</option>' +
                 '</select>'
-            , Inception: "20", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
+            , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
             SkillName: "格斗②" + '<select id="Fight1" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">鞭子</option>' +
-                '<option value="option2">电锯</option>' +
-                '<option value="option3">链枷</option>' +
-                '<option value="option3">绞具</option>' +
-                '<option value="option3">斧</option>' +
-                '<option value="option3">剑</option>' +
-                '<option value="option3">矛</option>' +
+                '<option value="鞭子">鞭子</option>' +
+                '<option value="电锯">电锯</option>' +
+                '<option value="链枷">链枷</option>' +
+                '<option value="绞具">绞具</option>' +
+                '<option value="斧">斧</option>' +
+                '<option value="剑">剑</option>' +
+                '<option value="矛">矛</option>' +
                 '</select>'
             , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
             SkillName: "格斗③" + '<select id="Fight2" class="form-select Fight" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">鞭子</option>' +
-                '<option value="option2">电锯</option>' +
-                '<option value="option3">链枷</option>' +
-                '<option value="option3">绞具</option>' +
-                '<option value="option3">斧</option>' +
-                '<option value="option3">剑</option>' +
-                '<option value="option3">矛</option>' +
+                '<option value="鞭子">鞭子</option>' +
+                '<option value="电锯">电锯</option>' +
+                '<option value="链枷">链枷</option>' +
+                '<option value="绞具">绞具</option>' +
+                '<option value="斧">斧</option>' +
+                '<option value="剑">剑</option>' +
+                '<option value="矛">矛</option>' +
                 '</select>'
             , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
@@ -218,36 +218,36 @@ $(function () {
         {
             SkillName: "射击①" + '<select id="Shoot0" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">步枪/霰弹枪</option>' +
-                '<option value="option2">冲锋枪</option>' +
-                '<option value="option3">弓术</option>' +
-                '<option value="option3">喷射器</option>' +
-                '<option value="option3">机枪</option>' +
-                '<option value="option3">重武器</option>' +
+                '<option value="步枪/霰弹枪">步枪/霰弹枪</option>' +
+                '<option value="冲锋枪">冲锋枪</option>' +
+                '<option value="弓术">弓术</option>' +
+                '<option value="喷射器">喷射器</option>' +
+                '<option value="机枪">机枪</option>' +
+                '<option value="重武器">重武器</option>' +
                 '</select>'
             , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
             SkillName: "射击②" + '<select id="Shoot1" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">步枪/霰弹枪</option>' +
-                '<option value="option2">冲锋枪</option>' +
-                '<option value="option3">弓术</option>' +
-                '<option value="option3">喷射器</option>' +
-                '<option value="option3">机枪</option>' +
-                '<option value="option3">重武器</option>' +
+                '<option value="步枪/霰弹枪">步枪/霰弹枪</option>' +
+                '<option value="冲锋枪">冲锋枪</option>' +
+                '<option value="弓术">弓术</option>' +
+                '<option value="喷射器">喷射器</option>' +
+                '<option value="机枪">机枪</option>' +
+                '<option value="重武器">重武器</option>' +
                 '</select>'
             , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
             SkillName: "射击③" + '<select id="Shoot2" class="form-select Shoot" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">步枪/霰弹枪</option>' +
-                '<option value="option2">冲锋枪</option>' +
-                '<option value="option3">弓术</option>' +
-                '<option value="option3">喷射器</option>' +
-                '<option value="option3">机枪</option>' +
-                '<option value="option3">重武器</option>' +
+                '<option value="步枪/霰弹枪">步枪/霰弹枪</option>' +
+                '<option value="冲锋枪">冲锋枪</option>' +
+                '<option value="弓术">弓术</option>' +
+                '<option value="喷射器">喷射器</option>' +
+                '<option value="机枪">机枪</option>' +
+                '<option value="重武器">重武器</option>' +
                 '</select>'
             , Inception: "0", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
@@ -285,8 +285,8 @@ $(function () {
         {
             SkillName: "驾驶" + '<select id="Drive0" class="form-select Drive" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">飞行器</option>' +
-                '<option value="option2">船</option>' +
+                '<option value="飞行器">飞行器</option>' +
+                '<option value="船">船</option>' +
                 '</select>'
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
@@ -296,57 +296,57 @@ $(function () {
         {
             SkillName: "科学①" + '<select id="Tech0" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">地质学</option>' +
-                '<option value="option2">化学</option>' +
-                '<option value="option3">生物学</option>' +
-                '<option value="option3">数学</option>' +
-                '<option value="option3">天文学</option>' +
-                '<option value="option3">物理学</option>' +
-                '<option value="option3">药学</option>' +
-                '<option value="option3">植物学</option>' +
-                '<option value="option3">动物学</option>' +
-                '<option value="option3">密码学</option>' +
-                '<option value="option3">工程学</option>' +
-                '<option value="option3">气象学</option>' +
-                '<option value="option3">司法科学</option>' +
+                '<option value="地质学">地质学</option>' +
+                '<option value="化学">化学</option>' +
+                '<option value="生物学">生物学</option>' +
+                '<option value="数学">数学</option>' +
+                '<option value="天文学">天文学</option>' +
+                '<option value="物理学">物理学</option>' +
+                '<option value="药学">药学</option>' +
+                '<option value="植物学">植物学</option>' +
+                '<option value="动物学">动物学</option>' +
+                '<option value="密码学">密码学</option>' +
+                '<option value="工程学">工程学</option>' +
+                '<option value="气象学">气象学</option>' +
+                '<option value="司法科学">司法科学</option>' +
                 '</select>'
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
             SkillName: "科学②" + '<select id="Tech1" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">地质学</option>' +
-                '<option value="option2">化学</option>' +
-                '<option value="option3">生物学</option>' +
-                '<option value="option3">数学</option>' +
-                '<option value="option3">天文学</option>' +
-                '<option value="option3">物理学</option>' +
-                '<option value="option3">药学</option>' +
-                '<option value="option3">植物学</option>' +
-                '<option value="option3">动物学</option>' +
-                '<option value="option3">密码学</option>' +
-                '<option value="option3">工程学</option>' +
-                '<option value="option3">气象学</option>' +
-                '<option value="option3">司法科学</option>' +
+                '<option value="地质学">地质学</option>' +
+                '<option value="化学">化学</option>' +
+                '<option value="生物学">生物学</option>' +
+                '<option value="数学">数学</option>' +
+                '<option value="天文学">天文学</option>' +
+                '<option value="物理学">物理学</option>' +
+                '<option value="药学">药学</option>' +
+                '<option value="植物学">植物学</option>' +
+                '<option value="动物学">动物学</option>' +
+                '<option value="密码学">密码学</option>' +
+                '<option value="工程学">工程学</option>' +
+                '<option value="气象学">气象学</option>' +
+                '<option value="司法科学">司法科学</option>' +
                 '</select>'
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
         {
             SkillName: "科学③" + '<select id="Tech2" class="form-select Tech" selectedIndex="-1" onchange="changeSkill()">' +
                 '<option value="option1"></option>' +
-                '<option value="option1">地质学</option>' +
-                '<option value="option2">化学</option>' +
-                '<option value="option3">生物学</option>' +
-                '<option value="option3">数学</option>' +
-                '<option value="option3">天文学</option>' +
-                '<option value="option3">物理学</option>' +
-                '<option value="option3">药学</option>' +
-                '<option value="option3">植物学</option>' +
-                '<option value="option3">动物学</option>' +
-                '<option value="option3">密码学</option>' +
-                '<option value="option3">工程学</option>' +
-                '<option value="option3">气象学</option>' +
-                '<option value="option3">司法科学</option>' +
+                '<option value="地质学">地质学</option>' +
+                '<option value="化学">化学</option>' +
+                '<option value="生物学">生物学</option>' +
+                '<option value="数学">数学</option>' +
+                '<option value="天文学">天文学</option>' +
+                '<option value="物理学">物理学</option>' +
+                '<option value="药学">药学</option>' +
+                '<option value="植物学">植物学</option>' +
+                '<option value="动物学">动物学</option>' +
+                '<option value="密码学">密码学</option>' +
+                '<option value="工程学">工程学</option>' +
+                '<option value="气象学">气象学</option>' +
+                '<option value="司法科学">司法科学</option>' +
                 '</select>'
             , Inception: "1", Normal: "", Hard: "", Exdifficult: "", Profession: "", Interest: "", Growup: "", Duty: ""
         },
