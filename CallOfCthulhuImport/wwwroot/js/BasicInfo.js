@@ -28,6 +28,7 @@ window.Lucky = "";
 window.Hp = "";
 window.Mp = "";
 window.CharaName = "";
+window.DB = "";
 window.Inindex = 1;
 
 

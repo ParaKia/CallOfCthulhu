@@ -97,7 +97,7 @@ selectedCharacterData.PreviewArt.forEach(function (data,index) {
     if (data != "") {
         NewInnerHTML = `${selectedCharacterData.PreviewArt[index]}${parent.window.TableSkill1[index + 4].Normal}`
         NewInnerHTML3 = `"${selectedCharacterData.PreviewArt[index]}${parent.window.TableSkill1[index + 4].Normal}"`
-        console.log(NewInnerHTML);
+        console.log(NewInnerHTML3);
         OneMsg.innerHTML += NewInnerHTML;
         TwoMsg.innerHTML += NewInnerHTML;
         ThreeMsg.innerHTML += NewInnerHTML3;
