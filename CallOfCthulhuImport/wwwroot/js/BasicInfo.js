@@ -2873,6 +2873,23 @@ document.getElementById('characterSelect').addEventListener('change', function (
             inputElements.forEach((input, index) => {
                 input.value = characterMsg.inputValues[index];
             });
+
+            //切换后存储全局变量
+            window.TableSkill1 = $("#Skill1").bootstrapTable("getData");
+            window.TableSkill2 = $("#Skill2").bootstrapTable("getData");
+            window.Str = document.getElementById("StrRange").value;
+            window.Con = document.getElementById("ConRange").value;
+            window.Size = document.getElementById("SizeRange").value;
+            Window.Dex = document.getElementById("DexRange").value;
+            window.App = document.getElementById("AppRange").value;
+            window.Int = document.getElementById("IntRange").value;
+            window.Pow = document.getElementById("PowRange").value;
+            window.Edu = document.getElementById("EduRange").value;
+            window.Lucky = document.getElementById("Luck").value;
+            window.Hp = document.getElementById("LifePoint");
+            window.Mp = document.getElementById("MagicPoint");
+            //角色名
+            const characterName = document.getElementById('Name').value;
         })
         .catch(error => {
             console.error('发生错误:', error);
