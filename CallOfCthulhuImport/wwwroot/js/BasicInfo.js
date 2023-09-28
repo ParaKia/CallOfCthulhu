@@ -29,6 +29,8 @@ window.Hp = "";
 window.Mp = "";
 window.CharaName = "";
 window.DB = "";
+window.Phy = "";
+window.Amo = "";
 window.Inindex = 1;
 
 
@@ -133,21 +135,33 @@ $(function () {
         $("#SanPoint")[0].innerHTML = previousValuePow;
         if (2 <= (previousValueStr + previousValueSize) && (previousValueStr + previousValueSize) <= 64) {
             $("#DamagePoint")[0].innerHTML = -2;
+            window.DB = -2;
+            window.Phy = -2;
         }
         else if (65 <= (previousValueStr + previousValueSize) && (previousValueStr + previousValueSize) <= 84) {
             $("#DamagePoint")[0].innerHTML = -1;
+            window.DB = -1;
+            window.Phy = -1;
         }
         else if (85 <= (previousValueStr + previousValueSize) && (previousValueStr + previousValueSize) <= 124) {
             $("#DamagePoint")[0].innerHTML = 0;
+            window.DB = 0;
+            window.Phy = -0;
         }
         else if (125 <= (previousValueStr + previousValueSize) && (previousValueStr + previousValueSize) <= 164) {
             $("#DamagePoint")[0].innerHTML = "1D4";
+            window.DB = "+1D4";
+            window.Phy = 1;
         }
         else if (165 <= (previousValueStr + previousValueSize) && (previousValueStr + previousValueSize) <= 204) {
             $("#DamagePoint")[0].innerHTML = "1D6";
+            window.DB = "+1D6"
+            window.Phy = 2;
         }
         else if (205 <= (previousValueStr + previousValueSize) && (previousValueStr + previousValueSize) <= 284) {
             $("#DamagePoint")[0].innerHTML = "2D6";
+            window.DB = "+2D6";
+            window.Phy = 3;
         }
 
         if (previousValueStr < previousValueSize && previousValueDex < previousValueSize) {

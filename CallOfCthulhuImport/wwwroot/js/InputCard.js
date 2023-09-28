@@ -3,6 +3,8 @@ var OneMsg = document.getElementById("One");
 var TwoMsg = document.getElementById("Two");
 var ThreeMsg = document.getElementById("Three");
 var FourMsg = document.getElementById("Four");
+var FinalInnerHTML3 = "";
+
 
 const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
 const selectedCharacterData = savedCharacters[parent.window.CharaName];
@@ -68,7 +70,7 @@ mp魔法hp体力会计${parent.window.TableSkill1[0].Normal}人类学${parent.wi
 妙手${parent.window.TableSkill2[18].Normal}侦查${parent.window.TableSkill2[19].Normal}潜行${parent.window.TableSkill2[20].Normal}生存${parent.window.TableSkill2[21].Normal}
 游泳${parent.window.TableSkill2[22].Normal}投掷${parent.window.TableSkill2[23].Normal}追踪${parent.window.TableSkill2[24].Normal}驯兽${parent.window.TableSkill2[25].Normal}
 潜水${parent.window.TableSkill2[26].Normal}爆破${parent.window.TableSkill2[27].Normal}读唇${parent.window.TableSkill2[28].Normal}催眠${parent.window.TableSkill2[29].Normal}
-炮术${parent.window.TableSkill2[30].Normal} 身体状态:健康	 精神状态:清醒	&DB=0 体格:0 闪避:0 护甲:0"`
+炮术${parent.window.TableSkill2[30].Normal} 身体状态:健康	 精神状态:清醒	&DB=${parent.window.DB} 体格:${parent.window.Phy} 闪避:${parent.window.TableSkill1[13].Normal} 护甲:0`
 
 
 FourMsg.innerHTML = `.st ？力量${parent.window.Str}str${parent.window.Str}敏捷${parent.window.Dex}dex${parent.window.Dex}意志${parent.window.Pow}pow${parent.window.Pow}
@@ -96,11 +98,10 @@ mp魔法hp体力会计${parent.window.TableSkill1[0].Normal}人类学${parent.wi
 selectedCharacterData.PreviewArt.forEach(function (data,index) {
     if (data != "") {
         NewInnerHTML = `${selectedCharacterData.PreviewArt[index]}${parent.window.TableSkill1[index + 4].Normal}`
-        NewInnerHTML3 = `"${selectedCharacterData.PreviewArt[index]}${parent.window.TableSkill1[index + 4].Normal}"`
-        console.log(NewInnerHTML3);
+        NewInnerHTML3 = `${selectedCharacterData.PreviewArt[index]}${parent.window.TableSkill1[index + 4].Normal}`
         OneMsg.innerHTML += NewInnerHTML;
         TwoMsg.innerHTML += NewInnerHTML;
-        ThreeMsg.innerHTML += NewInnerHTML3;
+        FinalInnerHTML3 += NewInnerHTML3;
         FourMsg.innerHTML += NewInnerHTML;
     }
 });
@@ -108,11 +109,10 @@ selectedCharacterData.PreviewArt.forEach(function (data,index) {
 selectedCharacterData.PreviewDrive.forEach(function (data, index) {
     if (data != "") {
         NewInnerHTML = `${selectedCharacterData.PreviewDrive[index]}${parent.window.TableSkill2[11].Normal}`
-        NewInnerHTML3 = `"${selectedCharacterData.PreviewDrive[index]}${parent.window.TableSkill2[11].Normal}"`
-        console.log(NewInnerHTML);
+        NewInnerHTML3 = `${selectedCharacterData.PreviewDrive[index]}${parent.window.TableSkill2[11].Normal}`
         OneMsg.innerHTML += NewInnerHTML;
         TwoMsg.innerHTML += NewInnerHTML;
-        ThreeMsg.innerHTML += NewInnerHTML3;
+        FinalInnerHTML3 += NewInnerHTML3;
         FourMsg.innerHTML += NewInnerHTML;
     }
 });
@@ -120,11 +120,10 @@ selectedCharacterData.PreviewDrive.forEach(function (data, index) {
 selectedCharacterData.PreviewFight.forEach(function (data, index) {
     if (data != "") {
         NewInnerHTML = `${selectedCharacterData.PreviewFight[index]}${parent.window.TableSkill1[index + 19].Normal}`
-        NewInnerHTML3 = `"${selectedCharacterData.PreviewFight[index]}${parent.window.TableSkill1[index + 19].Normal}"`
-        console.log(NewInnerHTML);
+        NewInnerHTML3 = `${selectedCharacterData.PreviewFight[index]}${parent.window.TableSkill1[index + 19].Normal}`
         OneMsg.innerHTML += NewInnerHTML;
         TwoMsg.innerHTML += NewInnerHTML;
-        ThreeMsg.innerHTML += NewInnerHTML3;
+        FinalInnerHTML3 += NewInnerHTML3;
         FourMsg.innerHTML += NewInnerHTML;
     }
 });
@@ -132,11 +131,10 @@ selectedCharacterData.PreviewFight.forEach(function (data, index) {
 selectedCharacterData.PreviewLanguage.forEach(function (data, index) {
     if (data != "") {
         NewInnerHTML = `${selectedCharacterData.PreviewLanguage[index]}${parent.window.TableSkill1[index + 30].Normal}`
-        NewInnerHTML3 = `"${selectedCharacterData.PreviewLanguage[index]}${parent.window.TableSkill1[index + 30].Normal}"`
-        console.log(NewInnerHTML);
+        NewInnerHTML3 = `${selectedCharacterData.PreviewLanguage[index]}${parent.window.TableSkill1[index + 30].Normal}`
         OneMsg.innerHTML += NewInnerHTML;
         TwoMsg.innerHTML += NewInnerHTML;
-        ThreeMsg.innerHTML += NewInnerHTML3;
+        FinalInnerHTML3 += NewInnerHTML3;
         FourMsg.innerHTML += NewInnerHTML;
     }
 });
@@ -144,11 +142,10 @@ selectedCharacterData.PreviewLanguage.forEach(function (data, index) {
 selectedCharacterData.PreviewShoot.forEach(function (data, index) {
     if (data != "") {
         NewInnerHTML = `${selectedCharacterData.PreviewShoot[index]}${parent.window.TableSkill1[index + 23].Normal}`
-        NewInnerHTML3 = `"${selectedCharacterData.PreviewShoot[index]}${parent.window.TableSkill1[index + 23].Normal}"`
-        console.log(NewInnerHTML);
+        NewInnerHTML3 = `${selectedCharacterData.PreviewShoot[index]}${parent.window.TableSkill1[index + 23].Normal}`
         OneMsg.innerHTML += NewInnerHTML;
         TwoMsg.innerHTML += NewInnerHTML;
-        ThreeMsg.innerHTML += NewInnerHTML3;
+        FinalInnerHTML3 += NewInnerHTML3;
         FourMsg.innerHTML += NewInnerHTML;
     }
 });
@@ -156,11 +153,12 @@ selectedCharacterData.PreviewShoot.forEach(function (data, index) {
 selectedCharacterData.PreviewTech.forEach(function (data, index) {
     if (data != "") {
         NewInnerHTML = `${selectedCharacterData.PreviewTech[index]}${parent.window.TableSkill2[index + 15].Normal}`
-        NewInnerHTML3 = `"${selectedCharacterData.PreviewTech[index]}${parent.window.TableSkill2[index + 15].Normal}"`
-        console.log(NewInnerHTML);
+        NewInnerHTML3 = `${selectedCharacterData.PreviewTech[index]}${parent.window.TableSkill2[index + 15].Normal}`
         OneMsg.innerHTML += NewInnerHTML;
         TwoMsg.innerHTML += NewInnerHTML;
-        ThreeMsg.innerHTML += NewInnerHTML3;
+        FinalInnerHTML3 += NewInnerHTML3;
         FourMsg.innerHTML += NewInnerHTML;
     }
 });
+
+ThreeMsg.innerHTML += `${FinalInnerHTML3}"`;
