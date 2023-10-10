@@ -1,4 +1,5 @@
-﻿var Survey = 0;//调查
+﻿
+var Survey = 0;//调查
 var Knowledge = 0;//学问
 var Negotiate = 0;//交涉
 var Battle = 0;//战斗
@@ -86,13 +87,13 @@ $(function () {
             $("#EduShow").text($("#EduRange").val());
     }, 0.01);
 
-    setInterval(function () {
-        var NowName = document.getElementById("Name").value;
-        if (NowName != "" && Inindex == 1) {
-            savePageContent();
-            Inindex++;
-        }
-    }, 2000);
+    //setInterval(function () {
+    //    var NowName = document.getElementById("Name").value;
+    //    if (NowName != "" && Inindex == 1 && NowName != ' ' && !NowName.includes("'")) {
+    //        savePageContent();
+    //        Inindex++;
+    //    }
+    //}, 2000);
 
     setInterval(function () {
         var total = parseInt($("#StrShow")[0].innerHTML) +
@@ -2414,6 +2415,10 @@ const tableContainer = document.getElementById('section3');
 let isTableVisible = false;
 
 toggleButton.addEventListener('click', () => {
+    var NowName = document.getElementById("Name").value;
+    if (NowName != "" && Inindex == 1 && NowName != ' ' && !NowName.includes("'")) {
+        savePageContent();
+    }
     if (isTableVisible) {
         // 如果表格可见，则收起动画
         tableContainer.style.maxHeight = '70' + 'px';
@@ -2621,6 +2626,7 @@ function savePageContent() {
     //保存后更新角色多维图
     $("#Propoties").click();
     $("#Skills").click();
+    return true;
 }
 
 const characterSelect = document.getElementById('characterSelect');
@@ -2956,27 +2962,33 @@ function DeltheCharactor() {
 //预览
 function previewPageContent() {
     //iframe层-父子操作
-    MyLayer.open({
-        type: 2,
-        area: ["1200px", "700px"],
-        fixed: false, //不固定
-        maxmin: true,
-        title: "预览&打印",
-        content: "/Print/Index",
-        success: function (layero, index) {
-            //保存打开iframe界面的index，方便其他js使用close时快速找到index
-            window.Index = index;
-            $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    MyLayer.close(index); // 关闭当前窗口
-                }
-            });
-        }
-    });
+    // 延迟0.8秒后执行下面的代码
+    setTimeout(function () {
+        //iframe层-父子操作
+        MyLayer.open({
+            type: 2,
+            area: ["1200px", "700px"],
+            fixed: false, //不固定
+            maxmin: true,
+            title: "预览&打印",
+            content: "/Print/Index",
+            success: function (layero, index) {
+                //保存打开iframe界面的index，方便其他js使用close时快速找到index
+                window.Index = index;
+                $(document).keydown(function (e) {
+                    if (e.keyCode === 27) {
+                        MyLayer.close(index); // 关闭当前窗口
+                    }
+                });
+            }
+        });
+    }, 0); // 0.5秒的延迟
 }
 
 //改变表格的技艺、格斗等等select时
 function changeSkill() {
+    var SumPoint = 0;
+    var InterestPoint = 0;
     const Art = $(".Art option:selected");
     const PreviewArt = [];
     for (var i = 0; i < Art.length; i++) {
@@ -3151,11 +3163,19 @@ function changeSkill() {
             var rows = $("#Skill2").bootstrapTable("getData");
             rows[15].Inception = 10;
         }
+        else {
+            var rows = $("#Skill2").bootstrapTable("getData");
+            rows[15].Inception = 1;
+        }
     }
     if ($("#Tech1").val() != "option1") {
         if ($("#Tech1").val() == "数学") {
             var rows = $("#Skill2").bootstrapTable("getData");
             rows[16].Inception = 10;
+        }
+        else {
+            var rows = $("#Skill2").bootstrapTable("getData");
+            rows[16].Inception = 1;
         }
     }
     if ($("#Tech2").val() != "option1") {
@@ -3163,59 +3183,65 @@ function changeSkill() {
             var rows = $("#Skill2").bootstrapTable("getData");
             rows[17].Inception = 10;
         }
+        else {
+            var rows = $("#Skill2").bootstrapTable("getData");
+            rows[17].Inception = 1;
+        }
     }
 
+    var rows = $("#Skill1").bootstrapTable("getData")
+    rows[13].Inception = Math.floor(previousValueDex / 2);
     // 更新表格中的数据
-    //$("#Skill1").bootstrapTable("updateRow", {
-    //    index: 19,
-    //    row: rows[19]
-    //});
+    $("#Skill1").bootstrapTable("updateRow", {
+        index: 13,
+        row: rows[13]
+    });
+    for (var i = 0; i < rows.length; i++) {
+        $("#Grow" + i)[0].value = rows[i].Growup;
+        $("#Prof" + i)[0].value = rows[i].Profession;
+        $("#Interest" + i)[0].value = rows[i].Interest;
 
-    //$("#Skill1").bootstrapTable("updateRow", {
-    //    index: 20,
-    //    row: rows[20]
-    //});
+        if (!isNaN(parseInt($("#Prof" + i)[0].value))) {
+            SumPoint += parseInt($("#Prof" + i)[0].value)
+            $("#EXPROF")[0].innerHTML = SumPoint;
+        }
+        if (!isNaN(parseInt($("#Interest" + i)[0].value))) {
+            InterestPoint += parseInt($("#Interest" + i)[0].value);
+            $("#EXINTEREST")[0].innerHTML = Interest;
+        }
 
-    //$("#Skill1").bootstrapTable("updateRow", {
-    //    index: 21,
-    //    row: rows[21]
-    //});
 
-    //$("#Skill1").bootstrapTable("updateRow", {
-    //    index: 23,
-    //    row: rows[23]
-    //});
+    }
 
-    //$("#Skill1").bootstrapTable("updateRow", {
-    //    index: 24,
-    //    row: rows[24]
-    //});
+    var rows2 = $("#Skill2").bootstrapTable("getData")
+    $("#Skill2").bootstrapTable("updateRow", {
+        index: 32,
+        row: rows2[32]
+    });
+    for (var i = 0; i < rows2.length; i++) {
+        $("#Grows" + i)[0].value = rows2[i].Growup;
+        $("#Profs" + i)[0].value = rows2[i].Profession;
+        $("#Interests" + i)[0].value = rows2[i].Interest;
 
-    //$("#Skill1").bootstrapTable("updateRow", {
-    //    index: 25,
-    //    row: rows[25]
-    //});
+        if (!isNaN(parseInt($("#Profs" + i)[0].value))) {
+            SumPoint += parseInt($("#Profs" + i)[0].value)
+            $("#EXPROF")[0].innerHTML = SumPoint;
+        }
+        if (!isNaN(parseInt($("#Interests" + i)[0].value))) {
+            InterestPoint += parseInt($("#Interests" + i)[0].value);
+            $("#EXINTEREST")[0].innerHTML = Interest;
+        }
 
-    //$("#Skill2").bootstrapTable("updateRow", {
-    //    index: 15,
-    //    row: rows[15]
-    //});
+    }
 
-    //$("#Skill2").bootstrapTable("updateRow", {
-    //    index: 16,
-    //    row: rows[16]
-    //});
 
-    //$("#Skill2").bootstrapTable("updateRow", {
-    //    index: 17,
-    //    row: rows[17]
-    //});
     /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
-    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
-        // 从localStorage中获取选中角色的页面数据
-        const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
-        const selectedCharacterData = savedCharacters[selectedCharacter];
 
+    // 从localStorage中获取选中角色的页面数据
+    const savedCharacters = JSON.parse(localStorage.getItem('skillSelect')) || {};
+    const selectedCharacterData = savedCharacters[selectedCharacter];
+
+    if (selectedCharacter != undefined && selectedCharacter != "----请选择角色----") {
         // 获取<select>元素
         var selectElementArt = document.getElementsByClassName("Art");
 
@@ -3285,6 +3311,7 @@ function changeSkill() {
     }
 
     /*------------------------每次填入数据都插入一次select中选择好的技能，保证不会被刷掉------------------------*/
+
 }
 
 
@@ -3406,7 +3433,7 @@ function ImgSetting() {
 function justifyIndexDEB() {
     if ("indexedDB" in window) {
         // 支持
-        console.log("不支持indexedDB... 可以正常车卡");
+        console.log("支持indexedDB... 可以正常车卡");
         layer.msg("支持indexedDB... 可以正常车卡");
         //createindexDB();    //创建数据库，下面有定义
     } else {
@@ -3533,6 +3560,7 @@ window.onload = function () {
 };
 
 function previewInputCard() {
+    savePageContent();
     layer.open({
         area: ["980px", "580px"],
         title: "骰娘导入",
