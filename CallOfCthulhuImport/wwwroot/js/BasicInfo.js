@@ -2626,7 +2626,9 @@ function savePageContent() {
     //保存后更新角色多维图
     $("#Propoties").click();
     $("#Skills").click();
+    layer.msg("保存完成");
     return true;
+    
 }
 
 const characterSelect = document.getElementById('characterSelect');
